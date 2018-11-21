@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #main {
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="main" style="width: 600px; height: 400px;"></div>
+    <script type="application/javascript" src="../assets/echarts-4.2.0/echarts.min.js"></script>
+    <script type="application/javascript" src="../assets/jquery-3.3.1.js"></script>
+    <script type="application/javascript">
+
+        var myChart = echarts.init(document.getElementById("main"));
+        // 柱状图
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+        // 饼图
+        option = {
+            series : [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '55%',
+                    data:[
+                        {value:235, name:'视频广告'},
+                        {value:274, name:'联盟广告'},
+                        {value:310, name:'邮件营销'},
+                        {value:335, name:'直接访问'},
+                        {value:400, name:'搜索引擎'}
+                    ]
+                }
+            ]
+        };
+
+        // 异步加载数据
+        // $.get("data.json").done(function (res) {
+        //     myChart.setOption({
+        //         "series": [
+        //             {
+        //                 "name": "访问来源",
+        //                 "type": "pie",
+        //                 "radius": "55%",
+        //                 "data": res.data
+        //             }
+        //         ]
+        //     })
+        // });
+
+        // 使用dataset管理数据
+        option = {
+            xAxis: {
+                type: 'category',
+                data: ['Matcha Latte', 'Milk Tea', 'Cheese Cocoa', 'Walnut Brownie']
+            },
+            yAxis: {},
+            series: [
+                {type: 'bar'},
+                {type: 'bar'},
+                {type: 'bar'}
+            ],
+            dataset: {
+                dimensions: ['product', '2015', '2016', '2017'],
+                source: [
+                    ['Matcha Latte', 43.3, 85.8, 93.7],
+                    ['Milk Tea', 83.1, 73.4, 55.1],
+                    ['Cheese Cocoa', 86.4, 65.2, 82.5],
+                    ['Walnut Brownie', 72.4, 53.9, 39.1]
+                ]
+            }
+        };
+
+        // 绘制图形
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
