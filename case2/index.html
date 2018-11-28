@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title>angular</title>
 </head>
 <body>
     <h1>hello angular</h1>
+    <div ng-controller="myCtrl">
+        age: <span>{{age}}</span>
+    </div>
 
     <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.js"></script>
     <script type="application/javascript">
-        angular.element(document).ready(function () {
-            angular.module('myApp', []);
-            angular.bootstrap(document, ['myApp']);
-        });
+        var myApp = angular.module('myApp', []);
+        myApp.controller('myCtrl', ['$scope', function myCtrl($scope) {
+            $scope.age = 20;
+        }]);
     </script>
 </body>
 </html>
