@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>websocket Demo</h1>
+    <button id="send">发送消息</button>
+    <button id="close">断开连接</button>
+    <script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script type="application/javascript">
+        /**
+         * WebSocket核心介绍
+         *  1.心跳机制：若使用STOMP 1.1 版本，默认开启了心跳检测机制，可通过stompClient对象的heartbeat field进行配置（默认值都是10000 ms）
+         *  2.SpringBoot的STOMP配置，默认不接受客户端信息，也不发送心跳到客户端。
+         */
+        var socket = new WebSocket("ws://192.168.11.141:8080/payBoot/live");
+        var stompClient = Stomp.over(socket);
+        stompClient.connect({},
+            function (res) {
+                console.log("connect success：", res);
+                stompClient.subscribe("/topic/server/1_2/message",
+                    function (res) {
+                        console.log("subscribe：" + res);
+                    }, {}
+                );
+            },
+            function (res) {
+                console.log("connect fails：", res);
+            }
+        );
+        $(document).on("click", "#send", function (){
+            stompClient.send("/goods/message", {}, JSON.stringify({msg: "hello world"}));
+        });
+
+        $(document).on("click", "#close", function () {
+            stompClient.disconnect();
+        })
+    </script>
+</body>
+</html>
