@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>angular</title>
+</head>
+<body>
+    <h1>hello angular</h1>
+    <div ng-controller="myCtrl">
+        <p>
+            <!--模板中使用过滤器，不带参数-->
+            age: <span>{{age | filterAge}}</span>
+        </p>
+        <p>
+            <!--模板中使用过滤器带参-->
+            param：<span>{{param | filterParam:"params"}}</span>
+        </p>
+        <p>
+            <!--模板中使用多个过滤器-->
+            age: <span>{{age | filterAge | filterParam: "yes"}}</span>
+        </p>
+        <p>
+            <!--在控制器和服务中使用过滤器-->
+            name: <span>{{nickname}}</span>
+        </p>
+    </div>
+
+    <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.js"></script>
+    <script type="application/javascript">
+        var myApp = angular.module('myApp', []);
+        myApp.controller('myCtrl', ['$scope', 'reverseFilter', function myCtrl($scope, reverseFilter) {
+            $scope.age = 21;
+            $scope.nickname = "dazuo";
+
+            // 在控制器和服务中使用过滤器，在你的控制器或者服务中添加以“<过滤器名>Filter”为名的依赖
+            $scope.nickname = reverseFilter($scope.nickname);
+        }]);
+
+        // 创建自定义过滤器
+        myApp.filter('filterAge', function () {
+            return function (input) {
+                console.log("input: " + input);
+                if (input === 21) {
+                    return 22;
+                }
+            }
+        });
+        myApp.filter('filterParam', function () {
+            return function (input, param) {
+                console.log("param: " + param);
+            }
+        });
+        myApp.filter('reverse', function () {
+            return function (input) {
+                console.log("reverse: " + input);
+                if (input === 'dazuo') {
+                    return "dazuo2";
+                }
+            }
+        })
+    </script>
+</body>
+</html>
