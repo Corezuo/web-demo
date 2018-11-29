@@ -1,0 +1,19 @@
+{
+    "code": 1,
+    "data": [
+        {
+            "title": "",
+            "small": "",
+            "components" : [
+                {
+                    "title": "logo",
+                    "sort": "1"
+                },
+                {
+                    "title": "商品名称",
+                    "sort": "2"
+                }
+            ]
+        }
+    ]
+}
