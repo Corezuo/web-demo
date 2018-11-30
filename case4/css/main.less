@@ -1,0 +1,37 @@
+.box {
+    border: 4px dotted dodgerblue;
+    padding: 20px 40px;
+    .module {
+        margin: 10px 20px;
+        border: 2px solid gray;
+        .title {
+            padding: 0px 10px;
+            border-bottom: 2px solid gray;
+        }
+        .section {
+            padding: 2%;
+            .component {
+                margin: 2%;
+                width: 28%;
+                background-color: #2D93CA;
+                padding: 10px;
+                display: inline-block;
+                border: 1px solid white;
+                p {
+                    margin: 5px;
+                    font-size: 18px;
+                    color: white;
+                    text-align: center;
+                }
+            }
+            .component:hover {
+                cursor: pointer;
+                border: 1px solid gray;
+            }
+            .switch-off {
+                background-color: gray;
+                color: #000;
+            }
+        }
+    }
+}
