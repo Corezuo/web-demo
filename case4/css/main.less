@@ -5,7 +5,7 @@
         margin: 10px 20px;
         border: 2px solid gray;
         .title {
-            padding: 0px 10px;
+            padding: 0 10px;
             border-bottom: 2px solid gray;
         }
         .section {
@@ -13,47 +13,63 @@
             .component {
                 margin: 2%;
                 width: 28%;
-                background-color: #2D93CA;
-                padding: 10px;
+                background-color: gray;
                 display: inline-block;
                 border: 1px solid white;
-                p {
-                    margin: 5px;
-                    font-size: 18px;
-                    color: white;
-                    text-align: center;
+                height: 50px;
+                cursor: pointer;
+                table {
+                    vertical-align: middle;
+                    height: 100%;
+                    width: 100%;
+                    tbody {
+                        display: table-row-group;
+                        vertical-align: middle;
+                        border-color: inherit;
+                        tr {
+                            display: table-row;
+                            vertical-align: inherit;
+                            border-color: inherit;
+                            td {
+                                color: white;
+                                font-size: 16px;
+                                text-align: center;
+                                display: table-cell;
+                                vertical-align: inherit;
+                            }
+                        }
+                    }
                 }
             }
             .component:hover {
-                cursor: pointer;
                 border: 1px solid gray;
             }
             /*开关*/
-            .switch-off {
-                background-color: gray;
+            .switch-on {
+                background-color: #2D93CA;
                 color: #000;
             }
         }
     }
 }
 
-.preview-box {
+.template-container {
     border: 4px dotted dodgerblue;
     padding: 30px 40px;
     background-color: #e4e4e4;
-    .modules {
+    .template-module-list {
         background-color: white;
-        margin: 0px 20px;
+        margin: 0 20px;
         padding: 20px 15px;
-        .module {
-            .rows {
+        .template-module {
+            .template-row {
                 display: flex;
                 justify-content: space-between;
-                .column {
+                .template-component {
                     box-sizing:border-box;
                     border: 1px solid white;
                 }
-                .column:hover {
+                .template-component:hover {
                     border: 1px solid orange;
                     background-color: rgba(247, 248, 74, 0.67);
                     cursor: pointer;
@@ -63,6 +79,10 @@
                     border: 1px solid orange;
                     background-color: rgba(247, 248, 74, 0.67);
                 }
+            }
+            /*模块分隔线*/
+            .the-divider {
+                margin: 5px 0;
             }
         }
     }

@@ -7,7 +7,7 @@
   border: 2px solid gray;
 }
 .component-box .module .title {
-  padding: 0px 10px;
+  padding: 0 10px;
   border-bottom: 2px solid gray;
 }
 .component-box .module .section {
@@ -17,50 +17,72 @@
 .component-box .module .section .component {
   margin: 2%;
   width: 28%;
-  background-color: #2D93CA;
-  padding: 10px;
+  background-color: gray;
   display: inline-block;
   border: 1px solid white;
+  height: 50px;
+  cursor: pointer;
 }
-.component-box .module .section .component p {
-  margin: 5px;
-  font-size: 18px;
+.component-box .module .section .component table {
+  vertical-align: middle;
+  height: 100%;
+  width: 100%;
+}
+.component-box .module .section .component table tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+.component-box .module .section .component table tbody tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+.component-box .module .section .component table tbody tr td {
   color: white;
+  font-size: 16px;
   text-align: center;
+  display: table-cell;
+  vertical-align: inherit;
 }
 .component-box .module .section .component:hover {
-  cursor: pointer;
   border: 1px solid gray;
 }
-.component-box .module .section .switch-off {
-  background-color: gray;
+.component-box .module .section .switch-on {
+  background-color: #2D93CA;
   color: #000;
 }
-.preview-box {
+.template-container {
   border: 4px dotted dodgerblue;
   padding: 30px 40px;
   background-color: #e4e4e4;
 }
-.preview-box .modules {
+.template-container .template-module-list {
   background-color: white;
-  margin: 0px 20px;
+  margin: 0 20px;
   padding: 20px 15px;
 }
-.preview-box .modules .module .rows {
+.template-container .template-module-list .template-module {
+  /*模块分隔线*/
+}
+.template-container .template-module-list .template-module .template-row {
   display: flex;
   justify-content: space-between;
   /*获取焦点*/
 }
-.preview-box .modules .module .rows .column {
+.template-container .template-module-list .template-module .template-row .template-component {
   box-sizing: border-box;
   border: 1px solid white;
 }
-.preview-box .modules .module .rows .column:hover {
+.template-container .template-module-list .template-module .template-row .template-component:hover {
   border: 1px solid orange;
   background-color: rgba(247, 248, 74, 0.67);
   cursor: pointer;
 }
-.preview-box .modules .module .rows .focus {
+.template-container .template-module-list .template-module .template-row .focus {
   border: 1px solid orange;
   background-color: rgba(247, 248, 74, 0.67);
+}
+.template-container .template-module-list .template-module .the-divider {
+  margin: 5px 0;
 }
