@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Angular 指令练习</h1>
+    <p ng-init="nickname='dazuo';age=22">
+        初始化变量：nickname = {{nickname}}，age = {{age}}
+    </p>
+    <p>
+        外部访问初始化变量：nickname = {{nickname}}，age = {{age}}
+    </p>
+    <!--ng-model 指令绑定了 HTML 表单元素到 scope 变量中-->
+    <input ng-model="nickname"/>
+
+    <!--绑定 <p> 内的 innerHTML 到变量 nickname:-->
+    <p>
+        span内部的内容被 nickname 变量替换：<span ng-bind="nickname">占位符</span>
+    </p>
+
+    <div ng-controller="myCtrl">
+        <!--ng-bind-html 指令是通一个安全的方式将内容绑定到 HTML 元素上。-->
+        <!--通过在应用中引入 "angular-santize.js" 模块，使用 ngSanitize 函数来检测代码的安全性。-->
+        <div>
+            expresion: <p ng-bind-html="content"></p>
+        </div>
+        <!--绑定点击事件-->
+        <button ng-click="printLog()">点击</button>
+        <!--当输入框失去焦点(onblur)时执行表达式:-->
+        <!--AngularJS 中的 ng-blur 指令不会覆盖原生的 onblur 事件， 如果触发该事件，ng-blur 表达式与原生的 onblur 事件都会执行。-->
+        input 1: <input ng-blur="printLog()" />
+        <!--当输入框的值改变时执行函数，需要配置ng-model一起使用；同样不会覆盖原生的onchange事件-->
+        input 2: <input ng-change="printLog()" ng-model="sex"/>
+        <!--如果 ng-checked 属性返回 true，复选框(checkbox)或单选按钮(radio)将会被选中。-->
+        input 3: <input type="checkbox" ng-checked="true" />
+        <!--ng-dblclick：双击时触发-->
+        <!--ng-focus：当输入框获取焦点时执行表达式-->
+        <!--ng-cut：在输入框的文本被剪切时触发-->
+        <!--ng-copy：在输入框的文本被拷贝时执行表达式:-->
+        <!--ng-paste：文本被粘贴时执行表达式-->
+        input 4: <input ng-copy="printLog()" />
+        <!--如果表达式返回true，则设置为元素添加 disabled 属性。-->
+        input 5: <input ng-disabled="true" />
+        <!--ng-class 指令用于给 HTML 元素动态绑定一个或多个 CSS 类。-->
+        <!--情景一：通过变量制定类名-->
+        <p ng-class="fontClass">hello ng-class1</p>
+        <!--情景二：如果是对象，需要使用 key-value 对，value 是一个布尔值，key 为你想要添加的类名。只有在 value 为 true 时类才会被添加。-->
+        <p ng-class="classObj">hello ng-class2</p>
+        <!--ng-show 指令在表达式为 true 时显示指定的 HTML 元素，否则隐藏指定的 HTML 元素。-->
+        <!--ng-hide 指令在表达式为 true 时隐藏 HTML 元素。-->
+        <p ng-hide="false">我有一头小毛驴，从来都不骑</p>
+        <!--ng-src 指令覆盖了 <img> 元素的 src 属性。-->
+        <!--ng-href 指令覆盖了原生的 <a> 元素 href 属性。-->
+        <a ng-href="{{link}}">百度一下</a>
+        <!--ng-if 指令用于在表达式为 false 时移除 HTML 元素。-->
+        <p ng-if="true">我是元素</p>
+
+        <!--ng-include 指令用于包含外部的 HTML 文件。
+            包含的内容将作为指定元素的子节点。-->
+        <div ng-include="''"></div>
+        <!--ng-options 指令用于使用 <options> 填充 <select> 元素的选项。-->
+        <!--多数情况下与 ng-repeat 指令一起使用。-->
+        <!--ng-selected 指令用于设置 <select> 列表中的 <option> 元素的 selected 属性。
+            ng-selected 属性的表达式返回 true 则选项被选中。-->
+        <!--<select ng-model="selectedName" ng-options="item for item in names">-->
+        </select>
+
+        <!--ng-readonly 指令用于设置表单域(input 或 textarea) 的 readonly 属性。4
+            如果 ng-readonly 属性的表达式返回 true 则表单域为只读。-->
+        <input type="text" ng-readonly="all" value="我是只读的">
+
+        <!--ng-style 指令为 HTML 元素添加 style 属性。
+            ng-style 属性值必须是对象，表达式返回的也是对象。
+            对象由 CSS 属性和值注册，即 key=>value 对。-->
+        <p ng-style="styleObj">我是独一无二的</p>
+
+        <!--ng-submit 指令用于在表单提交后执行指定函数。-->
+        <form ng-submit="expression"></form>
+
+        <!--ng-value 指令用于设置 input 或 select 元素的 value 属性。-->
+        input value: <input ng-value="val"/>
+    </div>
+
+    <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.js"></script>
+    <script type="application/javascript">
+        // ng-app 指令用于告诉 AngularJS 应用当前这个元素是根元素。
+        var myApp = angular.module('myApp', []);
+
+        // ng-controller 指令用于为你的应用添加控制器。制作函数和变量，并使用 scope 对象来访问。
+        myApp.controller('myCtrl', ['$scope', function ($scope) {
+            // $scope.content = '<span>hello</span>';
+            $scope.printLog = function () {
+                console.log("this is log");
+            };
+            $scope.sex = 10;
+            $scope.fontClass = "big-font";
+            $scope.classObj = {'hello': true};
+            $scope.link = "http://www.baidu.com";
+            $scope.names = ["Emil", "Tobias", "Linus"];
+            $scope.all = true;
+            // 字体去掉中划线，驼峰命名法
+            $scope.styleObj = {fontSize: "20px", color: "red"}
+            $scope.val = "我有一头小毛驴";
+        }]);
+
+    </script>
+</body>
+</html>
