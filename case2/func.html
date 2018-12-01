@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Angular 函数练习</h1>
+    <div ng-controller="myCtrl"></div>
+    <div id="box">
+        hello box
+    </div>
+    <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.js"></script>
+    <script type="application/javascript" src="../assets/jquery-3.3.1.js"></script>
+    <script type="application/javascript">
+        // angular.module 来注册和检索模块
+        var myApp = angular.module('myApp', []);
+        myApp.controller('myCtrl', ['$scope', function ($scope) {
+        }]);
+
+        // angular.element，HTML字符串，把它作为一个jQuery元素来处理
+        var html = angular.element("<p>hello world</p>").html();
+        console.log("html: ", html);
+        // DOM element
+        var element = document.getElementById("box");
+        var html = angular.element(element).html();
+        console.log("html: ", html);
+
+        console.log("===========================================");
+
+        // angular.copy复制对象或数组（深拷贝）
+        var info = {};
+        info.name = "dazuo";
+        info.getName = function () {
+            console.log("hello name");
+        };
+        var info2 = angular.copy(info);
+        info.name = "dazuo1";
+        console.log("info2:", info2);
+
+        console.log("===========================================");
+
+
+        // angular.equals，比较两个值或者两个对象是不是相等
+        var a = {"name": "dazuo"};
+        var b = {name: "dazuo"};
+        console.log(a === b);               // output: false
+        console.log(angular.equals(a, b))   // output: true
+
+        console.log("===========================================");
+
+        // angular.forEach，遍历对象
+        info = {name: "dazuo", sex: 22};
+        angular.forEach(info, function (value, key) {
+            console.log("value: " + value);
+            console.log("key: " + key);
+        });
+
+        console.log("===========================================");
+
+        // angular.fromJson，把Json字符串转化为对象，对象转换为Json字符串
+        info = {"name": "dazuo", "sex": "22"};
+        var obj = angular.fromJson(info);
+        console.log("obj: ", obj);
+        console.log("objStr: ", angular.toJson(obj));
+
+        console.log("===========================================");
+
+        // angular.bind，上下文，函数以及参数动态绑定，返回值为绑定之后的函数.
+        info = {name: "dazuo", age: 22};
+        var func = angular.bind(info, function () {
+            console.log("name: ", this.name);
+            console.log("age: ", this.age);
+        });
+        func();
+
+        console.log("===========================================");
+
+        // angular.isArray，判断参数是否是数组
+        info = {name: "dazuo", age: 22};
+        var arr = ['dazuo', 22];
+        console.log("aBoolean1: ", angular.isArray(info));
+        console.log("aBoolean2: ", angular.isArray(arr));
+
+        // angular.isDate 判断参数是否是时间类型
+        var date = new Date();
+        console.log("aBoolean: ", angular.isDate(date));
+        console.log("date: " + date);
+
+        // angular.isElement，判断参数是否是一个DOM元素（或用jQuery元素）
+        var element = $("#box");
+        console.log("element: ", element);
+        console.log("element: ", angular.isElement(element));
+
+        // angular.isFunction 判断参数是否是一个函数
+        // angular.isObject 判断参数是否是一个Object
+        // angular.isstring 判断参数是否是一个字符串
+        // angular.isNumber 判断参数是否是一个数字
+        // angular.isUndefined 判断参数是否是Undefined
+        // angular.lowercase 将指定的字符串转换为小写
+        // angular.uppercase 将指定的字符串转换为大写
+        console.log("number aBoolean1: ", angular.isNumber(2));
+        console.log("number aBoolean2: ", angular.isString("2"));
+    </script>
+</body>
+</html>
