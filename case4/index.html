@@ -40,10 +40,13 @@
             <div class="col-lg-6" ng-controller="previewCtrl">
                 <div class="template-container">
                     <div class="template-module-list">
-                        <div class="template-module" ng-repeat="templateModule in templateModules">
-                            <div class="template-row" ng-repeat="templateRow in templateModule.rows">
+                        <div class="template-module" ng-repeat="templateModule in systemComponent">
+                            <div class="template-row">
                                 <div class="template-component" style="{{templateComponent.valueStyle}}" ng-repeat="templateComponent in templateRow.components">
                                     {{templateComponent.value}}
+                                    <div ng-if="templateComponent">
+
+                                    </div>
                                 </div>
                             </div>
                             <!--模板分割线-->

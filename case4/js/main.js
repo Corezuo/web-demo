@@ -11,7 +11,8 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
         sCallback: function (res) {
             var data = angular.copy(res.data.modules),
                 modules = [],
-                componentEnableStaus = {};
+                componentEnableStaus = {},
+                templateModuleList = [];
             for (var i = 0; i < data.length; i++) {
                 var module = data[i];
                 for (var j = 0; j < module.components.length; j++) {
@@ -23,6 +24,27 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
                     componentEnableStaus[module.components[j].id] = false;
                 }
                 modules.push(module);
+
+                var components = module.components;
+                var rows = [];
+                var row = [];
+                var rowNum = 0;
+                for (var n = 0; n < components.length; n++) {
+                    if (components[n].type === "text") {
+                        if (rowNum === components[n].row) {
+                            row.push(components[n]);
+                        } else {
+                            if (n !== 0) {
+                                rows.push(row);
+                                row = [];
+                            }
+                            rowNum = components[n].row;
+                            row.push(components[n]);
+                        }
+                    }
+                }
+                console.log("rows: ", rows);
+                // Todo: thead , tbody
             }
             $scope.modules = modules;
             $scope.componentEnableStaus = componentEnableStaus;
@@ -33,25 +55,14 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
 
     // 加载模板预览组件
     param = {
-        url: "data/preview-component-custom.json",
+        url: "data/preview-component.json",
         sCallback: function (res) {
             var previewComponent = res.data;
-            renderTemplateView(angular.copy(previewComponent));
-            initComponentStatus(angular.copy(previewComponent));
+            // initComponentStatus(angular.copy(previewComponent));
             $scope.previewComponent = res.data;
         }
     };
     baseRequest($http, param);
-
-    /**
-     * 渲染模板视图
-     * @param previewComponent 预览组件
-     */
-    function renderTemplateView (previewComponent) {
-        console.log("previewComponent: ", previewComponent);
-        // Todo：按模板划分、按行划分、按列划分；控制预览组件的显隐
-        $scope.templateModules = previewComponent;
-    }
 
     /**
      * 初始化组件启用状态
