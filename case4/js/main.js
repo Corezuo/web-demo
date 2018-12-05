@@ -11,8 +11,7 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
         sCallback: function (res) {
             var data = angular.copy(res.data.modules),
                 modules = [],
-                componentEnableStaus = {},
-                templateModuleList = [];
+                componentEnableStaus = {};
             for (var i = 0; i < data.length; i++) {
                 var module = data[i];
                 for (var j = 0; j < module.components.length; j++) {
@@ -24,27 +23,6 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
                     componentEnableStaus[module.components[j].id] = false;
                 }
                 modules.push(module);
-
-                var components = module.components;
-                var rows = [];
-                var row = [];
-                var rowNum = 0;
-                for (var n = 0; n < components.length; n++) {
-                    if (components[n].type === "text") {
-                        if (rowNum === components[n].row) {
-                            row.push(components[n]);
-                        } else {
-                            if (n !== 0) {
-                                rows.push(row);
-                                row = [];
-                            }
-                            rowNum = components[n].row;
-                            row.push(components[n]);
-                        }
-                    }
-                }
-                console.log("rows: ", rows);
-                // Todo: thead , tbody
             }
             $scope.modules = modules;
             $scope.componentEnableStaus = componentEnableStaus;
@@ -55,11 +33,9 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
 
     // 加载模板预览组件
     param = {
-        url: "data/preview-component.json",
+        url: "data/preview-component-custom.json",
         sCallback: function (res) {
-            var previewComponent = res.data;
-            // initComponentStatus(angular.copy(previewComponent));
-            $scope.previewComponent = res.data;
+            $scope.templateModules = res.data;
         }
     };
     baseRequest($http, param);

@@ -40,12 +40,40 @@
             <div class="col-lg-6" ng-controller="previewCtrl">
                 <div class="template-container">
                     <div class="template-module-list">
-                        <div class="template-module" ng-repeat="templateModule in systemComponent">
-                            <div class="template-row">
-                                <div class="template-component" style="{{templateComponent.valueStyle}}" ng-repeat="templateComponent in templateRow.components">
+                        <div class="template-module" ng-repeat="templateModule in templateModules">
+                            <div class="template-row" ng-repeat="templateRow in templateModule">
+                                <div class="template-component" ng-repeat="templateComponent in templateRow">
+                                    <!--text-->
                                     {{templateComponent.value}}
-                                    <div ng-if="templateComponent">
-
+                                    <!--tableTitle-->
+                                    <div class="template-component-table-title" ng-if="templateComponent.tableTitle != null">
+                                        {{templateComponent.tableTitle.value}}
+                                    </div>
+                                    <div class="template-component-table">
+                                        <!--thead-->
+                                        <div class="template-component-thead" ng-if="templateComponent.thead != null">
+                                            <div class="template-component-tr">
+                                                <div class="table-component-td" ng-repeat="tableHeadColumn in templateComponent.thead.tableRowSet.columnSet">
+                                                    {{tableHeadColumn.value}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--tbody-->
+                                        <div class="template-component-tbody" ng-if="templateComponent.tbody != null">
+                                            <div class="template-component-tr">
+                                                <div class="template-component-td">
+                                                    <!--category-->
+                                                    <div class="template-component-category" ng-if="templateComponent.category != null">
+                                                        {{templateComponent.category.value}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="template-component-tr" ng-repeat="tableTbodyRow in templateComponent.tbody.tableRowSet">
+                                                <div class="template-component-td" ng-repeat="tableTbodyRowColumn in tableTbodyRow.columnSet">
+                                                    {{tableTbodyRowColumn.value}}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

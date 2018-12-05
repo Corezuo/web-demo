@@ -66,8 +66,22 @@
                 display: flex;
                 justify-content: space-between;
                 .template-component {
+                    width: 100%;
                     box-sizing:border-box;
                     border: 1px solid white;
+
+                    .template-component-table {
+                        .template-component-thead,
+                        .template-component-tbody {
+                            .template-component-tr {
+                                display: flex;
+                                justify-content: space-between;
+                                .table-component-td {
+                                    
+                                }
+                            }
+                        }
+                    }
                 }
                 .template-component:hover {
                     border: 1px solid orange;
