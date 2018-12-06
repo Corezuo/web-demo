@@ -84,6 +84,11 @@
 
         <!--ng-value 指令用于设置 input 或 select 元素的 value 属性。-->
         input value: <input ng-value="val"/>
+        <!--ng-repeat 遍历：(key, value)-->
+        <div ng-repeat="(key, value) in nameList">
+            key: {{key}}
+            value: {{value}}
+        </div>
     </div>
 
     <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.js"></script>
@@ -106,6 +111,8 @@
             // 字体去掉中划线，驼峰命名法
             $scope.styleObj = {fontSize: "20px", color: "red"}
             $scope.val = "我有一头小毛驴";
+
+            $scope.nameList = ["dazuo", "xiao", "zxcity"];
         }]);
 
     </script>

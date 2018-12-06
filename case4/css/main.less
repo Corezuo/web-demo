@@ -44,7 +44,7 @@
             .component:hover {
                 border: 1px solid gray;
             }
-            /*开关*/
+            /*启用状态*/
             .switch-on {
                 background-color: #2D93CA;
                 color: #000;
@@ -69,19 +69,6 @@
                     width: 100%;
                     box-sizing:border-box;
                     border: 1px solid white;
-
-                    .template-component-table {
-                        .template-component-thead,
-                        .template-component-tbody {
-                            .template-component-tr {
-                                display: flex;
-                                justify-content: space-between;
-                                .table-component-td {
-                                    
-                                }
-                            }
-                        }
-                    }
                 }
                 .template-component:hover {
                     border: 1px solid orange;
@@ -89,9 +76,24 @@
                     cursor: pointer;
                 }
                 /*获取焦点*/
-                .focus {
+                .template-component-focus {
                     border: 1px solid orange;
                     background-color: rgba(247, 248, 74, 0.67);
+                }
+                .template-component-individuation {
+                    width: 100%;
+                    .template-component-table {
+                        .template-component-thead,
+                        .template-component-tbody {
+                            .template-component-tr {
+                                display: flex;
+                                justify-content: space-between;
+                                .table-component-td {
+
+                                }
+                            }
+                        }
+                    }
                 }
                 /*店铺logo*/
                 .shop-logo {
