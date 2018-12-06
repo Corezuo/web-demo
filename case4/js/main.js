@@ -122,10 +122,10 @@ myApp.controller('previewCtrl', ['$scope', '$http', function ($scope, $http) {
     var param = {
         url: "data/system-component.json",
         sCallback: function (res) {
+            // 从系统组件中扫描
             var modules = res.data.modules;
             var moduleId = 4;
             var componentId = 559;
-
             angular.forEach(modules, function (value, key) {
                 if (value.moduleId === moduleId) {
                     angular.forEach(value.components, function (value, key) {
@@ -170,6 +170,39 @@ myApp.controller('previewCtrl', ['$scope', '$http', function ($scope, $http) {
                     });
                 }
             });
+
+            // 以系统组件（system-component）作为源，创建预览组件（preview-component）数据
+            var templateModules = [];
+            for (var i = 0; i < modules.length; i++) {
+                var module = modules[i];
+                var rows = [];
+                for (var j = 0; j < module.components.length; j++) {
+                    var component = module.components[j];
+                    if (!component.hasOwnProperty("component")) {
+                        if (rows.length > 0) {
+                            var rowNum = component.row;
+                            var recentRowColumn = rows[rows.length - 1].components[0];
+                            if (rowNum === recentRowColumn.row) {
+                                rows[rows.length - 1].components.push(component);
+                                continue;
+                            }
+                        }
+                    }
+                    var row = {};
+                    var components = [];
+                    components.push(component);
+                    row.components = components;
+                    rows.push(row);
+                }
+                var templateModule = {};
+                templateModule.modulesId = module.moduleId;
+                templateModule.moduleName = module.moduleName;
+                templateModule.moduleDescribe = module.moduleDescribe;
+                templateModule.sort = module.sort;
+                templateModule.rows = rows;
+                templateModules.push(templateModule);
+            }
+            console.log("templateModules: ", templateModules);
         }
     };
     baseRequest($http, param);
