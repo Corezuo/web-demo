@@ -275,7 +275,7 @@ myApp.controller('panelCtrl', ['$scope', '$http', function ($scope, $http) {
  */
 myApp.controller('previewCtrl', ['$scope', '$http', function ($scope, $http) {
     /**
-     * 预览组件获取焦点
+     * 阶段四：预览组件获取焦点
      * @param templateComponent 组件元素（引用传递）
      */
     $scope.doTemplateComponentActive = function (templateComponent) {
@@ -302,4 +302,23 @@ myApp.controller('previewCtrl', ['$scope', '$http', function ($scope, $http) {
         }
         templateComponent.valueStyle = JSON.stringify(valueStyle);
     };
+
+    $scope.updateTemplateProperty = function (fontSize) {
+        var activeComponent = $scope.activeComponent;
+        // 组件激活状态下，面板激活。
+    };
 }]);
+
+/**
+ * Register property filters
+ */
+myApp.filter("filterProperty", function () {
+   return function (input, property) {
+       if (isNotEmpty(input, "valueStyle")) {
+            var valueStyle = JSON.parse(input.valueStyle);
+            if (valueStyle.hasOwnProperty(property)) {
+                return valueStyle[property];
+            }
+       }
+   }
+});

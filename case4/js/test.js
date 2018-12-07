@@ -75,3 +75,6 @@ for (var i = 0; i < numArray.length; i++) {
     }
 }
 
+var a = 60 / 84;
+console.log("a: " + a);
+

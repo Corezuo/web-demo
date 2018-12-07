@@ -1,6 +1,6 @@
 .component-box {
   border: 4px dotted dodgerblue;
-  padding: 20px 40px;
+  padding: 20px 30px;
 }
 .component-box .panel-module {
   margin: 10px 20px;
@@ -20,7 +20,7 @@
   background-color: gray;
   display: inline-block;
   border: 1px solid white;
-  height: 50px;
+  height: 40px;
   cursor: pointer;
 }
 .component-box .panel-module .panel-module-body .panel-component table {
@@ -40,7 +40,7 @@
 }
 .component-box .panel-module .panel-module-body .panel-component table tbody tr td {
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
   display: table-cell;
   vertical-align: inherit;
@@ -53,8 +53,9 @@
   color: #000;
 }
 .template-container {
+  width: 70%;
   border: 4px dotted dodgerblue;
-  padding: 30px 40px;
+  padding: 30px 30px;
   background-color: #e4e4e4;
 }
 .template-container .template-module-list {
@@ -105,4 +106,10 @@
 }
 .template-container .template-module-list .template-module .the-divider {
   margin: 5px 0;
+}
+.template-property-panel {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  width: 20%;
 }

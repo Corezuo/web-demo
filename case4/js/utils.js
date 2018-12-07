@@ -32,7 +32,7 @@ function baseRequest ($http, param) {
  * @return boolean
  */
 function isNotEmpty (object, property) {
-    return object.hasOwnProperty(property) && object[property] != null && object[property] !== "";
+    return object != null && object.hasOwnProperty(property) && object[property] != null && object[property] !== "";
 }
 
 /**
