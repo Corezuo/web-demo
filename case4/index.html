@@ -14,22 +14,20 @@
     <div class="container" ng-controller="myCtrl">
         <div class="row">
             <h2 class="text-center">结账单</h2>
-            <div class="col-lg-6">
+            <div class="col-lg-6" ng-controller="panelCtrl">
                 <div class="component-box">
-                    <div class="module" ng-repeat="module in modules">
-                        <div class="title">
-                            <h2>{{module.moduleName}} <small>{{module.moduleDescribe}}</small></h2>
+                    <div class="panel-module" ng-repeat="panelModule in panelModules">
+                        <div class="panel-module-title">
+                            <h2>{{panelModule.moduleName}} <small>{{panelModule.moduleDescribe}}</small></h2>
                         </div>
-                        <div class="section">
-                            <div ng-class="{'component': true, 'switch-on': componentEnableStaus[component.id]}"
-                                 data-componentId={{component.id}}
-                                 data-moduleid={{module.moduleId}}
-                                 ng-repeat="component in module.components"
-                                 ng-click="doSwitchComponent(component.id, componentEnableStaus[component.id])">
+                        <div class="panel-module-body">
+                            <div ng-repeat="panelComponent in panelModule.components"
+                                 ng-class="{'panel-component': true, 'switch-on': componentEnableStaus[panelComponent.id]}"
+                                 ng-click="switchComponentStatus(panelComponent.id, componentEnableStaus[panelComponent.id])">
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td>{{component.label}}</td>
+                                            <td>{{panelComponent.label}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -42,25 +40,33 @@
                 <div class="template-container">
                     <div class="template-module-list">
                         <div class="template-module" ng-repeat="templateModule in templateModules">
-                            <div class="template-row" ng-repeat="templateRow in templateModule">
+                            <div class="template-row" ng-repeat="templateRow in templateModule.rows">
                                 <!--左侧面板 同步 右侧预览组件的显隐-->
-                                <div style="{{templateComponent | filterStyle}}"
+                                <div ng-repeat="templateComponent in templateRow.components"
+                                     style="{{templateComponent | filterStyle}}"
                                      ng-class="{'template-component': templateComponent.component == null, 'template-component-individuation': templateComponent.component != null}"
                                      ng-show="templateComponent.component == null ? componentEnableStaus[templateComponent.id] : componentEnableStaus[templateComponent.component.id]"
-                                     ng-click="templateComponent.component == null ? doTemplateActive(templateComponent) : null"
-                                     ng-repeat="templateComponent in templateRow">
+                                     ng-click="templateComponent.component == null ? doTemplateComponentActive(templateComponent) : null">
 
                                     <!--text-->
                                     {{templateComponent.value}}
                                     <!--tableTitle-->
-                                    <div class="template-component-table-title template-component" ng-click="doTemplateActive(templateComponent.tableTitle)" style="{{templateComponent.tableTitle | filterStyle}}" ng-if="templateComponent.tableTitle != null">
+                                    <div class="template-component-table-title template-component"
+                                         ng-if="templateComponent.tableTitle != null"
+                                         ng-click="doTemplateComponentActive(templateComponent.tableTitle)"
+                                         style="{{templateComponent.tableTitle | filterStyle}}">
+
                                         {{templateComponent.tableTitle.value}}
                                     </div>
                                     <div class="template-component-table">
                                         <!--thead-->
                                         <div class="template-component-thead" ng-if="templateComponent.thead != null">
                                             <div class="template-component-tr">
-                                                <div class="table-component-td template-component" ng-click="doTemplateActive(tableHeadColumn)" style="{{tableHeadColumn | filterStyle}}" ng-repeat="tableHeadColumn in templateComponent.thead.tableRowSet.columnSet">
+                                                <div class="table-component-td template-component"
+                                                     ng-repeat="tableHeadColumn in templateComponent.thead.tableRowSet.columnSet"
+                                                     ng-click="doTemplateComponentActive(tableHeadColumn)"
+                                                     style="{{tableHeadColumn | filterStyle}}">
+
                                                     {{tableHeadColumn.value}}
                                                 </div>
                                             </div>
@@ -68,13 +74,13 @@
                                         <!--tbody-->
                                         <div class="template-component-tbody" ng-if="templateComponent.tbody != null">
                                             <div class="template-component-tr" ng-if="templateComponent.category != null">
-                                                <div class="template-component-td template-component" ng-click="doTemplateActive(templateComponent.category)" style="{{templateComponent.category | filterStyle}}">
+                                                <div class="template-component-td template-component" ng-click="doTemplateComponentActive(templateComponent.category)" style="{{templateComponent.category | filterStyle}}">
                                                     <!--category-->
                                                     {{templateComponent.category.value}}
                                                 </div>
                                             </div>
                                             <div class="template-component-tr" ng-repeat="tableTbodyRow in templateComponent.tbody.tableRowSet">
-                                                <div class="template-component-td template-component" ng-click="doTemplateActive(tableTbodyRowColumn)" style="{{tableTbodyRowColumn | filterStyle}}" ng-repeat="tableTbodyRowColumn in tableTbodyRow.columnSet">
+                                                <div class="template-component-td template-component" ng-click="doTemplateComponentActive(tableTbodyRowColumn)" style="{{tableTbodyRowColumn | filterStyle}}" ng-repeat="tableTbodyRowColumn in tableTbodyRow.columnSet">
                                                     {{tableTbodyRowColumn.value}}
                                                 </div>
                                             </div>

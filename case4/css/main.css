@@ -2,19 +2,19 @@
   border: 4px dotted dodgerblue;
   padding: 20px 40px;
 }
-.component-box .module {
+.component-box .panel-module {
   margin: 10px 20px;
   border: 2px solid gray;
 }
-.component-box .module .title {
+.component-box .panel-module .panel-module-title {
   padding: 0 10px;
   border-bottom: 2px solid gray;
 }
-.component-box .module .section {
+.component-box .panel-module .panel-module-body {
   padding: 2%;
   /*启用状态*/
 }
-.component-box .module .section .component {
+.component-box .panel-module .panel-module-body .panel-component {
   margin: 2%;
   width: 28%;
   background-color: gray;
@@ -23,32 +23,32 @@
   height: 50px;
   cursor: pointer;
 }
-.component-box .module .section .component table {
+.component-box .panel-module .panel-module-body .panel-component table {
   vertical-align: middle;
   height: 100%;
   width: 100%;
 }
-.component-box .module .section .component table tbody {
+.component-box .panel-module .panel-module-body .panel-component table tbody {
   display: table-row-group;
   vertical-align: middle;
   border-color: inherit;
 }
-.component-box .module .section .component table tbody tr {
+.component-box .panel-module .panel-module-body .panel-component table tbody tr {
   display: table-row;
   vertical-align: inherit;
   border-color: inherit;
 }
-.component-box .module .section .component table tbody tr td {
+.component-box .panel-module .panel-module-body .panel-component table tbody tr td {
   color: white;
   font-size: 16px;
   text-align: center;
   display: table-cell;
   vertical-align: inherit;
 }
-.component-box .module .section .component:hover {
+.component-box .panel-module .panel-module-body .panel-component:hover {
   border: 1px solid gray;
 }
-.component-box .module .section .switch-on {
+.component-box .panel-module .panel-module-body .switch-on {
   background-color: #2D93CA;
   color: #000;
 }

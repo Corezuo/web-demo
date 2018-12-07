@@ -1,58 +1,120 @@
 var myApp = angular.module('myApp', []);
 /**
- * This controller is used to adjust the template component
+ * This controller is used to manage the global
  * @param $scope
  * @param $http
  */
 myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
-    // 加载全部系统组件
+    // 加载系统模板组件
     var param = {
         url: "data/system-component.json",
         sCallback: function (res) {
-            var data = angular.copy(res.data.modules),
-                modules = [],
+            /*
+              阶段一：准备模板model层数据源
+                1.根据打印模板类型（documentType），请求系统模板组件（system-component）作为数据源。
+                2.从源中抽取父组件，作为左侧面板控件（panelModules）。
+                3.从源中抽取所有组件，以模块>行>列的格式进行排序，组成右侧预览组件数据源（templateModules）。
+                4.从源中抽取父组件id，封装公共对象（componentEnableStaus）绑定左右两侧父组件，用于启用/禁用状态联动，默认初始为禁用状态。
+            */
+            var modules = res.data.modules,
+                panelModules = [],
+                templateModules = [],
                 componentEnableStaus = {};
-            for (var i = 0; i < data.length; i++) {
-                var module = data[i];
+
+            for (var i = 0; i < modules.length; i++) {
+                var module = modules[i],
+                    panelComponents = [],
+                    rows = [];
                 for (var j = 0; j < module.components.length; j++) {
                     var component = module.components[j];
-                    if (component.component) {
-                        module.components[j] = component.component;
+                    // 左侧面板控件
+                    // 公共对象
+                    if (component.hasOwnProperty("component")) {
+                        panelComponents.push(component.component);
+                        componentEnableStaus[component.component.id] = false;
+                    } else {
+                        panelComponents.push(component);
+                        componentEnableStaus[component.id] = false;
                     }
-                    // 默认启用
-                    componentEnableStaus[module.components[j].id] = true;
+                    // 右侧预览组件
+                    if (!component.hasOwnProperty("component")) {
+                        if (rows.length > 0) {
+                            var rowNum = component.row;
+                            var recentRowColumn = rows[rows.length - 1].components[0];
+                            if (rowNum === recentRowColumn.row) {
+                                rows[rows.length - 1].components.push(component);
+                                continue;
+                            }
+                        }
+                    }
+                    var row = {};
+                    var components = [];
+                    components.push(component);
+                    row.components = components;
+                    rows.push(row);
                 }
-                modules.push(module);
+                var panelModule = {};
+                panelModule.moduleId = module.moduleId;
+                panelModule.moduleName = module.moduleName;
+                panelModule.moduleDescribe = module.moduleDescribe;
+                panelModule.sort = module.sort;
+                panelModule.components = panelComponents;
+                panelModules.push(panelModule);
+
+                var templateModule = {};
+                templateModule.moduleId = module.moduleId;
+                templateModule.moduleName = module.moduleName;
+                templateModule.moduleDescribe = module.moduleDescribe;
+                templateModule.sort = module.sort;
+                templateModule.rows = rows;
+                templateModules.push(templateModule);
             }
-            $scope.modules = modules;
+            /*
+                阶段二：模板view视图层渲染
+                  1.提取面板数据源，渲染左侧控制面板视图
+                  2.提取预览组件数据源，渲染右侧预览组件视图
+                  3.提取公共状态对象，绑定两侧父组件。
+             */
+            $scope.panelModules = panelModules;
+            $scope.templateModules = templateModules;
             $scope.componentEnableStaus = componentEnableStaus;
-            $scope.systemComponent = res.data.modules;
         }
     };
     baseRequest($http, param);
 
-    // 加载模板预览组件
+    // 加载自定义模板组件
     param = {
-        url: "data/preview-component-custom.json",
+        url: "data/preview-component.json",
         sCallback: function (res) {
-            $scope.templateModules = res.data;
+            /*
+                阶段三：加载自定义模板数据源
+                  1.通过模板id（templateId）请求自定义模板组件。
+                  2.根据自定模板数据源，更新公共对象（componentEnableStaus）父组件的启用/禁用状态。
+                  3.根据自定义模板数据源，更新系统预览组件（templateModules）的CSS样式
+                  4.到此，自定义模板数据源 的使命到此结束。以后提到的模板、模块、组件的概念，都是指系统组件，所有model层的操作，都是围绕系统组件数据源展开。
+             */
+            var previewModules = res.data;
+            rerenderComponentEnableStatus(previewModules);
+            rerenderComponentValueStyle(previewModules);
         }
     };
     baseRequest($http, param);
 
     /**
-     * 初始化组件启用状态
-     * @param previewComponent 预览组件
+     * 更新公共对象父组件的启用/禁用状态
+     * @param previewModules 自定义模板组件
      */
-    function initComponentStatus (previewComponent) {
+    function rerenderComponentEnableStatus (previewModules) {
+        /*对象引用传递*/
         var componentEnableStaus = $scope.componentEnableStaus;
-        for (var i = 0; i < previewComponent.length; i++) {
-            var module = previewComponent[i];
-            for (var j = 0; j < module.rows.length; j++) {
-                var row = module.rows[j];
+        for (var i = 0; i < previewModules.length; i++) {
+            var previewModule = previewModules[i];
+            for (var j = 0; j < previewModule.rows.length; j++) {
+                var row = previewModule.rows[j];
                 for (var n = 0; n < row.components.length; n++) {
                     var component = row.components[n];
                     if (component.component) {
+                        /*注意：使用系统组件id*/
                         componentEnableStaus[component.component.systemComponentId] = true;
                     } else {
                         componentEnableStaus[component.systemComponentId] = true;
@@ -60,19 +122,112 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
                 }
             }
         }
-        $scope.componentEnableStaus = componentEnableStaus;
     }
 
     /**
-     * 切换组件启用状态
-     * @param componentId 组件id
-     * @param showStatus  true-启用， false-禁用
+     * 更新系统预览组件的CSS样式
+     * @param previewModules 自定义模板组件
      */
-    $scope.doSwitchComponent = function (componentId, showStatus) {
-        var componentEnableStaus = $scope.componentEnableStaus;
-        componentEnableStaus[componentId] = !showStatus;
-        $scope.componentEnableStaus = componentEnableStaus;
-    };
+    function rerenderComponentValueStyle (previewModules) {
+        for (var i = 0; i < previewModules.length; i++) {
+            var previewModule = previewModules[i].rows;
+            for (var j = 0; j < previewModule.length; j++) {
+                var rows = previewModule[j].components;
+                for (var n = 0; n < rows.length; n++) {
+                    var component = rows[n];
+                    if (component.hasOwnProperty("component")) {
+                        if (isNotEmpty(component, "category")) {
+                            /*注意：使用系统组件id*/
+                            updateComponentValueStyle(component.category.moduleId, component.category.systemComponentId, component.category.valueStyle);
+                        }
+                        if (isNotEmpty(component, "tableTitle")) {
+                            updateComponentValueStyle(component.tableTitle.moduleId, component.tableTitle.systemComponentId, component.tableTitle.valueStyle);
+                        }
+                        if (isNotEmpty(component, "thead")) {
+                            var theadRowColumns = component.thead.tableRowSet.columnSet;
+                            for (var m = 0; m < theadRowColumns.length; m++) {
+                                updateComponentValueStyle(theadRowColumns[m].moduleId, theadRowColumns[m].systemComponentId, theadRowColumns[m].valueStyle);
+                            }
+                        }
+                        if (isNotEmpty(component, "tbody")) {
+                            var tbodyRows = component.tbody.tableRowSet;
+                            for (var k = 0; k < tbodyRows.length; k++) {
+                                var tbodyRowColumns = tbodyRows[k].columnSet;
+                                for (var h = 0; h < tbodyRowColumns.length; h++) {
+                                    updateComponentValueStyle(tbodyRowColumns[h].moduleId, tbodyRowColumns[h].systemComponentId, tbodyRowColumns[h].valueStyle);
+                                }
+                            }
+                        }
+                    } else {
+                        updateComponentValueStyle(component.moduleId, component.systemComponentId, component.valueStyle);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * 更新组件valueStyle值
+     * @param moduleId          模块id
+     * @param systemComponentId 系统组件id
+     * @param valueStyle        组件valueStyle值
+     */
+    function updateComponentValueStyle (moduleId, systemComponentId, valueStyle) {
+        var templateModules = $scope.templateModules;
+        /*跳出循环*/
+        outer:
+        for (var i = 0; i < templateModules.length; i++) {
+            var templateModule = templateModules[i];
+            if (templateModule.moduleId === moduleId) {
+                for (var j = 0; j < templateModule.rows.length; j++) {
+                    var templateRows = templateModule.rows[j].components;
+                    for (var n = 0; n < templateRows.length; n++) {
+                        var templateComponent = templateRows[n];
+                        if (templateComponent.hasOwnProperty("component")) {
+                            if (isNotEmpty(templateComponent, "category")) {
+                                if (templateComponent.category.id === systemComponentId) {
+                                    templateComponent.category.valueStyle = valueStyle;
+                                    break outer;
+                                }
+                            }
+                            if (isNotEmpty(templateComponent, "tableTitle")) {
+                                if (templateComponent.tableTitle.id === systemComponentId) {
+                                    templateComponent.tableTitle.valueStyle = valueStyle;
+                                    break outer;
+                                }
+                            }
+                            if (isNotEmpty(templateComponent, "thead")) {
+                                var theadRowColumns = templateComponent.thead.tableRowSet.columnSet;
+                                for (var m = 0; m < theadRowColumns.length; m++) {
+                                    if (theadRowColumns[m].id === systemComponentId) {
+                                        theadRowColumns[m].valueStyle = valueStyle;
+                                        break outer;
+                                    }
+                                }
+                            }
+                            if (isNotEmpty(templateComponent, "tbody")) {
+                                var tbodyRows = templateComponent.tbody.tableRowSet;
+                                for (var k = 0; k < tbodyRows.length; k++) {
+                                    var tbodyRowColumns = tbodyRows[k].columnSet;
+                                    for (var h = 0; h < tbodyRowColumns.length; h++) {
+                                        if (tbodyRowColumns[h].id === systemComponentId) {
+                                            tbodyRowColumns[h].valueStyle = valueStyle;
+                                            break outer;
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            if (templateComponent.id === systemComponentId) {
+                                templateComponent.valueStyle = valueStyle;
+                                break outer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }]);
 
 /**
@@ -95,115 +250,56 @@ myApp.filter("filterStyle", function () {
 });
 
 /**
- * This controller is used to adjust the template component style
+ * This controller is used to manage the panel-component status
+ * @param $scope
+ * @param $http
+ */
+myApp.controller('panelCtrl', ['$scope', '$http', function ($scope, $http) {
+    /**
+     * 切换启用/禁用状态
+     * @param parentId   父组件id
+     * @param showStatus true-启用，false-禁用
+     */
+    $scope.switchComponentStatus = function (parentId, showStatus) {
+        var componentEnableStaus = $scope.componentEnableStaus;
+        componentEnableStaus[parentId] = !showStatus;
+        $scope.componentEnableStaus = componentEnableStaus;
+    };
+
+}]);
+
+/**
+ * This controller is used to manage the preview-component style
  * @param $scope
  * @param $http
  */
 myApp.controller('previewCtrl', ['$scope', '$http', function ($scope, $http) {
-    $scope.doTemplateActive = function (templateComponent) {
-        console.log("moduleId: ", templateComponent.moduleId);
-        console.log("componentId: ", templateComponent.id);
-        if (templateComponent.valueStyle == null || templateComponent === "") {
-            templateComponent.valueStyle = {};
+    /**
+     * 预览组件获取焦点
+     * @param templateComponent 组件元素（引用传递）
+     */
+    $scope.doTemplateComponentActive = function (templateComponent) {
+        /*焦点组件*/
+        var activeComponent = $scope.activeComponent,
+            valueStyle = {};
+        $scope.activeComponent = templateComponent;
+        if (typeof activeComponent !== "undefined") {
+            /*清除焦点样式*/
+            valueStyle = JSON.parse(activeComponent.valueStyle);
+            if (valueStyle.hasOwnProperty("border") && valueStyle.hasOwnProperty("backgroundColor")) {
+                delete valueStyle.border;
+                delete valueStyle.backgroundColor;
+                activeComponent.valueStyle = JSON.stringify(valueStyle);
+            }
         }
-
-        // Todo: 通过位置，找到指定组件。将其加边框，通过缓存，剔除上一个元素的边框。
-        var valueStyle = JSON.parse(templateComponent.valueStyle);
-        if (valueStyle.hasOwnProperty("border") && valueStyle.hasOwnProperty("backgroundColor")) {
-            delete valueStyle.border;
-            delete valueStyle.backgroundColor;
-        } else {
+        if (!isNotEmpty(templateComponent, "valueStyle")) {
+            templateComponent.valueStyle = '{}';
+        }
+        valueStyle = JSON.parse(templateComponent.valueStyle);
+        if (!valueStyle.hasOwnProperty("border")) {
             valueStyle.border = "1px solid orange";
             valueStyle.backgroundColor = "rgba(247, 248, 74, 0.67)";
         }
         templateComponent.valueStyle = JSON.stringify(valueStyle);
     };
-
-    var param = {
-        url: "data/system-component.json",
-        sCallback: function (res) {
-            // 从系统组件中扫描
-            var modules = res.data.modules;
-            var moduleId = 4;
-            var componentId = 559;
-            angular.forEach(modules, function (value, key) {
-                if (value.moduleId === moduleId) {
-                    angular.forEach(value.components, function (value, key) {
-                        // text
-                        if (!(value.hasOwnProperty("component") && value.component != null && value.component !== "")) {
-                            if (value.id === componentId) {
-                                console.log("componentName: ", value.label);
-                            }
-                        }
-                        // category
-                        if (value.hasOwnProperty("category") && value.category != null && value.category !== "") {
-                            var category = value.category;
-                            if (category.id === componentId) {
-                                console.log("componentName: ", category.label);
-                            }
-                        }
-                        // tableTitle
-                        if (value.hasOwnProperty("tableTitle") && value.tableTitle != null && value.tableTitle !== "") {
-                            var tableTitle = value.tableTitle;
-                            if (tableTitle.id === componentId) {
-                                console.log("componentName: ", tableTitle.label);
-                            }
-                        }
-                        // thead
-                        if (value.hasOwnProperty("thead") && value.thead != null && value.thead !== "") {
-                            angular.forEach(value.thead.tableRowSet.columnSet, function (value, key) {
-                                if (value.id === componentId) {
-                                    console.log("componentName", value.label);
-                                }
-                            })
-                        }
-                        // tbody
-                        if (value.hasOwnProperty("tbody") && value.tbody != null && value.tbody !== "") {
-                            angular.forEach(value.tbody.tableRowSet, function (value, key) {
-                                angular.forEach(value.columnSet, function (value, key) {
-                                    if (value.id === componentId) {
-                                        console.log("componentName: ", value.label);
-                                    }
-                                });
-                            })
-                        }
-                    });
-                }
-            });
-
-            // 以系统组件（system-component）作为源，创建预览组件（preview-component）数据
-            var templateModules = [];
-            for (var i = 0; i < modules.length; i++) {
-                var module = modules[i];
-                var rows = [];
-                for (var j = 0; j < module.components.length; j++) {
-                    var component = module.components[j];
-                    if (!component.hasOwnProperty("component")) {
-                        if (rows.length > 0) {
-                            var rowNum = component.row;
-                            var recentRowColumn = rows[rows.length - 1].components[0];
-                            if (rowNum === recentRowColumn.row) {
-                                rows[rows.length - 1].components.push(component);
-                                continue;
-                            }
-                        }
-                    }
-                    var row = {};
-                    var components = [];
-                    components.push(component);
-                    row.components = components;
-                    rows.push(row);
-                }
-                var templateModule = {};
-                templateModule.modulesId = module.moduleId;
-                templateModule.moduleName = module.moduleName;
-                templateModule.moduleDescribe = module.moduleDescribe;
-                templateModule.sort = module.sort;
-                templateModule.rows = rows;
-                templateModules.push(templateModule);
-            }
-            console.log("templateModules: ", templateModules);
-        }
-    };
-    baseRequest($http, param);
 }]);

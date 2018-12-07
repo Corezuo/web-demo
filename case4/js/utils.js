@@ -1,4 +1,8 @@
-/*统一请求*/
+/**
+ * AngularJS统一请求
+ * @param $http
+ * @param param
+ */
 function baseRequest ($http, param) {
     if (!param.method) {
         param.method = "GET";
@@ -17,6 +21,18 @@ function baseRequest ($http, param) {
             console.log("error: ", res);
         }
     );
+}
+
+/**
+ * 判断对象属性不为空
+ *   param = null  false
+ *   param = ""    false
+ * @param object   对象
+ * @param property 属性
+ * @return boolean
+ */
+function isNotEmpty (object, property) {
+    return object.hasOwnProperty(property) && object[property] != null && object[property] !== "";
 }
 
 /**

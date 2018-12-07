@@ -19,7 +19,7 @@
                     "refId": null,
                     "moduleId": 1,
                     "label": "商户logo",
-                    "value": "",
+                    "value": "商户logo",
                     "labelStyle": null,
                     "valueStyle": "{\"fontSize\":\"1\",\"textAlign\":\"center\"}",
                     "placeholder": "#{shopLogo}",

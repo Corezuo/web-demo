@@ -58,4 +58,20 @@ var result = JSON.parse(obj);
 if (result === 22) {
     console.log("ok");
 }
+console.log("========================================");
+
+/*
+    跳出多层循环体
+ */
+var user = ["name", "age", "sex", "gender", "city"];
+var numArray = [1, 2, 3, 4, 5];
+outer:
+for (var i = 0; i < numArray.length; i++) {
+    for (var j = 0; j < user.length; j++) {
+        console.log("The serial number：", i, "user item：", user[j]);
+        if (i === 3 && user[j] === "sex") {
+            break outer;
+        }
+    }
+}
 
