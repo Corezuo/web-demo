@@ -239,6 +239,13 @@ myApp.filter("filterStyle", function () {
         if ("valueStyle" in input && input.valueStyle != null && input.valueStyle !== "") {
             var valueStyle = JSON.parse(input.valueStyle);
             angular.forEach(valueStyle, function (value, key) {
+                if (key === "fontSize") {
+                    /*临时参数*/
+                    if (value < 10) {
+                        value = 14;
+                    }
+                    value = value + "px";
+                }
                 valueStyleStr += humpToLine(key) + ":" + value + ";";
             });
         }
@@ -301,24 +308,15 @@ myApp.controller('previewCtrl', ['$scope', '$http', function ($scope, $http) {
             valueStyle.backgroundColor = "rgba(247, 248, 74, 0.67)";
         }
         templateComponent.valueStyle = JSON.stringify(valueStyle);
-    };
 
-    $scope.updateTemplateProperty = function (fontSize) {
-        var activeComponent = $scope.activeComponent;
-        // 组件激活状态下，面板激活。
+        /*焦点组件的样式*/
+        $scope.activeTemplateValueStyle = valueStyle;
+    };
+    /**
+     * 阶段五：焦点组件绑定属性面板
+     */
+    $scope.updateTemplateProperty = function () {
+        var valueStyle = $scope.activeTemplateValueStyle;
+        $scope.activeComponent.valueStyle = JSON.stringify(valueStyle);
     };
 }]);
-
-/**
- * Register property filters
- */
-myApp.filter("filterProperty", function () {
-   return function (input, property) {
-       if (isNotEmpty(input, "valueStyle")) {
-            var valueStyle = JSON.parse(input.valueStyle);
-            if (valueStyle.hasOwnProperty(property)) {
-                return valueStyle[property];
-            }
-       }
-   }
-});

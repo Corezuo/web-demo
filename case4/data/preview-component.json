@@ -28,7 +28,7 @@
                         "label": "商户logo",
                         "value": "",
                         "labelStyle": null,
-                        "valueStyle": "{\"fontSize\":\"1\",\"textAlign\":\"center\"}",
+                        "valueStyle": "{\"fontSize\":\"4\",\"textAlign\":\"center\"}",
                         "placeholder": "#{shopLogo}",
                         "type": "logo",
                         "componentProperty": null,

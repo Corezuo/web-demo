@@ -20,7 +20,7 @@
   background-color: gray;
   display: inline-block;
   border: 1px solid white;
-  height: 40px;
+  height: 45px;
   cursor: pointer;
 }
 .component-box .panel-module .panel-module-body .panel-component table {
@@ -109,7 +109,7 @@
 }
 .template-property-panel {
   position: fixed;
-  bottom: 50px;
-  right: 20px;
-  width: 20%;
+  bottom: 10%;
+  right: 18%;
+  width: 14%;
 }
