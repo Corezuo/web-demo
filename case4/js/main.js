@@ -15,6 +15,7 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
                 2.从源中抽取父组件，作为左侧面板控件（panelModules）。
                 3.从源中抽取所有组件，以模块>行>列的格式进行排序，组成右侧预览组件数据源（templateModules）。
                 4.从源中抽取父组件id，封装公共对象（componentEnableStaus）绑定左右两侧父组件，用于启用/禁用状态联动，默认初始为禁用状态。
+                5.记录模板类型$scope.documentType
             */
             var modules = res.data.modules,
                 panelModules = [],
@@ -78,6 +79,7 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
             $scope.panelModules = panelModules;
             $scope.templateModules = templateModules;
             $scope.componentEnableStaus = componentEnableStaus;
+            $scope.documentType = 1;
         }
     };
     baseRequest($http, param);
@@ -228,6 +230,60 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
             }
         }
     }
+
+    /**
+     * 阶段六：生成自定义模板
+     *   1.检查模板名称是否唯一
+     *   2.生成打印模板预览图（jpg）
+     *   3.根据公共对象$scope.componentEnableStaus清理 $scope.templateModules 中禁用的组件
+     *   4.请求服务器
+     */
+    $scope.buildCustomTemplate = function () {
+        if (!isNotEmpty($scope, "moduleName")) {
+            alert("模板名称不能为空");
+            return;
+        }
+        /*深拷贝*/
+        var templateModules = angular.copy($scope.templateModules),
+            componentEnableStaus = $scope.componentEnableStaus,
+            postData = {};
+        for (var i = 0; i < templateModules.length; i++) {
+            var templateModule = templateModules[i].rows;
+            for (var j = templateModule.length - 1; j > -1; j--) {
+                var templateRow = templateModule[j].components;
+                for (var k = templateRow.length - 1; k > -1; k--) {
+                    var templateComponent = templateRow[k];
+                    if (templateComponent.hasOwnProperty("component")) {
+                        if (!componentEnableStaus[templateComponent.component.id]) {
+                            templateRow.splice(k, 1);
+                        }
+                    } else {
+                        if (!componentEnableStaus[templateComponent.id]) {
+                            templateRow.splice(k, 1);
+                        }
+                    }
+                }
+                if (templateRow.length < 1) {
+                    templateModule.splice(j, 1);
+                }
+            }
+        }
+        // Todo: 生成预览图
+        var templatePreviewPictureUrl = "https://www.img.com";
+
+        postData.name = $scope.moduleName;
+        postData.documentType = $scope.moduleName;
+        postData.url = templatePreviewPictureUrl;
+        postData.modules = templateModules;
+        var param = {
+            url: "http://localhost:8080/print/template/save",
+            data: postData,
+            sCallback: function (res) {
+                console.log("success: ", res);
+            }
+        };
+        // baseRequest($http, param);
+    }
 }]);
 
 /**
@@ -261,7 +317,7 @@ myApp.filter("filterStyle", function () {
  * @param $scope
  * @param $http
  */
-myApp.controller('panelCtrl', ['$scope', '$http', function ($scope, $http) {
+myApp.controller('panelCtrl', ['$scope', function ($scope) {
     /**
      * 切换启用/禁用状态
      * @param parentId   父组件id
@@ -280,9 +336,12 @@ myApp.controller('panelCtrl', ['$scope', '$http', function ($scope, $http) {
  * @param $scope
  * @param $http
  */
-myApp.controller('previewCtrl', ['$scope', '$http', function ($scope, $http) {
+myApp.controller('previewCtrl', ['$scope', function ($scope) {
     /**
      * 阶段四：预览组件获取焦点
+     *   1.从$scope中提取 焦点 组件信息，清除焦点组件样式。
+     *   2.将新的焦点组件存储到$scope.activeComponent中，并且设置高亮显示。
+     *   3.更新焦点组件属性$scope.valueStyle
      * @param templateComponent 组件元素（引用传递）
      */
     $scope.doTemplateComponentActive = function (templateComponent) {
@@ -314,6 +373,8 @@ myApp.controller('previewCtrl', ['$scope', '$http', function ($scope, $http) {
     };
     /**
      * 阶段五：焦点组件绑定属性面板
+     *   1.绑定焦点组件属性$scope.valueStyle到属性面板
+     *   2.监听属性面板调整属性，实时刷新焦点组件属性。
      */
     $scope.updateTemplateProperty = function () {
         var valueStyle = $scope.activeTemplateValueStyle;

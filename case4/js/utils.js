@@ -25,8 +25,9 @@ function baseRequest ($http, param) {
 
 /**
  * 判断对象属性不为空
- *   param = null  false
- *   param = ""    false
+ *   object           = null  false
+ *   object[property] = null  false
+ *   object[property] = ""    false
  * @param object   对象
  * @param property 属性
  * @return boolean
