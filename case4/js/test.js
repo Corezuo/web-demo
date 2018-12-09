@@ -1,24 +1,3 @@
-
-var array = [],
-    info = [];
-
-for (var i = 0; i < 3; i++) {
-    info = [];
-    info.push("name" + i);
-    info.push("age" + i);
-    array.push(info);
-}
-console.log("array: ", array);
-
-
-var obj = {};
-obj.name = "dazuo";
-obj["age"] = 22;
-obj["back-groundcolor"] = 1234;
-console.log("obj: ", obj);
-var objStr = JSON.stringify(obj);
-console.log("objStr: ", objStr);
-
 /**
  * 横线连接转换驼峰
  * @param value 横线连接
@@ -74,7 +53,4 @@ for (var i = 0; i < numArray.length; i++) {
         }
     }
 }
-
-var a = 60 / 84;
-console.log("a: " + a);
 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../assets/bootstrap.css">
+    <title>websoket demo</title>
+</head>
+<body>
+    <div class="container" ng-controller="myCtrl">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>WebSocket Demo</h3>
+                <button class="btn btn-primary" ng-click="buildConnect()">建立连接</button>
+                <button class="btn btn-primary" ng-click="sendMessage()">发送消息</button>
+                <button class="btn btn-primary" ng-click="closeConnect()">断开连接</button>
+            </div>
+        </div>
+    </div>
+    <script type="application/javascript" src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.js"></script>
+    <script type="application/javascript" src="../assets/angular.js"></script>
+    <script type="application/javascript">
+        var myApp = angular.module('myApp', []);
+        myApp.controller('myCtrl', ['$http', '$scope', function ($http, $scope) {
+            var stompClient = null;
+            $scope.buildConnect = function () {
+                /**
+                 * WebSocket核心介绍
+                 *  1.心跳机制：若使用STOMP 1.1 版本，默认开启了心跳检测机制，可通过stompClient对象的heartbeat field进行配置（默认值都是10000 ms）
+                 *  2.SpringBoot的STOMP配置，默认不接受客户端信息，也不发送心跳到客户端。
+                 */
+                stompClient = Stomp.client("ws://127.0.0.1:8080/payBoot/live");
+                stompClient.connect(
+                    {
+                        name: "dazuo"
+                    },
+                    function (res) {
+                        // 监听连接成功
+                        console.log("connect success：", res);
+                        stompClient.subscribe("/user/topic/message", messageHandler);
+
+                    },
+                    function (res) {
+                        // 监听连接断开
+                        console.log("connect fail：", res);
+                    }
+                );
+            };
+
+            $scope.sendMessage = function () {
+                stompClient.send("/app/message", {}, JSON.stringify({msg: "hello dazuo"}));
+            };
+
+            $scope.closeConnect = function () {
+                stompClient.disconnect(function () {
+                    console.log("断开连接");
+                });
+            };
+
+            /**
+             * socket消息处理器
+             * @param frame 消息帧
+             */
+            function messageHandler (frame) {
+                console.log("服务器消息：", frame);
+            }
+        }]);
+    </script>
+</body>
+</html>
