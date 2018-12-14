@@ -1,56 +1,72 @@
 /**
- * 横线连接转换驼峰
- * @param value 横线连接
- * @return {string}
+ * 方式一：清除两侧空格
+ * @param s 被操作的参数
+ * @return 结果
  */
-function lineToHump(value) {
-    return value.replace(/\-(\w)/g, function(all, letter){
-        return letter.toUpperCase();
-    });
+function trim(s){
+    return trimRight(trimLeft(s));
 }
+
+//去掉左边的空白
+function trimLeft(s){
+    if(s == null) {
+        return "";
+    }
+    var whitespace = new String(" \t\n\r");
+    var str = new String(s);
+    if (whitespace.indexOf(str.charAt(0)) != -1) {
+        var j=0, i = str.length;
+        while (j < i && whitespace.indexOf(str.charAt(j)) != -1){
+            j++;
+        }
+        str = str.substring(j, i);
+    }
+    return str;
+}
+
+//去掉右边的空白
+function trimRight(s){
+    if(s == null) return "";
+    var whitespace = new String(" \t\n\r");
+    var str = new String(s);
+    if (whitespace.indexOf(str.charAt(str.length-1)) != -1){
+        var i = str.length - 1;
+        while (i >= 0 && whitespace.indexOf(str.charAt(i)) != -1){
+            i--;
+        }
+        str = str.substring(0, i+1);
+    }
+    return str;
+}
+
+var name = " da zuo ";
+console.log("name:", name);
+console.log("length: ", name.length);
+name = trim(name);
+console.log("name2: ", name);
+console.log("length2: ", name.length);
+
 
 /**
- * 驼峰转换横线连接
- * @param value 驼峰
- * @returns {string}
+ * 方式二：正则去两侧空格
+ * @param s 被操作的参数
+ * @return 结果
  */
-function humpToLine(value) {
-    return value.replace(/([A-Z])/g,"-$1").toLowerCase();
+
+//去左空格;
+function ltrim(s){
+    return s.replace(/(^\s*)/g, "");
+}
+//去右空格;
+function rtrim(s){
+    return s.replace(/(\s*$)/g, "");
+}
+//去左右空格;
+function trimAll(s){
+    return s.replace(/(^\s*)|(\s*$)/g, "");
 }
 
-console.log(humpToLine("fontSize"));
-console.log(lineToHump("font-size"));
-
-/*
-  JSON.parse()解析字符串
-    1.如果是空字符串，解析会报异常。
-    2.如果解析null，则返回的对象是null，注意不是字符串'null'。
-    3.如果解析字符串'{}'，则返回空对象。
-  JSON.stringify()序列化对象
-    1.如果序列化的对象是null，返回的是字符串'null'。
-    2.如果序列化的是空对象，返回的是字符串'{}'，因此可以用来判断空对象。
-    3.如果序列化普通变量，则返回其字符串表示。
-*/
-
-var obj = '22';
-var result = JSON.parse(obj);
-if (result === 22) {
-    console.log("ok");
-}
-console.log("========================================");
-
-/*
-    跳出多层循环体
- */
-var user = ["name", "age", "sex", "gender", "city"];
-var numArray = [1, 2, 3, 4, 5];
-outer:
-for (var i = 0; i < numArray.length; i++) {
-    for (var j = 0; j < user.length; j++) {
-        console.log("The serial number：", i, "user item：", user[j]);
-        if (i === 3 && user[j] === "sex") {
-            break outer;
-        }
-    }
-}
-
+var title = " he llo ";
+console.log("title length: ", title.length);
+title = trimAll(title);
+console.log("title length2: ", title.length);
