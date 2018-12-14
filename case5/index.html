@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Media Query</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            color: #000;
+        }
+        /*最小宽度*/
+        @media only screen and (min-width: 1600px) {
+            .title1 {
+                color: red;
+            }
+        }
+        @media only screen and (min-width: 1440px) {
+            .title2 {
+                color: blue;
+            }
+        }
+        @media only screen and (min-width: 1280px) {
+            .title3 {
+                color: yellow;
+            }
+        }
+        @media only screen and (min-width: 1024px) {
+            .title4 {
+                color: orange;
+            }
+        }
+        @media only screen and (min-width: 992px) {
+            .title5 {
+                color: purple;
+            }
+        }
+        @media only screen and (min-width: 768px) {
+            .title6 {
+                color: green;
+            }
+        }
+        /*最大宽度*/
+        @media only screen and (min-width: 1600px) {
+            .title7 {
+                color: red;
+            }
+        }
+        @media only screen and (min-width: 1440px) {
+            .title8 {
+                color: blue;
+            }
+        }
+        @media only screen and (min-width: 1280px) {
+            .title9 {
+                color: yellow;
+            }
+        }
+        @media only screen and (min-width: 1024px) {
+            .title10 {
+                color: orange;
+            }
+        }
+        @media only screen and (min-width: 992px) {
+            .title11 {
+                color: purple;
+            }
+        }
+        @media only screen and (min-width: 768px) {
+            .title12 {
+                color: green;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>最小宽度</h1>
+    <h2 class="title1">屏幕最小宽度1600</h2>
+    <h2 class="title2">屏幕最小宽度1440</h2>
+    <h2 class="title3">屏幕最小宽度1280</h2>
+    <h2 class="title4">屏幕最小宽度1024</h2>
+    <h2 class="title5">屏幕最小宽度992</h2>
+    <h2 class="title6">屏幕最小宽度768</h2>
+
+    <h1 style="margin-top: 100px;">最大宽度</h1>
+    <h2 class="title7">屏幕最大宽度1600</h2>
+    <h2 class="title8">屏幕最大宽度1440</h2>
+    <h2 class="title9">屏幕最大宽度1280</h2>
+    <h2 class="title10">屏幕最大宽度1024</h2>
+    <h2 class="title11">屏幕最大宽度992</h2>
+    <h2 class="title12">屏幕最大宽度768</h2>
+</body>
+</html>
