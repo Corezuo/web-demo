@@ -1,0 +1,3186 @@
+{
+    "shopId": 288,
+    "name": "1234",
+    "templateId": 7,
+    "url": "http://img.keruyun.net/6155d1d34e0b403bb9e29f62ec0b6ee4.png",
+    "modules": [
+        {
+            "moduleName": "标题",
+            "moduleDescribe": "定义商户LOGO & 票据名称",
+            "sort": 1,
+            "moduleId": 1,
+            "rows": [
+                {
+                    "components": [
+                        {
+                            "id": 1,
+                            "systemComponentCode": 11001,
+                            "moduleId": 1,
+                            "parentCode": 0,
+                            "label": "商户logo",
+                            "value": "",
+                            "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"center\"}",
+                            "placeholder": "#{shopLogo}",
+                            "type": "text",
+                            "row": 1,
+                            "column": 1,
+                            "width": 100,
+                            "sort": 1,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 1,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 2,
+                            "systemComponentCode": 11002,
+                            "moduleId": 1,
+                            "parentCode": 0,
+                            "label": "店铺名称",
+                            "value": "店铺名称",
+                            "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"center\"}",
+                            "placeholder": "#{shopName}",
+                            "type": "text",
+                            "row": 2,
+                            "column": 1,
+                            "width": 100,
+                            "sort": 2,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 2,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 3,
+                            "systemComponentCode": 11003,
+                            "moduleId": 1,
+                            "parentCode": 0,
+                            "label": "票据名称",
+                            "value": "结账单",
+                            "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"center\"}",
+                            "placeholder": "#{ticketType}",
+                            "type": "text",
+                            "row": 3,
+                            "column": 1,
+                            "width": 100,
+                            "sort": 3,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 3,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 4,
+                            "systemComponentCode": 11004,
+                            "moduleId": 1,
+                            "parentCode": 0,
+                            "label": "发票号",
+                            "value": "发票号:xxxxxxxxx",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                            "placeholder": "发票号:#{taxNumber}",
+                            "type": "text",
+                            "row": 4,
+                            "column": 1,
+                            "width": 100,
+                            "sort": 4,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 4,
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "moduleName": "基础信息",
+            "moduleDescribe": "配置桌台号、流水号、订单号等",
+            "sort": 2,
+            "moduleId": 2,
+            "rows": [
+                {
+                    "components": [
+                        {
+                            "id": 5,
+                            "systemComponentCode": 12001,
+                            "moduleId": 2,
+                            "parentCode": 0,
+                            "label": "桌台号",
+                            "value": "桌台号:1",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                            "placeholder": "桌台号:#{tableNum}",
+                            "type": "text",
+                            "row": 1,
+                            "column": 1,
+                            "width": 70,
+                            "sort": 1,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 1,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 6,
+                            "systemComponentCode": 12002,
+                            "moduleId": 2,
+                            "parentCode": 0,
+                            "label": "流水号",
+                            "value": "流水号:1",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                            "placeholder": "流水号:#{serialNum}",
+                            "type": "text",
+                            "row": 1,
+                            "column": 2,
+                            "width": 30,
+                            "sort": 2,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 2,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 7,
+                            "systemComponentCode": 12003,
+                            "moduleId": 2,
+                            "parentCode": 0,
+                            "label": "订单号",
+                            "value": "订单号:201608221001",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                            "placeholder": "订单号:#{orderNum}",
+                            "type": "text",
+                            "row": 2,
+                            "column": 1,
+                            "width": 80,
+                            "sort": 3,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 3,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 8,
+                            "systemComponentCode": 12004,
+                            "moduleId": 2,
+                            "parentCode": 0,
+                            "label": "人数",
+                            "value": "人数:2",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                            "placeholder": "人数:#{peopleNum}",
+                            "type": "text",
+                            "row": 2,
+                            "column": 2,
+                            "width": 20,
+                            "sort": 4,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 4,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 9,
+                            "systemComponentCode": 12005,
+                            "moduleId": 2,
+                            "parentCode": 0,
+                            "label": "税号",
+                            "value": "税号:123232323",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                            "placeholder": "税号:#{taxGSTRegNo}",
+                            "type": "text",
+                            "row": 3,
+                            "column": 1,
+                            "width": 100,
+                            "sort": 5,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 5,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 10,
+                            "systemComponentCode": 12006,
+                            "moduleId": 2,
+                            "parentCode": 0,
+                            "label": "会员",
+                            "value": "会员:张三(150XXXXXXXX)",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                            "placeholder": "会员:#{memberNum}",
+                            "type": "text",
+                            "row": 4,
+                            "column": 1,
+                            "width": 100,
+                            "sort": 6,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 6,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 11,
+                            "systemComponentCode": 12007,
+                            "moduleId": 2,
+                            "parentCode": 0,
+                            "label": "反结账原订单流水号",
+                            "value": "反结账原订单流水号:2",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                            "placeholder": "反结账原订单流水号:#{reverseA",
+                            "type": "text",
+                            "row": 5,
+                            "column": 1,
+                            "width": 100,
+                            "sort": 7,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 7,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 12,
+                            "systemComponentCode": 12008,
+                            "moduleId": 2,
+                            "parentCode": 0,
+                            "label": "就餐人数详情",
+                            "value": "成人2位，儿童1位，老人1位",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                            "placeholder": "#{mealPeopleDetail}",
+                            "type": "text",
+                            "row": 6,
+                            "column": 1,
+                            "width": 100,
+                            "sort": 8,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 8,
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "moduleName": "订单明细",
+            "moduleDescribe": "配置商品、单价、数量、总价等",
+            "sort": 3,
+            "moduleId": 3,
+            "rows": [
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 13,
+                                "systemComponentCode": 13001,
+                                "moduleId": 3,
+                                "parentCode": 0,
+                                "label": "商品",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 1,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 1,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 19,
+                                                "systemComponentCode": 13007,
+                                                "moduleId": 3,
+                                                "parentCode": 13001,
+                                                "label": "商品",
+                                                "value": "1.回锅肉",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "商品",
+                                                "type": "text",
+                                                "row": 4,
+                                                "column": 1,
+                                                "width": 40,
+                                                "sort": 7,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 20,
+                                                "systemComponentCode": 13008,
+                                                "moduleId": 3,
+                                                "parentCode": 13001,
+                                                "label": "单价",
+                                                "value": "16.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "单价",
+                                                "type": "text",
+                                                "row": 4,
+                                                "column": 2,
+                                                "width": 20,
+                                                "sort": 8,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 21,
+                                                "systemComponentCode": 13009,
+                                                "moduleId": 3,
+                                                "parentCode": 13001,
+                                                "label": "数量",
+                                                "value": "1/份",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "数量",
+                                                "type": "text",
+                                                "row": 4,
+                                                "column": 3,
+                                                "width": 20,
+                                                "sort": 9,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 22,
+                                                "systemComponentCode": 13010,
+                                                "moduleId": 3,
+                                                "parentCode": 13001,
+                                                "label": "价格",
+                                                "value": "16.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "价格",
+                                                "type": "text",
+                                                "row": 4,
+                                                "column": 4,
+                                                "width": 20,
+                                                "sort": 10,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 23,
+                                                "systemComponentCode": 13011,
+                                                "moduleId": 3,
+                                                "parentCode": 13001,
+                                                "label": "商品备注",
+                                                "value": "【备注:多放肉】",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "#{memo}",
+                                                "type": "text",
+                                                "row": 5,
+                                                "column": 1,
+                                                "width": 100,
+                                                "sort": 11,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 24,
+                                                "systemComponentCode": 13012,
+                                                "moduleId": 3,
+                                                "parentCode": 13001,
+                                                "label": "商品优惠名称",
+                                                "value": "【单品5折】",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "#{dishDiscountName}",
+                                                "type": "text",
+                                                "row": 6,
+                                                "column": 1,
+                                                "width": 60,
+                                                "sort": 12,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 25,
+                                                "systemComponentCode": 13013,
+                                                "moduleId": 3,
+                                                "parentCode": 13001,
+                                                "label": "商品优惠价格",
+                                                "value": "-10.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{dishDiscountPrice}",
+                                                "type": "text",
+                                                "row": 6,
+                                                "column": 1,
+                                                "width": 40,
+                                                "sort": 13,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "thead": {
+                                "tableRowSet": {
+                                    "columnSet": [
+                                        {
+                                            "id": 15,
+                                            "systemComponentCode": 13003,
+                                            "moduleId": 3,
+                                            "parentCode": 13001,
+                                            "label": "商品",
+                                            "value": "商品",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                            "placeholder": "商品",
+                                            "type": "head",
+                                            "row": 3,
+                                            "column": 1,
+                                            "width": 40,
+                                            "sort": 3,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        },
+                                        {
+                                            "id": 16,
+                                            "systemComponentCode": 13004,
+                                            "moduleId": 3,
+                                            "parentCode": 13001,
+                                            "label": "单价",
+                                            "value": "单价",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                            "placeholder": "单价",
+                                            "type": "head",
+                                            "row": 3,
+                                            "column": 2,
+                                            "width": 20,
+                                            "sort": 4,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        },
+                                        {
+                                            "id": 17,
+                                            "systemComponentCode": 13005,
+                                            "moduleId": 3,
+                                            "parentCode": 13001,
+                                            "label": "数量",
+                                            "value": "数量",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                            "placeholder": "数量",
+                                            "type": "head",
+                                            "row": 3,
+                                            "column": 3,
+                                            "width": 20,
+                                            "sort": 5,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        },
+                                        {
+                                            "id": 18,
+                                            "systemComponentCode": 13006,
+                                            "moduleId": 3,
+                                            "parentCode": 13001,
+                                            "label": "价格",
+                                            "value": "价格",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                            "placeholder": "价格",
+                                            "type": "head",
+                                            "row": 3,
+                                            "column": 4,
+                                            "width": 20,
+                                            "sort": 6,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        }
+                                    ]
+                                }
+                            },
+                            "category": {
+                                "id": 14,
+                                "systemComponentCode": 13002,
+                                "moduleId": 3,
+                                "parentCode": 13001,
+                                "label": "中类名称",
+                                "value": "中类(价格)",
+                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                                "placeholder": "#{goodMiddleCategory",
+                                "type": "category",
+                                "row": 2,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 2,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            }
+                        }
+                    ],
+                    "sort": 1,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 26,
+                                "systemComponentCode": 13014,
+                                "moduleId": 3,
+                                "parentCode": 0,
+                                "label": "合计",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 7,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 14,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 27,
+                                                "systemComponentCode": 13015,
+                                                "moduleId": 3,
+                                                "parentCode": 13014,
+                                                "label": "合计",
+                                                "value": "合计",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "合计",
+                                                "type": "text",
+                                                "row": 7,
+                                                "column": 1,
+                                                "width": 60,
+                                                "sort": 15,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 28,
+                                                "systemComponentCode": 13016,
+                                                "moduleId": 3,
+                                                "parentCode": 13014,
+                                                "label": "合计数量",
+                                                "value": "1",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{goodNumber}",
+                                                "type": "text",
+                                                "row": 7,
+                                                "column": 2,
+                                                "width": 20,
+                                                "sort": 16,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 29,
+                                                "systemComponentCode": 13017,
+                                                "moduleId": 3,
+                                                "parentCode": 13014,
+                                                "label": "合计价格",
+                                                "value": "18.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{goodPrice}",
+                                                "type": "text",
+                                                "row": 7,
+                                                "column": 3,
+                                                "width": 20,
+                                                "sort": 17,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "sort": 14,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 30,
+                            "systemComponentCode": 13018,
+                            "moduleId": 3,
+                            "parentCode": 0,
+                            "label": "整单备注",
+                            "value": "整单备注:不要太辣",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                            "placeholder": "整单备注:#{orderMemo}",
+                            "type": "text",
+                            "row": 8,
+                            "column": 1,
+                            "width": 100,
+                            "sort": 18,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 18,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 31,
+                                "systemComponentCode": 13019,
+                                "moduleId": 3,
+                                "parentCode": 0,
+                                "label": "优惠活动",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 9,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 19,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 33,
+                                                "systemComponentCode": 13021,
+                                                "moduleId": 3,
+                                                "parentCode": 13019,
+                                                "label": "优惠名称",
+                                                "value": "单品5折",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "#{privilegeTypeDetai",
+                                                "type": "text",
+                                                "row": 11,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 21,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 34,
+                                                "systemComponentCode": 13022,
+                                                "moduleId": 3,
+                                                "parentCode": 13019,
+                                                "label": "优惠数量",
+                                                "value": "1/份",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "#{privilegeTypeDetai",
+                                                "type": "text",
+                                                "row": 11,
+                                                "column": 2,
+                                                "width": 10,
+                                                "sort": 22,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "systemComponentCode": 13023,
+                                                "moduleId": 3,
+                                                "parentCode": 13019,
+                                                "label": "优惠价格",
+                                                "value": "-8.00",
+                                                "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{privilegeTypeDetai",
+                                                "type": "text",
+                                                "row": 11,
+                                                "column": 3,
+                                                "width": 20,
+                                                "sort": 23,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "tableTitle": {
+                                "id": 32,
+                                "systemComponentCode": 13020,
+                                "moduleId": 3,
+                                "parentCode": 13019,
+                                "label": "优惠大类",
+                                "value": "手动折扣",
+                                "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"left\"}",
+                                "placeholder": "#{privilegeType}",
+                                "type": "title",
+                                "row": 10,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 20,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            }
+                        }
+                    ],
+                    "sort": 19,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 36,
+                                "systemComponentCode": 13024,
+                                "moduleId": 3,
+                                "parentCode": 0,
+                                "label": "可参与手动折扣合计",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "#{privilegeType}",
+                                "type": "grid",
+                                "row": 12,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 24,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 38,
+                                                "systemComponentCode": 13026,
+                                                "moduleId": 3,
+                                                "parentCode": 13024,
+                                                "label": "不参与手动折扣",
+                                                "value": "[不参与手动折扣金额]",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "[不参与手动折扣金额]",
+                                                "type": "text",
+                                                "row": 14,
+                                                "column": 1,
+                                                "width": 60,
+                                                "sort": 26,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 39,
+                                                "systemComponentCode": 13027,
+                                                "moduleId": 3,
+                                                "parentCode": 13024,
+                                                "label": "不参与手动折扣金额",
+                                                "value": "100.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{noManualPrivilegeN",
+                                                "type": "text",
+                                                "row": 14,
+                                                "column": 2,
+                                                "width": 40,
+                                                "sort": 27,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 40,
+                                                "systemComponentCode": 13028,
+                                                "moduleId": 3,
+                                                "parentCode": 13024,
+                                                "label": "可参与手动折扣",
+                                                "value": "[可参与手动折扣金额]",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "[可参与手动折扣金额]",
+                                                "type": "text",
+                                                "row": 15,
+                                                "column": 1,
+                                                "width": 60,
+                                                "sort": 28,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 41,
+                                                "systemComponentCode": 13029,
+                                                "moduleId": 3,
+                                                "parentCode": 13024,
+                                                "label": "可参与手动折扣金额",
+                                                "value": "100.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{manualPrivilegeNum",
+                                                "type": "text",
+                                                "row": 15,
+                                                "column": 2,
+                                                "width": 40,
+                                                "sort": 29,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "tableTitle": {
+                                "id": 37,
+                                "systemComponentCode": 13025,
+                                "moduleId": 3,
+                                "parentCode": 13024,
+                                "label": "参与折扣统计",
+                                "value": "参与折扣统计",
+                                "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"right\"}",
+                                "placeholder": "参与折扣统计",
+                                "type": "title",
+                                "row": 13,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 25,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            }
+                        }
+                    ],
+                    "sort": 24,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 42,
+                                "systemComponentCode": 13030,
+                                "moduleId": 3,
+                                "parentCode": 0,
+                                "label": "附加费",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 16,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 30,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 43,
+                                                "systemComponentCode": 13031,
+                                                "moduleId": 3,
+                                                "parentCode": 13030,
+                                                "label": "附加费名称",
+                                                "value": "包间费",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "#{surchargeName}",
+                                                "type": "text",
+                                                "row": 17,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 31,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 44,
+                                                "systemComponentCode": 13032,
+                                                "moduleId": 3,
+                                                "parentCode": 13030,
+                                                "label": "附加费金额",
+                                                "value": "200.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{surchargeAmount}",
+                                                "type": "text",
+                                                "row": 17,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 32,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "sort": 30,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 45,
+                                "systemComponentCode": 13033,
+                                "moduleId": 3,
+                                "parentCode": 0,
+                                "label": "消费税",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 18,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 33,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 46,
+                                                "systemComponentCode": 13034,
+                                                "moduleId": 3,
+                                                "parentCode": 13033,
+                                                "label": "消费税税率",
+                                                "value": "消费税5%",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "#{consumptionTaxName",
+                                                "type": "text",
+                                                "row": 19,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 34,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 47,
+                                                "systemComponentCode": 13035,
+                                                "moduleId": 3,
+                                                "parentCode": 13033,
+                                                "label": "消费税金额",
+                                                "value": "6.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{consumptionTaxAmou",
+                                                "type": "text",
+                                                "row": 19,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 35,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "sort": 33,
+                    "type": "grid"
+                }
+            ]
+        },
+        {
+            "moduleName": "结算信息",
+            "moduleDescribe": "配置原价合计、优惠合计、汇总",
+            "sort": 4,
+            "moduleId": 4,
+            "rows": [
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 48,
+                                "systemComponentCode": 14001,
+                                "moduleId": 4,
+                                "parentCode": 0,
+                                "label": "结算明细",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 1,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 1,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 49,
+                                                "systemComponentCode": 14002,
+                                                "moduleId": 4,
+                                                "parentCode": 14001,
+                                                "label": "商品原价合计",
+                                                "value": "商品原价合计",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "商品原价合计",
+                                                "type": "text",
+                                                "row": 2,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 2,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 50,
+                                                "systemComponentCode": 14003,
+                                                "moduleId": 4,
+                                                "parentCode": 14001,
+                                                "label": "商品原价合计金额",
+                                                "value": "16.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "",
+                                                "type": "text",
+                                                "row": 2,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 3,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 51,
+                                                "systemComponentCode": 14004,
+                                                "moduleId": 4,
+                                                "parentCode": 14001,
+                                                "label": "原始押金",
+                                                "value": "原始押金",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "原始押金",
+                                                "type": "text",
+                                                "row": 3,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 4,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 52,
+                                                "systemComponentCode": 14005,
+                                                "moduleId": 4,
+                                                "parentCode": 14001,
+                                                "label": "原始押金金额",
+                                                "value": "16.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{depositPay}",
+                                                "type": "text",
+                                                "row": 3,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 5,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 53,
+                                                "systemComponentCode": 14006,
+                                                "moduleId": 4,
+                                                "parentCode": 14001,
+                                                "label": "已退押金",
+                                                "value": "已退押金",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "已退押金",
+                                                "type": "text",
+                                                "row": 4,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 6,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 54,
+                                                "systemComponentCode": 14007,
+                                                "moduleId": 4,
+                                                "parentCode": 14001,
+                                                "label": "已退押金金额",
+                                                "value": "-16.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{depositRefund}",
+                                                "type": "text",
+                                                "row": 4,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 7,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 55,
+                                                "systemComponentCode": 14008,
+                                                "moduleId": 4,
+                                                "parentCode": 14001,
+                                                "label": "优惠合计",
+                                                "value": "优惠合计",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "优惠合计",
+                                                "type": "text",
+                                                "row": 5,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 8,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 56,
+                                                "systemComponentCode": 14009,
+                                                "moduleId": 4,
+                                                "parentCode": 14001,
+                                                "label": "优惠合计金额",
+                                                "value": "-8.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{privilegeTotalAmou",
+                                                "type": "text",
+                                                "row": 5,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 9,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 57,
+                                                "systemComponentCode": 14010,
+                                                "moduleId": 4,
+                                                "parentCode": 14001,
+                                                "label": "附加费合计",
+                                                "value": "附加费合计",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "附加费合计",
+                                                "type": "text",
+                                                "row": 6,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 10,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 58,
+                                                "systemComponentCode": 14011,
+                                                "moduleId": 4,
+                                                "parentCode": 14001,
+                                                "label": "附加费合计金额",
+                                                "value": "200.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{surchargeTotal}",
+                                                "type": "text",
+                                                "row": 6,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 11,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 59,
+                                                "systemComponentCode": 14012,
+                                                "moduleId": 4,
+                                                "parentCode": 14001,
+                                                "label": "四舍五入",
+                                                "value": "四舍五入",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "四舍五入",
+                                                "type": "text",
+                                                "row": 7,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 12,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 60,
+                                                "systemComponentCode": 14013,
+                                                "moduleId": 4,
+                                                "parentCode": 14001,
+                                                "label": "四舍五入金额",
+                                                "value": "-0.50",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{roundAmount}",
+                                                "type": "text",
+                                                "row": 7,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 13,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "sort": 1,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 61,
+                                "systemComponentCode": 14014,
+                                "moduleId": 4,
+                                "parentCode": 0,
+                                "label": "预付金",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 8,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 14,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 62,
+                                                "systemComponentCode": 14015,
+                                                "moduleId": 4,
+                                                "parentCode": 14014,
+                                                "label": "预付金",
+                                                "value": "预付金",
+                                                "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"left\"}",
+                                                "placeholder": "#{prePayName}",
+                                                "type": "text",
+                                                "row": 9,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 15,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 63,
+                                                "systemComponentCode": 14016,
+                                                "moduleId": 4,
+                                                "parentCode": 14014,
+                                                "label": "预付金额",
+                                                "value": "20.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{prePayCost}",
+                                                "type": "text",
+                                                "row": 9,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 16,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "sort": 14,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 64,
+                                "systemComponentCode": 14017,
+                                "moduleId": 4,
+                                "parentCode": 0,
+                                "label": "应付汇总",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 10,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 17,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 65,
+                                                "systemComponentCode": 14018,
+                                                "moduleId": 4,
+                                                "parentCode": 14017,
+                                                "label": "应付金额",
+                                                "value": "应付金额",
+                                                "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"left\"}",
+                                                "placeholder": "应付金额",
+                                                "type": "text",
+                                                "row": 11,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 18,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 66,
+                                                "systemComponentCode": 14019,
+                                                "moduleId": 4,
+                                                "parentCode": 14017,
+                                                "label": "应付金额",
+                                                "value": "216.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{goodTotalAmountPay",
+                                                "type": "text",
+                                                "row": 11,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 19,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "sort": 17,
+                    "type": "grid"
+                }
+            ]
+        },
+        {
+            "moduleName": "支付信息",
+            "moduleDescribe": "配置付款方式、支付状态等",
+            "sort": 5,
+            "moduleId": 5,
+            "rows": [
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 67,
+                                "systemComponentCode": 15001,
+                                "moduleId": 5,
+                                "parentCode": 0,
+                                "label": "财务处理",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 1,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 1,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 68,
+                                                "systemComponentCode": 15002,
+                                                "moduleId": 5,
+                                                "parentCode": 15001,
+                                                "label": "抹零",
+                                                "value": "抹零",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "抹零",
+                                                "type": "text",
+                                                "row": 2,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 2,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 69,
+                                                "systemComponentCode": 15003,
+                                                "moduleId": 5,
+                                                "parentCode": 15001,
+                                                "label": "抹零金额",
+                                                "value": "-6.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{quiteZero}",
+                                                "type": "text",
+                                                "row": 2,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 3,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 70,
+                                                "systemComponentCode": 15004,
+                                                "moduleId": 5,
+                                                "parentCode": 15001,
+                                                "label": "溢收",
+                                                "value": "溢收",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "溢收",
+                                                "type": "text",
+                                                "row": 3,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 4,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 71,
+                                                "systemComponentCode": 15005,
+                                                "moduleId": 5,
+                                                "parentCode": 15001,
+                                                "label": "溢收金额",
+                                                "value": "5.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{overflow}",
+                                                "type": "text",
+                                                "row": 3,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 5,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "sort": 1,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 72,
+                                "systemComponentCode": 15006,
+                                "moduleId": 5,
+                                "parentCode": 0,
+                                "label": "支付优惠",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 4,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 6,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 73,
+                                                "systemComponentCode": 15007,
+                                                "moduleId": 5,
+                                                "parentCode": 15006,
+                                                "label": "闪惠优惠",
+                                                "value": "闪惠优惠",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "#{payDiscountName}",
+                                                "type": "text",
+                                                "row": 5,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 7,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 74,
+                                                "systemComponentCode": 15008,
+                                                "moduleId": 5,
+                                                "parentCode": 15006,
+                                                "label": "闪惠优惠金额",
+                                                "value": "-6.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{payDiscountNumber}",
+                                                "type": "text",
+                                                "row": 5,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 8,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "sort": 6,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 75,
+                                "systemComponentCode": 15009,
+                                "moduleId": 5,
+                                "parentCode": 0,
+                                "label": "实付汇总",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 6,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 9,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 76,
+                                                "systemComponentCode": 15010,
+                                                "moduleId": 5,
+                                                "parentCode": 15009,
+                                                "label": "实付金额",
+                                                "value": "实付金额",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "实付金额",
+                                                "type": "text",
+                                                "row": 7,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 10,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 77,
+                                                "systemComponentCode": 15011,
+                                                "moduleId": 5,
+                                                "parentCode": 15009,
+                                                "label": "实付金额",
+                                                "value": "210.00",
+                                                "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{goodTotalAmountAct",
+                                                "type": "text",
+                                                "row": 7,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 11,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "sort": 9,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 78,
+                                "systemComponentCode": 15012,
+                                "moduleId": 5,
+                                "parentCode": 0,
+                                "label": "付款方式",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 8,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 12,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 79,
+                                                "systemComponentCode": 15013,
+                                                "moduleId": 5,
+                                                "parentCode": 15012,
+                                                "label": "付款方式",
+                                                "value": "现金",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "#{paymentName}",
+                                                "type": "text",
+                                                "row": 9,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 13,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 80,
+                                                "systemComponentCode": 15014,
+                                                "moduleId": 5,
+                                                "parentCode": 15012,
+                                                "label": "付款金额",
+                                                "value": "200.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{paymentAmount}",
+                                                "type": "text",
+                                                "row": 9,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 14,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "sort": 12,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 81,
+                                "systemComponentCode": 15015,
+                                "moduleId": 5,
+                                "parentCode": 0,
+                                "label": "找零实收",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 10,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 15,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 82,
+                                                "systemComponentCode": 15016,
+                                                "moduleId": 5,
+                                                "parentCode": 15015,
+                                                "label": "付款合计",
+                                                "value": "付款合计",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "付款合计",
+                                                "type": "text",
+                                                "row": 11,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 16,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 83,
+                                                "systemComponentCode": 15017,
+                                                "moduleId": 5,
+                                                "parentCode": 15015,
+                                                "label": "付款合计金额",
+                                                "value": "220.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{payTotalAmount}",
+                                                "type": "text",
+                                                "row": 11,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 17,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 84,
+                                                "systemComponentCode": 15018,
+                                                "moduleId": 5,
+                                                "parentCode": 15015,
+                                                "label": "找零",
+                                                "value": "找零",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "找零",
+                                                "type": "text",
+                                                "row": 12,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 18,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 85,
+                                                "systemComponentCode": 15019,
+                                                "moduleId": 5,
+                                                "parentCode": 15015,
+                                                "label": "找零金额",
+                                                "value": "-4.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{changeAmount}",
+                                                "type": "text",
+                                                "row": 12,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 19,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 86,
+                                                "systemComponentCode": 15020,
+                                                "moduleId": 5,
+                                                "parentCode": 15015,
+                                                "label": "现金实收",
+                                                "value": "现金实收",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "现金实收",
+                                                "type": "text",
+                                                "row": 13,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 20,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 87,
+                                                "systemComponentCode": 15021,
+                                                "moduleId": 5,
+                                                "parentCode": 15015,
+                                                "label": "现金实收金额",
+                                                "value": "200.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{cashAmount}",
+                                                "type": "text",
+                                                "row": 13,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 21,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "sort": 15,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 88,
+                                "systemComponentCode": 15022,
+                                "moduleId": 5,
+                                "parentCode": 0,
+                                "label": "消费税明细",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 14,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 22,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 92,
+                                                "systemComponentCode": 15026,
+                                                "moduleId": 5,
+                                                "parentCode": 15022,
+                                                "label": "消费税明细",
+                                                "value": "S=6%",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "#{consumptionTaxDeta",
+                                                "type": "text",
+                                                "row": 16,
+                                                "column": 1,
+                                                "width": 40,
+                                                "sort": 26,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 93,
+                                                "systemComponentCode": 15027,
+                                                "moduleId": 5,
+                                                "parentCode": 15022,
+                                                "label": "总额(计税)",
+                                                "value": "总额(计税)",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "#{consumptionTaxTota",
+                                                "type": "text",
+                                                "row": 16,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 27,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 94,
+                                                "systemComponentCode": 15028,
+                                                "moduleId": 5,
+                                                "parentCode": 15022,
+                                                "label": "税额",
+                                                "value": "税额",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{consumptionTaxDuty",
+                                                "type": "text",
+                                                "row": 16,
+                                                "column": 3,
+                                                "width": 30,
+                                                "sort": 28,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "thead": {
+                                "tableRowSet": {
+                                    "columnSet": [
+                                        {
+                                            "id": 89,
+                                            "systemComponentCode": 15023,
+                                            "moduleId": 5,
+                                            "parentCode": 15022,
+                                            "label": "消费税明细",
+                                            "value": "消费税明细",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                            "placeholder": "消费税明细",
+                                            "type": "head",
+                                            "row": 15,
+                                            "column": 1,
+                                            "width": 40,
+                                            "sort": 23,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        },
+                                        {
+                                            "id": 90,
+                                            "systemComponentCode": 15024,
+                                            "moduleId": 5,
+                                            "parentCode": 15022,
+                                            "label": "总额(计税)",
+                                            "value": "总额(计税)",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                            "placeholder": "总额(计税)",
+                                            "type": "head",
+                                            "row": 15,
+                                            "column": 2,
+                                            "width": 30,
+                                            "sort": 24,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        },
+                                        {
+                                            "id": 91,
+                                            "systemComponentCode": 15025,
+                                            "moduleId": 5,
+                                            "parentCode": 15022,
+                                            "label": "税额",
+                                            "value": "税额",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                            "placeholder": "税额",
+                                            "type": "head",
+                                            "row": 15,
+                                            "column": 3,
+                                            "width": 30,
+                                            "sort": 25,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "sort": 22,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 95,
+                                "systemComponentCode": 15029,
+                                "moduleId": 5,
+                                "parentCode": 0,
+                                "label": "储值卡余额",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 17,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 29,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 97,
+                                                "systemComponentCode": 15031,
+                                                "moduleId": 5,
+                                                "parentCode": 15029,
+                                                "label": "消费前",
+                                                "value": "消费前:300",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "消费前:#{valueCardBefor",
+                                                "type": "text",
+                                                "row": 19,
+                                                "column": 1,
+                                                "width": 50,
+                                                "sort": 31,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 98,
+                                                "systemComponentCode": 15032,
+                                                "moduleId": 5,
+                                                "parentCode": 15029,
+                                                "label": "消费后",
+                                                "value": "消费后:100",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "消费后:#{valueCardAfter",
+                                                "type": "text",
+                                                "row": 19,
+                                                "column": 2,
+                                                "width": 50,
+                                                "sort": 32,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "tableTitle": {
+                                "id": 96,
+                                "systemComponentCode": 15030,
+                                "moduleId": 5,
+                                "parentCode": 15029,
+                                "label": "储值卡余额",
+                                "value": "储值卡余额",
+                                "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"left\"}",
+                                "placeholder": "储值卡余额",
+                                "type": "title",
+                                "row": 18,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 30,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            }
+                        }
+                    ],
+                    "sort": 29,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 99,
+                            "systemComponentCode": 15033,
+                            "moduleId": 5,
+                            "parentCode": 0,
+                            "label": "签字区",
+                            "value": "签字区",
+                            "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"left\"}",
+                            "placeholder": "签字区",
+                            "type": "text",
+                            "row": 20,
+                            "column": 1,
+                            "width": 100,
+                            "sort": 33,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 33,
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "moduleName": "退货信息",
+            "moduleDescribe": "展示作废商品、反结账退货商品等",
+            "sort": 6,
+            "moduleId": 6,
+            "rows": [
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 100,
+                                "systemComponentCode": 16001,
+                                "moduleId": 6,
+                                "parentCode": 0,
+                                "label": "作废商品",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 1,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 1,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 107,
+                                                "systemComponentCode": 16008,
+                                                "moduleId": 6,
+                                                "parentCode": 16001,
+                                                "label": "商品",
+                                                "value": "1.回锅肉",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "#{goodDiscard}",
+                                                "type": "text",
+                                                "row": 5,
+                                                "column": 1,
+                                                "width": 40,
+                                                "sort": 8,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 108,
+                                                "systemComponentCode": 16009,
+                                                "moduleId": 6,
+                                                "parentCode": 16001,
+                                                "label": "单价",
+                                                "value": "16.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{priceDiscard}",
+                                                "type": "text",
+                                                "row": 5,
+                                                "column": 2,
+                                                "width": 20,
+                                                "sort": 9,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 109,
+                                                "systemComponentCode": 16010,
+                                                "moduleId": 6,
+                                                "parentCode": 16001,
+                                                "label": "数量",
+                                                "value": "1/份",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{numberDiscard}",
+                                                "type": "text",
+                                                "row": 5,
+                                                "column": 3,
+                                                "width": 20,
+                                                "sort": 10,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 110,
+                                                "systemComponentCode": 16011,
+                                                "moduleId": 6,
+                                                "parentCode": 16001,
+                                                "label": "价格",
+                                                "value": "16.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{amountDiscard}",
+                                                "type": "text",
+                                                "row": 5,
+                                                "column": 4,
+                                                "width": 20,
+                                                "sort": 11,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 111,
+                                                "systemComponentCode": 16012,
+                                                "moduleId": 6,
+                                                "parentCode": 16001,
+                                                "label": "备注",
+                                                "value": "【备注:多放肉】",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{memoDiscard}",
+                                                "type": "text",
+                                                "row": 6,
+                                                "column": 1,
+                                                "width": 100,
+                                                "sort": 12,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 112,
+                                                "systemComponentCode": 16013,
+                                                "moduleId": 6,
+                                                "parentCode": 16001,
+                                                "label": "作废理由",
+                                                "value": "作废理由:不想要了",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{reasonDiscard}",
+                                                "type": "text",
+                                                "row": 7,
+                                                "column": 1,
+                                                "width": 100,
+                                                "sort": 13,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "thead": {
+                                "tableRowSet": {
+                                    "columnSet": [
+                                        {
+                                            "id": 103,
+                                            "systemComponentCode": 16004,
+                                            "moduleId": 6,
+                                            "parentCode": 16001,
+                                            "label": "商品",
+                                            "value": "商品",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                            "placeholder": "商品",
+                                            "type": "head",
+                                            "row": 4,
+                                            "column": 1,
+                                            "width": 40,
+                                            "sort": 4,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        },
+                                        {
+                                            "id": 104,
+                                            "systemComponentCode": 16005,
+                                            "moduleId": 6,
+                                            "parentCode": 16001,
+                                            "label": "单价",
+                                            "value": "单价",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                            "placeholder": "单价",
+                                            "type": "head",
+                                            "row": 4,
+                                            "column": 2,
+                                            "width": 20,
+                                            "sort": 5,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        },
+                                        {
+                                            "id": 105,
+                                            "systemComponentCode": 16006,
+                                            "moduleId": 6,
+                                            "parentCode": 16001,
+                                            "label": "数量",
+                                            "value": "数量",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                            "placeholder": "数量",
+                                            "type": "head",
+                                            "row": 4,
+                                            "column": 3,
+                                            "width": 20,
+                                            "sort": 6,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        },
+                                        {
+                                            "id": 106,
+                                            "systemComponentCode": 16007,
+                                            "moduleId": 6,
+                                            "parentCode": 16001,
+                                            "label": "价格",
+                                            "value": "价格",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                            "placeholder": "价格",
+                                            "type": "head",
+                                            "row": 4,
+                                            "column": 4,
+                                            "width": 20,
+                                            "sort": 7,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        }
+                                    ]
+                                }
+                            },
+                            "category": {
+                                "id": 102,
+                                "systemComponentCode": 16003,
+                                "moduleId": 6,
+                                "parentCode": 16001,
+                                "label": "中类名称",
+                                "value": "中类(价格)",
+                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                                "placeholder": "#{goodMiddleCategory",
+                                "type": "category",
+                                "row": 3,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 3,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tableTitle": {
+                                "id": 101,
+                                "systemComponentCode": 16002,
+                                "moduleId": 6,
+                                "parentCode": 16001,
+                                "label": "作废商品",
+                                "value": "作废商品",
+                                "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"right\"}",
+                                "placeholder": "作废商品",
+                                "type": "title",
+                                "row": 2,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 2,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            }
+                        }
+                    ],
+                    "sort": 1,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 113,
+                                "systemComponentCode": 16014,
+                                "moduleId": 6,
+                                "parentCode": 0,
+                                "label": "反结账原订单信息",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 8,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 14,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 115,
+                                                "systemComponentCode": 16016,
+                                                "moduleId": 6,
+                                                "parentCode": 16014,
+                                                "label": "原单商品原价合计",
+                                                "value": "原单商品原价合计",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "原单商品原价合计",
+                                                "type": "text",
+                                                "row": 10,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 16,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 116,
+                                                "systemComponentCode": 16017,
+                                                "moduleId": 6,
+                                                "parentCode": 16014,
+                                                "label": "原单商品原价合计金额",
+                                                "value": "216.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{oldOrderGoodTotalA",
+                                                "type": "text",
+                                                "row": 10,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 17,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 117,
+                                                "systemComponentCode": 16018,
+                                                "moduleId": 6,
+                                                "parentCode": 16014,
+                                                "label": "原单优惠合计",
+                                                "value": "原单优惠合计",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "原单优惠合计",
+                                                "type": "text",
+                                                "row": 11,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 18,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 118,
+                                                "systemComponentCode": 16019,
+                                                "moduleId": 6,
+                                                "parentCode": 16014,
+                                                "label": "原单优惠合计金额",
+                                                "value": "-8.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{oldOrderPrivilegeT",
+                                                "type": "text",
+                                                "row": 11,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 19,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 119,
+                                                "systemComponentCode": 16020,
+                                                "moduleId": 6,
+                                                "parentCode": 16014,
+                                                "label": "原单附加费合计",
+                                                "value": "原单附加费合计",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "原单附加费合计",
+                                                "type": "text",
+                                                "row": 12,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 20,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 120,
+                                                "systemComponentCode": 16021,
+                                                "moduleId": 6,
+                                                "parentCode": 16014,
+                                                "label": "原单附加费合计金额",
+                                                "value": "200.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{oldOrderSurchargeT",
+                                                "type": "text",
+                                                "row": 12,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 21,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 121,
+                                                "systemComponentCode": 16022,
+                                                "moduleId": 6,
+                                                "parentCode": 16014,
+                                                "label": "原单四舍五入",
+                                                "value": "原单四舍五入",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "原单四舍五入",
+                                                "type": "text",
+                                                "row": 13,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 22,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 122,
+                                                "systemComponentCode": 16023,
+                                                "moduleId": 6,
+                                                "parentCode": 16014,
+                                                "label": "原单四舍五入金额",
+                                                "value": "-0.50",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{oldOrderRoundAmoun",
+                                                "type": "text",
+                                                "row": 13,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 23,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 123,
+                                                "systemComponentCode": 16024,
+                                                "moduleId": 6,
+                                                "parentCode": 16014,
+                                                "label": "原单应付金额",
+                                                "value": "原单应付金额",
+                                                "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"left\"}",
+                                                "placeholder": "原单应付金额",
+                                                "type": "text",
+                                                "row": 14,
+                                                "column": 1,
+                                                "width": 70,
+                                                "sort": 24,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 124,
+                                                "systemComponentCode": 16025,
+                                                "moduleId": 6,
+                                                "parentCode": 16014,
+                                                "label": "原单应付金额",
+                                                "value": "216.00",
+                                                "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{oldOrderGoodTotalA",
+                                                "type": "text",
+                                                "row": 14,
+                                                "column": 2,
+                                                "width": 30,
+                                                "sort": 25,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "tableTitle": {
+                                "id": 114,
+                                "systemComponentCode": 16015,
+                                "moduleId": 6,
+                                "parentCode": 16014,
+                                "label": "反结账原订单信息",
+                                "value": "反结账原订单信息",
+                                "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"left\"}",
+                                "placeholder": "反结账原订单信息",
+                                "type": "title",
+                                "row": 9,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 15,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            }
+                        }
+                    ],
+                    "sort": 14,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 125,
+                                "systemComponentCode": 16026,
+                                "moduleId": 6,
+                                "parentCode": 0,
+                                "label": "反结账退货商品",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 15,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 26,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 132,
+                                                "systemComponentCode": 16033,
+                                                "moduleId": 6,
+                                                "parentCode": 16026,
+                                                "label": "商品",
+                                                "value": "1.回锅肉",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "#{goodDiscard}",
+                                                "type": "text",
+                                                "row": 19,
+                                                "column": 1,
+                                                "width": 40,
+                                                "sort": 33,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 133,
+                                                "systemComponentCode": 16034,
+                                                "moduleId": 6,
+                                                "parentCode": 16026,
+                                                "label": "单价",
+                                                "value": "16.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{priceDiscard}",
+                                                "type": "text",
+                                                "row": 19,
+                                                "column": 2,
+                                                "width": 20,
+                                                "sort": 34,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 134,
+                                                "systemComponentCode": 16035,
+                                                "moduleId": 6,
+                                                "parentCode": 16026,
+                                                "label": "数量",
+                                                "value": "1/份",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{numberDiscard}",
+                                                "type": "text",
+                                                "row": 19,
+                                                "column": 3,
+                                                "width": 20,
+                                                "sort": 35,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            },
+                                            {
+                                                "id": 135,
+                                                "systemComponentCode": 16036,
+                                                "moduleId": 6,
+                                                "parentCode": 16026,
+                                                "label": "价格",
+                                                "value": "16.00",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{amountDiscard}",
+                                                "type": "text",
+                                                "row": 19,
+                                                "column": 4,
+                                                "width": 20,
+                                                "sort": 36,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 136,
+                                                "systemComponentCode": 16037,
+                                                "moduleId": 6,
+                                                "parentCode": 16026,
+                                                "label": "备注",
+                                                "value": "【备注:多放肉】",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{memoDiscard}",
+                                                "type": "text",
+                                                "row": 20,
+                                                "column": 1,
+                                                "width": 100,
+                                                "sort": 37,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 137,
+                                                "systemComponentCode": 16038,
+                                                "moduleId": 6,
+                                                "parentCode": 16026,
+                                                "label": "作废理由",
+                                                "value": "作废理由:不想要了",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "#{reasonDiscard}",
+                                                "type": "text",
+                                                "row": 21,
+                                                "column": 1,
+                                                "width": 100,
+                                                "sort": 38,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "thead": {
+                                "tableRowSet": {
+                                    "columnSet": [
+                                        {
+                                            "id": 128,
+                                            "systemComponentCode": 16029,
+                                            "moduleId": 6,
+                                            "parentCode": 16026,
+                                            "label": "商品",
+                                            "value": "商品",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                            "placeholder": "商品",
+                                            "type": "head",
+                                            "row": 18,
+                                            "column": 1,
+                                            "width": 40,
+                                            "sort": 29,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        },
+                                        {
+                                            "id": 129,
+                                            "systemComponentCode": 16030,
+                                            "moduleId": 6,
+                                            "parentCode": 16026,
+                                            "label": "单价",
+                                            "value": "单价",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                            "placeholder": "单价",
+                                            "type": "head",
+                                            "row": 18,
+                                            "column": 2,
+                                            "width": 20,
+                                            "sort": 30,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        },
+                                        {
+                                            "id": 130,
+                                            "systemComponentCode": 16031,
+                                            "moduleId": 6,
+                                            "parentCode": 16026,
+                                            "label": "数量",
+                                            "value": "数量",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                            "placeholder": "数量",
+                                            "type": "head",
+                                            "row": 18,
+                                            "column": 3,
+                                            "width": 20,
+                                            "sort": 31,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        },
+                                        {
+                                            "id": 131,
+                                            "systemComponentCode": 16032,
+                                            "moduleId": 6,
+                                            "parentCode": 16026,
+                                            "label": "价格",
+                                            "value": "价格",
+                                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                            "placeholder": "价格",
+                                            "type": "head",
+                                            "row": 18,
+                                            "column": 4,
+                                            "width": 20,
+                                            "sort": 32,
+                                            "createTime": "2018-12-27T09:09:48.000+0000",
+                                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                                        }
+                                    ]
+                                }
+                            },
+                            "category": {
+                                "id": 127,
+                                "systemComponentCode": 16028,
+                                "moduleId": 6,
+                                "parentCode": 16026,
+                                "label": "中类名称",
+                                "value": "中类(价格)",
+                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                                "placeholder": "#{reverseaccountGood",
+                                "type": "category",
+                                "row": 17,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 28,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tableTitle": {
+                                "id": 126,
+                                "systemComponentCode": 16027,
+                                "moduleId": 6,
+                                "parentCode": 16026,
+                                "label": "反结账退货商品",
+                                "value": "反结账退货商品",
+                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                                "placeholder": "反结账退货商品",
+                                "type": "title",
+                                "row": 16,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 27,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            }
+                        }
+                    ],
+                    "sort": 26,
+                    "type": "grid"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 138,
+                                "systemComponentCode": 16039,
+                                "moduleId": 6,
+                                "parentCode": 0,
+                                "label": "反结账理由",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 22,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 39,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 140,
+                                                "systemComponentCode": 16041,
+                                                "moduleId": 6,
+                                                "parentCode": 16039,
+                                                "label": "反结账理由",
+                                                "value": "收款错误需要进行反结账",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                                "placeholder": "#{reverseAccountReas",
+                                                "type": "text",
+                                                "row": 24,
+                                                "column": 1,
+                                                "width": 100,
+                                                "sort": 41,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "tableTitle": {
+                                "id": 139,
+                                "systemComponentCode": 16040,
+                                "moduleId": 6,
+                                "parentCode": 16039,
+                                "label": "反结账理由",
+                                "value": "反结账理由",
+                                "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"left\"}",
+                                "placeholder": "反结账理由",
+                                "type": "title",
+                                "row": 23,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 40,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            }
+                        }
+                    ],
+                    "sort": 39,
+                    "type": "grid"
+                }
+            ]
+        },
+        {
+            "moduleName": "二维码",
+            "moduleDescribe": "配置二维码",
+            "sort": 7,
+            "moduleId": 7,
+            "rows": [
+                {
+                    "components": [
+                        {
+                            "id": 141,
+                            "systemComponentCode": 17001,
+                            "moduleId": 7,
+                            "parentCode": 0,
+                            "label": "自定义二维码",
+                            "value": "文案内容",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                            "placeholder": "文案内容",
+                            "type": "text",
+                            "row": 1,
+                            "column": 1,
+                            "width": 100,
+                            "sort": 1,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 1,
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "moduleName": "底栏",
+            "moduleDescribe": "配置服务员、时间、商户信息等",
+            "sort": 8,
+            "moduleId": 8,
+            "rows": [
+                {
+                    "components": [
+                        {
+                            "id": 142,
+                            "systemComponentCode": 18001,
+                            "moduleId": 8,
+                            "parentCode": 0,
+                            "label": "服务员",
+                            "value": "服务员:李四",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                            "placeholder": "服务员:#{waiter}",
+                            "type": "text",
+                            "row": 1,
+                            "column": 1,
+                            "width": 50,
+                            "sort": 1,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 1,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 143,
+                            "systemComponentCode": 18002,
+                            "moduleId": 8,
+                            "parentCode": 0,
+                            "label": "操作员",
+                            "value": "操作员:王五",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                            "placeholder": "操作员:#{cashier}",
+                            "type": "text",
+                            "row": 1,
+                            "column": 2,
+                            "width": 50,
+                            "sort": 2,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 2,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 144,
+                            "systemComponentCode": 18003,
+                            "moduleId": 8,
+                            "parentCode": 0,
+                            "label": "开单",
+                            "value": "开单:YYYY-MM-DD HH:MM:SS",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                            "placeholder": "开单:#{openBillingTime",
+                            "type": "text",
+                            "row": 2,
+                            "column": 1,
+                            "width": 50,
+                            "sort": 3,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 3,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 145,
+                            "systemComponentCode": 18004,
+                            "moduleId": 8,
+                            "parentCode": 0,
+                            "label": "打印",
+                            "value": "打印:YYYY-MM-DD HH:MM:SS",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                            "placeholder": "打印:#{printTime}",
+                            "type": "text",
+                            "row": 2,
+                            "column": 2,
+                            "width": 50,
+                            "sort": 4,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 4,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "id": 146,
+                            "systemComponentCode": 18005,
+                            "moduleId": 8,
+                            "parentCode": 0,
+                            "label": "操作时间",
+                            "value": "操作:YYYY-MM-DD HH:MM:SS",
+                            "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                            "placeholder": "操作:#{operationTime}",
+                            "type": "text",
+                            "row": 3,
+                            "column": 1,
+                            "width": 50,
+                            "sort": 5,
+                            "createTime": "2018-12-27T09:09:48.000+0000",
+                            "updateTime": "2018-12-27T09:09:48.000+0000"
+                        }
+                    ],
+                    "sort": 5,
+                    "type": "text"
+                },
+                {
+                    "components": [
+                        {
+                            "component": {
+                                "id": 147,
+                                "systemComponentCode": 18006,
+                                "moduleId": 8,
+                                "parentCode": 0,
+                                "label": "商户信息",
+                                "value": "",
+                                "valueStyle": "",
+                                "placeholder": "",
+                                "type": "grid",
+                                "row": 4,
+                                "column": 1,
+                                "width": 100,
+                                "sort": 6,
+                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                            },
+                            "tbody": {
+                                "tableRowSet": [
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 148,
+                                                "systemComponentCode": 18007,
+                                                "moduleId": 8,
+                                                "parentCode": 18006,
+                                                "label": "商户地址",
+                                                "value": "XX市XX地址",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                                                "placeholder": "#{shopAddress}",
+                                                "type": "text",
+                                                "row": 5,
+                                                "column": 1,
+                                                "width": 100,
+                                                "sort": 7,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 149,
+                                                "systemComponentCode": 18008,
+                                                "moduleId": 8,
+                                                "parentCode": 18006,
+                                                "label": "商户电话号码",
+                                                "value": "15XXXXXXXXX",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                                                "placeholder": "#{shopPhone}",
+                                                "type": "text",
+                                                "row": 6,
+                                                "column": 1,
+                                                "width": 100,
+                                                "sort": 8,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "columnSet": [
+                                            {
+                                                "id": 150,
+                                                "systemComponentCode": 18009,
+                                                "moduleId": 8,
+                                                "parentCode": 18006,
+                                                "label": "商户自定义内容",
+                                                "value": "欢迎下次光临",
+                                                "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                                "placeholder": "欢迎下次光临",
+                                                "type": "text",
+                                                "row": 7,
+                                                "column": 1,
+                                                "width": 100,
+                                                "sort": 9,
+                                                "createTime": "2018-12-27T09:09:48.000+0000",
+                                                "updateTime": "2018-12-27T09:09:48.000+0000"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "sort": 6,
+                    "type": "grid"
+                }
+            ]
+        }
+    ]
+}

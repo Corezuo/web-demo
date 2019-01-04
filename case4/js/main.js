@@ -271,18 +271,34 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
         // Todo: 生成预览图
         var templatePreviewPictureUrl = "https://www.img.com";
 
+        postData.shopId = 288;
+        postData.operatorId = 81455;
         postData.name = $scope.moduleName;
-        postData.documentType = $scope.moduleName;
+        postData.documentType = $scope.documentType;
         postData.url = templatePreviewPictureUrl;
         postData.modules = templateModules;
+
+        // Todo: Mock modules数据
         var param = {
-            url: "http://localhost:8080/print/template/save",
-            data: postData,
+            url: "data/update-custom.json",
             sCallback: function (res) {
-                console.log("success: ", res);
+                console.log("res: ", res);
+                param = {
+                    url: "http://192.168.11.141:8080/zxcity_restful/ws/rest",
+                    method: "POST",
+                    data: {
+                        cmd: "printerTicket/update",
+                        data: res.data,
+                        version: 1
+                    },
+                    sCallback: function (res) {
+                        console.log("success: ", res);
+                    }
+                };
+                baseRequestForm($http, param);
             }
         };
-        // baseRequest($http, param);
+        baseRequest($http, param);
     }
 }]);
 

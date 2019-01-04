@@ -1,5 +1,5 @@
 /**
- * AngularJS统一请求
+ * AngularJS统一请求（Content-Type：application/json）
  * @param $http
  * @param param
  */
@@ -13,6 +13,39 @@ function baseRequest ($http, param) {
         url: param.url,
         method: param.method,
         data: param.data
+    }).then(
+        function (res) {
+            param.sCallback && param.sCallback(res);
+        },
+        function (res) {
+            console.log("error: ", res);
+        }
+    );
+}
+
+/**
+ * AngularJS统一请求（Content-Type：application/x-www-form-urlencoded）
+ * @param $http
+ * @param param
+ */
+function baseRequestForm ($http, param) {
+    $http({
+        url: param.url,
+        method: 'POST',
+        headers: {
+            "Content-Type": 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        data: param.data,
+        transformRequest: function (obj) {
+            var str = [];
+            for (var k in obj) {
+                if (k === "data") {
+                    obj[k] = JSON.stringify(obj[k]);
+                }
+                str.push(encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]))
+            }
+            return str.join("&");
+        }
     }).then(
         function (res) {
             param.sCallback && param.sCallback(res);
