@@ -7,7 +7,7 @@ var myApp = angular.module('myApp', []);
 myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
     // 加载系统模板组件
     var param = {
-        url: "data/system-component.json",
+        url: "data/system-component-custom.json",
         sCallback: function (res) {
             /*
               阶段一：准备模板model层数据源
@@ -32,13 +32,16 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
                     // 公共对象
                     if (component.hasOwnProperty("component")) {
                         panelComponents.push(component.component);
-                        componentEnableStaus[component.component.id] = false;
+                        componentEnableStaus[component.component.id] = true;
                     } else {
                         panelComponents.push(component);
-                        componentEnableStaus[component.id] = false;
+                        componentEnableStaus[component.id] = true;
                     }
                     // 右侧预览组件
                     if (!component.hasOwnProperty("component")) {
+                        if (component.type === 'hidden') {
+                            continue;
+                        }
                         if (rows.length > 0) {
                             var rowNum = component.row;
                             var recentRowColumn = rows[rows.length - 1].components[0];
@@ -80,6 +83,7 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
             $scope.templateModules = templateModules;
             $scope.componentEnableStaus = componentEnableStaus;
             $scope.documentType = 1;
+            console.log("templateModules: ", templateModules);
         }
     };
     baseRequest($http, param);
