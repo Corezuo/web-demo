@@ -32,10 +32,10 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
                     // 公共对象
                     if (component.hasOwnProperty("component")) {
                         panelComponents.push(component.component);
-                        componentEnableStaus[component.component.id] = true;
+                        componentEnableStaus[component.component.id] = false;
                     } else {
                         panelComponents.push(component);
-                        componentEnableStaus[component.id] = true;
+                        componentEnableStaus[component.id] = false;
                     }
                     // 右侧预览组件
                     if (!component.hasOwnProperty("component")) {
@@ -83,14 +83,13 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
             $scope.templateModules = templateModules;
             $scope.componentEnableStaus = componentEnableStaus;
             $scope.documentType = 1;
-            console.log("templateModules: ", templateModules);
         }
     };
     baseRequest($http, param);
 
     // 加载自定义模板组件
     param = {
-        url: "data/preview-component.json",
+        url: "data/preview-component-custom.json",
         sCallback: function (res) {
             /*
                 阶段三：加载自定义模板数据源

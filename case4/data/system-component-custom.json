@@ -1,0 +1,2954 @@
+{
+    "modules": [
+        {
+            "components": [
+                {
+                    "id": 101001,
+                    "moduleId": 1,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "商户logo",
+                    "value": "商户logo",
+                    "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"center\"}",
+                    "placeholder": "#{shopLogo}",
+                    "type": "text",
+                    "row": 1,
+                    "column": 1,
+                    "width": 100,
+                    "sort": 1,
+                    "createTime": "2019-01-07T06:23:50.000+0000",
+                    "updateTime": "2019-01-07T06:23:50.000+0000"
+                },
+                {
+                    "id": 101002,
+                    "moduleId": 1,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "店铺名称",
+                    "value": "店铺名称",
+                    "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"center\"}",
+                    "placeholder": "#{shopName}",
+                    "type": "text",
+                    "row": 2,
+                    "column": 1,
+                    "width": 100,
+                    "sort": 2,
+                    "createTime": "2019-01-07T06:23:50.000+0000",
+                    "updateTime": "2019-01-07T06:23:50.000+0000"
+                },
+                {
+                    "id": 101003,
+                    "moduleId": 1,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "票据名称",
+                    "value": "结账单",
+                    "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"center\"}",
+                    "placeholder": "#{ticketType}",
+                    "type": "text",
+                    "row": 3,
+                    "column": 1,
+                    "width": 100,
+                    "sort": 3,
+                    "createTime": "2019-01-07T06:23:50.000+0000",
+                    "updateTime": "2019-01-07T06:23:50.000+0000"
+                },
+                {
+                    "id": 101004,
+                    "moduleId": 1,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "发票号",
+                    "value": "发票号:xxxxxxxxx",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                    "placeholder": "发票号:#{taxNumber}",
+                    "type": "text",
+                    "row": 4,
+                    "column": 1,
+                    "width": 100,
+                    "sort": 4,
+                    "createTime": "2019-01-07T06:23:50.000+0000",
+                    "updateTime": "2019-01-07T06:23:50.000+0000"
+                }
+            ],
+            "moduleName": "标题",
+            "moduleDescribe": "定义商户LOGO & 票据名称",
+            "sort": 1,
+            "moduleId": 1
+        },
+        {
+            "components": [
+                {
+                    "id": 102001,
+                    "moduleId": 2,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "桌台号",
+                    "value": "桌台号:1",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                    "placeholder": "桌台号:#{tableNum}",
+                    "type": "text",
+                    "row": 1,
+                    "column": 1,
+                    "width": 70,
+                    "sort": 1,
+                    "createTime": "2019-01-07T06:23:50.000+0000",
+                    "updateTime": "2019-01-07T06:23:50.000+0000"
+                },
+                {
+                    "id": 102002,
+                    "moduleId": 2,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "流水号",
+                    "value": "流水号:1",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                    "placeholder": "流水号:#{serialNum}",
+                    "type": "text",
+                    "row": 1,
+                    "column": 2,
+                    "width": 30,
+                    "sort": 2,
+                    "createTime": "2019-01-07T06:23:50.000+0000",
+                    "updateTime": "2019-01-07T06:23:50.000+0000"
+                },
+                {
+                    "id": 102003,
+                    "moduleId": 2,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "订单号",
+                    "value": "订单号:201608221001",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                    "placeholder": "订单号:#{orderNum}",
+                    "type": "text",
+                    "row": 2,
+                    "column": 1,
+                    "width": 80,
+                    "sort": 3,
+                    "createTime": "2019-01-07T06:23:50.000+0000",
+                    "updateTime": "2019-01-07T06:23:50.000+0000"
+                },
+                {
+                    "id": 102004,
+                    "moduleId": 2,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "人数",
+                    "value": "人数:2",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                    "placeholder": "人数:#{peopleNum}",
+                    "type": "text",
+                    "row": 2,
+                    "column": 2,
+                    "width": 20,
+                    "sort": 4,
+                    "createTime": "2019-01-07T06:23:50.000+0000",
+                    "updateTime": "2019-01-07T06:23:50.000+0000"
+                },
+                {
+                    "id": 102005,
+                    "moduleId": 2,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "税号",
+                    "value": "税号:123232323",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                    "placeholder": "税号:#{taxGSTRegNo}",
+                    "type": "text",
+                    "row": 3,
+                    "column": 1,
+                    "width": 100,
+                    "sort": 5,
+                    "createTime": "2019-01-07T06:23:50.000+0000",
+                    "updateTime": "2019-01-07T06:23:50.000+0000"
+                },
+                {
+                    "id": 102006,
+                    "moduleId": 2,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "会员",
+                    "value": "会员:张三(150XXXXXXXX)",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                    "placeholder": "会员:#{memberNum}",
+                    "type": "text",
+                    "row": 4,
+                    "column": 1,
+                    "width": 100,
+                    "sort": 6,
+                    "createTime": "2019-01-07T06:23:50.000+0000",
+                    "updateTime": "2019-01-07T06:23:50.000+0000"
+                },
+                {
+                    "id": 102007,
+                    "moduleId": 2,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "反结账原订单流水号",
+                    "value": "反结账原订单流水号:2",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                    "placeholder": "反结账原订单流水号:#{reverseA",
+                    "type": "text",
+                    "row": 5,
+                    "column": 1,
+                    "width": 100,
+                    "sort": 7,
+                    "createTime": "2019-01-07T06:23:50.000+0000",
+                    "updateTime": "2019-01-07T06:23:50.000+0000"
+                },
+                {
+                    "id": 102008,
+                    "moduleId": 2,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "就餐人数详情",
+                    "value": "成人2位，儿童1位，老人1位",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                    "placeholder": "#{mealPeopleDetail}",
+                    "type": "text",
+                    "row": 6,
+                    "column": 1,
+                    "width": 100,
+                    "sort": 8,
+                    "createTime": "2019-01-07T06:23:50.000+0000",
+                    "updateTime": "2019-01-07T06:23:50.000+0000"
+                }
+            ],
+            "moduleName": "基础信息",
+            "moduleDescribe": "配置桌台号、流水号、订单号等",
+            "sort": 2,
+            "moduleId": 2
+        },
+        {
+            "components": [
+                {
+                    "component": {
+                        "id": 103001,
+                        "moduleId": 3,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "商品表格",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 1,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 1,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 103007,
+                                        "moduleId": 3,
+                                        "parentId": 103001,
+                                        "refId": 0,
+                                        "label": "商品",
+                                        "value": "1.回锅肉",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "商品",
+                                        "type": "text",
+                                        "row": 4,
+                                        "column": 1,
+                                        "width": 40,
+                                        "sort": 7,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 103008,
+                                        "moduleId": 3,
+                                        "parentId": 103001,
+                                        "refId": 0,
+                                        "label": "单价",
+                                        "value": "16.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "单价",
+                                        "type": "text",
+                                        "row": 4,
+                                        "column": 2,
+                                        "width": 20,
+                                        "sort": 8,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 103009,
+                                        "moduleId": 3,
+                                        "parentId": 103001,
+                                        "refId": 0,
+                                        "label": "数量",
+                                        "value": "1/份",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "数量",
+                                        "type": "text",
+                                        "row": 4,
+                                        "column": 3,
+                                        "width": 20,
+                                        "sort": 9,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 103010,
+                                        "moduleId": 3,
+                                        "parentId": 103001,
+                                        "refId": 0,
+                                        "label": "价格",
+                                        "value": "16.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "价格",
+                                        "type": "text",
+                                        "row": 4,
+                                        "column": 4,
+                                        "width": 20,
+                                        "sort": 10,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 103011,
+                                        "moduleId": 3,
+                                        "parentId": 103001,
+                                        "refId": 103014,
+                                        "label": "商品备注",
+                                        "value": "【备注:多放肉】",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "#{memo}",
+                                        "type": "text",
+                                        "row": 5,
+                                        "column": 1,
+                                        "width": 100,
+                                        "sort": 11,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 103012,
+                                        "moduleId": 3,
+                                        "parentId": 103001,
+                                        "refId": 0,
+                                        "label": "商品优惠名称",
+                                        "value": "【单品5折】",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "#{dishDiscountName}",
+                                        "type": "text",
+                                        "row": 6,
+                                        "column": 1,
+                                        "width": 60,
+                                        "sort": 12,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 103013,
+                                        "moduleId": 3,
+                                        "parentId": 103001,
+                                        "refId": 0,
+                                        "label": "商品优惠价格",
+                                        "value": "-10.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{dishDiscountPrice}",
+                                        "type": "text",
+                                        "row": 6,
+                                        "column": 1,
+                                        "width": 40,
+                                        "sort": 13,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "thead": {
+                        "tableRowSet": {
+                            "columnSet": [
+                                {
+                                    "id": 103003,
+                                    "moduleId": 3,
+                                    "parentId": 103001,
+                                    "refId": 0,
+                                    "label": "商品",
+                                    "value": "商品",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                    "placeholder": "商品",
+                                    "type": "head",
+                                    "row": 3,
+                                    "column": 1,
+                                    "width": 40,
+                                    "sort": 3,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                },
+                                {
+                                    "id": 103004,
+                                    "moduleId": 3,
+                                    "parentId": 103001,
+                                    "refId": 0,
+                                    "label": "单价",
+                                    "value": "单价",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                    "placeholder": "单价",
+                                    "type": "head",
+                                    "row": 3,
+                                    "column": 2,
+                                    "width": 20,
+                                    "sort": 4,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                },
+                                {
+                                    "id": 103005,
+                                    "moduleId": 3,
+                                    "parentId": 103001,
+                                    "refId": 0,
+                                    "label": "数量",
+                                    "value": "数量",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                    "placeholder": "数量",
+                                    "type": "head",
+                                    "row": 3,
+                                    "column": 3,
+                                    "width": 20,
+                                    "sort": 5,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                },
+                                {
+                                    "id": 103006,
+                                    "moduleId": 3,
+                                    "parentId": 103001,
+                                    "refId": 0,
+                                    "label": "价格",
+                                    "value": "价格",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                    "placeholder": "价格",
+                                    "type": "head",
+                                    "row": 3,
+                                    "column": 4,
+                                    "width": 20,
+                                    "sort": 6,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                }
+                            ]
+                        }
+                    },
+                    "category": {
+                        "id": 103002,
+                        "moduleId": 3,
+                        "parentId": 103001,
+                        "refId": 0,
+                        "label": "中类名称",
+                        "value": "中类(价格)",
+                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                        "placeholder": "#{goodMiddleCategory",
+                        "type": "category",
+                        "row": 2,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 2,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    }
+                },
+                {
+                    "id": 103014,
+                    "moduleId": 3,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "单品备注",
+                    "value": "控制商品里面的单品备注",
+                    "valueStyle": "",
+                    "placeholder": "",
+                    "type": "hidden",
+                    "row": 7,
+                    "column": 1,
+                    "width": 100,
+                    "sort": 14,
+                    "createTime": "2019-01-07T06:23:51.000+0000",
+                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                },
+                {
+                    "component": {
+                        "id": 103015,
+                        "moduleId": 3,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "合计",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 7,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 15,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 103016,
+                                        "moduleId": 3,
+                                        "parentId": 103015,
+                                        "refId": 0,
+                                        "label": "合计",
+                                        "value": "合计",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "合计",
+                                        "type": "text",
+                                        "row": 7,
+                                        "column": 1,
+                                        "width": 60,
+                                        "sort": 16,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 103017,
+                                        "moduleId": 3,
+                                        "parentId": 103015,
+                                        "refId": 0,
+                                        "label": "合计数量",
+                                        "value": "1",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{goodNumber}",
+                                        "type": "text",
+                                        "row": 7,
+                                        "column": 2,
+                                        "width": 20,
+                                        "sort": 17,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 103018,
+                                        "moduleId": 3,
+                                        "parentId": 103015,
+                                        "refId": 0,
+                                        "label": "合计价格",
+                                        "value": "18.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{goodPrice}",
+                                        "type": "text",
+                                        "row": 7,
+                                        "column": 3,
+                                        "width": 20,
+                                        "sort": 18,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 103019,
+                    "moduleId": 3,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "整单备注",
+                    "value": "整单备注:不要太辣",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                    "placeholder": "整单备注:#{orderMemo}",
+                    "type": "text",
+                    "row": 8,
+                    "column": 1,
+                    "width": 100,
+                    "sort": 19,
+                    "createTime": "2019-01-07T06:23:51.000+0000",
+                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                },
+                {
+                    "component": {
+                        "id": 103020,
+                        "moduleId": 3,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "优惠活动",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 9,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 20,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 103022,
+                                        "moduleId": 3,
+                                        "parentId": 103020,
+                                        "refId": 0,
+                                        "label": "优惠名称",
+                                        "value": "单品5折",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "#{privilegeTypeDetai",
+                                        "type": "text",
+                                        "row": 11,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 22,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 103023,
+                                        "moduleId": 3,
+                                        "parentId": 103020,
+                                        "refId": 0,
+                                        "label": "优惠数量",
+                                        "value": "1/份",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "#{privilegeTypeDetai",
+                                        "type": "text",
+                                        "row": 11,
+                                        "column": 2,
+                                        "width": 10,
+                                        "sort": 23,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 103024,
+                                        "moduleId": 3,
+                                        "parentId": 103020,
+                                        "refId": 0,
+                                        "label": "优惠价格",
+                                        "value": "-8.00",
+                                        "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{privilegeTypeDetai",
+                                        "type": "text",
+                                        "row": 11,
+                                        "column": 3,
+                                        "width": 20,
+                                        "sort": 24,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "tableTitle": {
+                        "id": 103021,
+                        "moduleId": 3,
+                        "parentId": 103020,
+                        "refId": 0,
+                        "label": "优惠大类",
+                        "value": "手动折扣",
+                        "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"left\"}",
+                        "placeholder": "#{privilegeType}",
+                        "type": "title",
+                        "row": 10,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 21,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    }
+                },
+                {
+                    "component": {
+                        "id": 103025,
+                        "moduleId": 3,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "可参与手动折扣合计",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "#{privilegeType}",
+                        "type": "grid",
+                        "row": 12,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 25,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 103027,
+                                        "moduleId": 3,
+                                        "parentId": 103025,
+                                        "refId": 0,
+                                        "label": "不参与手动折扣",
+                                        "value": "[不参与手动折扣金额]",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "[不参与手动折扣金额]",
+                                        "type": "text",
+                                        "row": 14,
+                                        "column": 1,
+                                        "width": 60,
+                                        "sort": 27,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 103028,
+                                        "moduleId": 3,
+                                        "parentId": 103025,
+                                        "refId": 0,
+                                        "label": "不参与手动折扣金额",
+                                        "value": "100.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{noManualPrivilegeN",
+                                        "type": "text",
+                                        "row": 14,
+                                        "column": 2,
+                                        "width": 40,
+                                        "sort": 28,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 103029,
+                                        "moduleId": 3,
+                                        "parentId": 103025,
+                                        "refId": 0,
+                                        "label": "可参与手动折扣",
+                                        "value": "[可参与手动折扣金额]",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "[可参与手动折扣金额]",
+                                        "type": "text",
+                                        "row": 15,
+                                        "column": 1,
+                                        "width": 60,
+                                        "sort": 29,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 103030,
+                                        "moduleId": 3,
+                                        "parentId": 103025,
+                                        "refId": 0,
+                                        "label": "可参与手动折扣金额",
+                                        "value": "100.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{manualPrivilegeNum",
+                                        "type": "text",
+                                        "row": 15,
+                                        "column": 2,
+                                        "width": 40,
+                                        "sort": 30,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "tableTitle": {
+                        "id": 103026,
+                        "moduleId": 3,
+                        "parentId": 103025,
+                        "refId": 0,
+                        "label": "参与折扣统计",
+                        "value": "参与折扣统计",
+                        "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"right\"}",
+                        "placeholder": "参与折扣统计",
+                        "type": "title",
+                        "row": 13,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 26,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    }
+                },
+                {
+                    "component": {
+                        "id": 103031,
+                        "moduleId": 3,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "附加费",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 16,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 31,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 103032,
+                                        "moduleId": 3,
+                                        "parentId": 103031,
+                                        "refId": 0,
+                                        "label": "附加费名称",
+                                        "value": "包间费",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "#{surchargeName}",
+                                        "type": "text",
+                                        "row": 17,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 32,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 103033,
+                                        "moduleId": 3,
+                                        "parentId": 103031,
+                                        "refId": 0,
+                                        "label": "附加费金额",
+                                        "value": "200.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{surchargeAmount}",
+                                        "type": "text",
+                                        "row": 17,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 33,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "component": {
+                        "id": 103034,
+                        "moduleId": 3,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "消费税",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 18,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 34,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 103035,
+                                        "moduleId": 3,
+                                        "parentId": 103034,
+                                        "refId": 0,
+                                        "label": "消费税税率",
+                                        "value": "消费税5%",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "#{consumptionTaxName",
+                                        "type": "text",
+                                        "row": 19,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 35,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 103036,
+                                        "moduleId": 3,
+                                        "parentId": 103034,
+                                        "refId": 0,
+                                        "label": "消费税金额",
+                                        "value": "6.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{consumptionTaxAmou",
+                                        "type": "text",
+                                        "row": 19,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 36,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "moduleName": "订单明细",
+            "moduleDescribe": "配置商品、单价、数量、总价等",
+            "sort": 3,
+            "moduleId": 3
+        },
+        {
+            "components": [
+                {
+                    "component": {
+                        "id": 104001,
+                        "moduleId": 4,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "结算明细",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 1,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 1,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 104002,
+                                        "moduleId": 4,
+                                        "parentId": 104001,
+                                        "refId": 0,
+                                        "label": "商品原价合计",
+                                        "value": "商品原价合计",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "商品原价合计",
+                                        "type": "text",
+                                        "row": 2,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 2,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 104003,
+                                        "moduleId": 4,
+                                        "parentId": 104001,
+                                        "refId": 0,
+                                        "label": "商品原价合计金额",
+                                        "value": "16.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "",
+                                        "type": "text",
+                                        "row": 2,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 3,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 104004,
+                                        "moduleId": 4,
+                                        "parentId": 104001,
+                                        "refId": 0,
+                                        "label": "原始押金",
+                                        "value": "原始押金",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "原始押金",
+                                        "type": "text",
+                                        "row": 3,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 4,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 104005,
+                                        "moduleId": 4,
+                                        "parentId": 104001,
+                                        "refId": 0,
+                                        "label": "原始押金金额",
+                                        "value": "16.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{depositPay}",
+                                        "type": "text",
+                                        "row": 3,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 5,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 104006,
+                                        "moduleId": 4,
+                                        "parentId": 104001,
+                                        "refId": 0,
+                                        "label": "已退押金",
+                                        "value": "已退押金",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "已退押金",
+                                        "type": "text",
+                                        "row": 4,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 6,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 104007,
+                                        "moduleId": 4,
+                                        "parentId": 104001,
+                                        "refId": 0,
+                                        "label": "已退押金金额",
+                                        "value": "-16.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{depositRefund}",
+                                        "type": "text",
+                                        "row": 4,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 7,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 104008,
+                                        "moduleId": 4,
+                                        "parentId": 104001,
+                                        "refId": 0,
+                                        "label": "优惠合计",
+                                        "value": "优惠合计",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "优惠合计",
+                                        "type": "text",
+                                        "row": 5,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 8,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 104009,
+                                        "moduleId": 4,
+                                        "parentId": 104001,
+                                        "refId": 0,
+                                        "label": "优惠合计金额",
+                                        "value": "-8.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{privilegeTotalAmou",
+                                        "type": "text",
+                                        "row": 5,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 9,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 104010,
+                                        "moduleId": 4,
+                                        "parentId": 104001,
+                                        "refId": 0,
+                                        "label": "附加费合计",
+                                        "value": "附加费合计",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "附加费合计",
+                                        "type": "text",
+                                        "row": 6,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 10,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 104011,
+                                        "moduleId": 4,
+                                        "parentId": 104001,
+                                        "refId": 0,
+                                        "label": "附加费合计金额",
+                                        "value": "200.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{surchargeTotal}",
+                                        "type": "text",
+                                        "row": 6,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 11,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 104012,
+                                        "moduleId": 4,
+                                        "parentId": 104001,
+                                        "refId": 0,
+                                        "label": "四舍五入",
+                                        "value": "四舍五入",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "四舍五入",
+                                        "type": "text",
+                                        "row": 7,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 12,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 104013,
+                                        "moduleId": 4,
+                                        "parentId": 104001,
+                                        "refId": 0,
+                                        "label": "四舍五入金额",
+                                        "value": "-0.50",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{roundAmount}",
+                                        "type": "text",
+                                        "row": 7,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 13,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "component": {
+                        "id": 104014,
+                        "moduleId": 4,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "预付金",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 8,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 14,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 104015,
+                                        "moduleId": 4,
+                                        "parentId": 104014,
+                                        "refId": 0,
+                                        "label": "预付金",
+                                        "value": "预付金",
+                                        "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"left\"}",
+                                        "placeholder": "#{prePayName}",
+                                        "type": "text",
+                                        "row": 9,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 15,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 104016,
+                                        "moduleId": 4,
+                                        "parentId": 104014,
+                                        "refId": 0,
+                                        "label": "预付金额",
+                                        "value": "20.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{prePayCost}",
+                                        "type": "text",
+                                        "row": 9,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 16,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "component": {
+                        "id": 104017,
+                        "moduleId": 4,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "应付汇总",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 10,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 17,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 104018,
+                                        "moduleId": 4,
+                                        "parentId": 104017,
+                                        "refId": 0,
+                                        "label": "应付金额",
+                                        "value": "应付金额",
+                                        "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"left\"}",
+                                        "placeholder": "应付金额",
+                                        "type": "text",
+                                        "row": 11,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 18,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 104019,
+                                        "moduleId": 4,
+                                        "parentId": 104017,
+                                        "refId": 0,
+                                        "label": "应付金额",
+                                        "value": "216.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{goodTotalAmountPay",
+                                        "type": "text",
+                                        "row": 11,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 19,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "moduleName": "结算信息",
+            "moduleDescribe": "配置原价合计、优惠合计、汇总",
+            "sort": 4,
+            "moduleId": 4
+        },
+        {
+            "components": [
+                {
+                    "component": {
+                        "id": 105001,
+                        "moduleId": 5,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "财务处理",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 1,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 1,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 105002,
+                                        "moduleId": 5,
+                                        "parentId": 105001,
+                                        "refId": 0,
+                                        "label": "抹零",
+                                        "value": "抹零",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "抹零",
+                                        "type": "text",
+                                        "row": 2,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 2,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 105003,
+                                        "moduleId": 5,
+                                        "parentId": 105001,
+                                        "refId": 0,
+                                        "label": "抹零金额",
+                                        "value": "-6.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{quiteZero}",
+                                        "type": "text",
+                                        "row": 2,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 3,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 105004,
+                                        "moduleId": 5,
+                                        "parentId": 105001,
+                                        "refId": 0,
+                                        "label": "溢收",
+                                        "value": "溢收",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "溢收",
+                                        "type": "text",
+                                        "row": 3,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 4,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 105005,
+                                        "moduleId": 5,
+                                        "parentId": 105001,
+                                        "refId": 0,
+                                        "label": "溢收金额",
+                                        "value": "5.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{overflow}",
+                                        "type": "text",
+                                        "row": 3,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 5,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "component": {
+                        "id": 105006,
+                        "moduleId": 5,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "支付优惠",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 4,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 6,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 105007,
+                                        "moduleId": 5,
+                                        "parentId": 105006,
+                                        "refId": 0,
+                                        "label": "闪惠优惠",
+                                        "value": "闪惠优惠",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "#{payDiscountName}",
+                                        "type": "text",
+                                        "row": 5,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 7,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 105008,
+                                        "moduleId": 5,
+                                        "parentId": 105006,
+                                        "refId": 0,
+                                        "label": "闪惠优惠金额",
+                                        "value": "-6.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{payDiscountNumber}",
+                                        "type": "text",
+                                        "row": 5,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 8,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "component": {
+                        "id": 105009,
+                        "moduleId": 5,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "实付汇总",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 6,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 9,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 105010,
+                                        "moduleId": 5,
+                                        "parentId": 105009,
+                                        "refId": 0,
+                                        "label": "实付金额",
+                                        "value": "实付金额",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "实付金额",
+                                        "type": "text",
+                                        "row": 7,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 10,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 105011,
+                                        "moduleId": 5,
+                                        "parentId": 105009,
+                                        "refId": 0,
+                                        "label": "实付金额",
+                                        "value": "210.00",
+                                        "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{goodTotalAmountAct",
+                                        "type": "text",
+                                        "row": 7,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 11,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "component": {
+                        "id": 105012,
+                        "moduleId": 5,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "付款方式",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 8,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 12,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 105013,
+                                        "moduleId": 5,
+                                        "parentId": 105012,
+                                        "refId": 0,
+                                        "label": "付款方式",
+                                        "value": "现金",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "#{paymentName}",
+                                        "type": "text",
+                                        "row": 9,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 13,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 105014,
+                                        "moduleId": 5,
+                                        "parentId": 105012,
+                                        "refId": 0,
+                                        "label": "付款金额",
+                                        "value": "200.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{paymentAmount}",
+                                        "type": "text",
+                                        "row": 9,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 14,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "component": {
+                        "id": 105015,
+                        "moduleId": 5,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "找零实收",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 10,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 15,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 105016,
+                                        "moduleId": 5,
+                                        "parentId": 105015,
+                                        "refId": 0,
+                                        "label": "付款合计",
+                                        "value": "付款合计",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "付款合计",
+                                        "type": "text",
+                                        "row": 11,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 16,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 105017,
+                                        "moduleId": 5,
+                                        "parentId": 105015,
+                                        "refId": 0,
+                                        "label": "付款合计金额",
+                                        "value": "220.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{payTotalAmount}",
+                                        "type": "text",
+                                        "row": 11,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 17,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 105018,
+                                        "moduleId": 5,
+                                        "parentId": 105015,
+                                        "refId": 0,
+                                        "label": "找零",
+                                        "value": "找零",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "找零",
+                                        "type": "text",
+                                        "row": 12,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 18,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 105019,
+                                        "moduleId": 5,
+                                        "parentId": 105015,
+                                        "refId": 0,
+                                        "label": "找零金额",
+                                        "value": "-4.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{changeAmount}",
+                                        "type": "text",
+                                        "row": 12,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 19,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 105020,
+                                        "moduleId": 5,
+                                        "parentId": 105015,
+                                        "refId": 0,
+                                        "label": "现金实收",
+                                        "value": "现金实收",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "现金实收",
+                                        "type": "text",
+                                        "row": 13,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 20,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 105021,
+                                        "moduleId": 5,
+                                        "parentId": 105015,
+                                        "refId": 0,
+                                        "label": "现金实收金额",
+                                        "value": "200.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{cashAmount}",
+                                        "type": "text",
+                                        "row": 13,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 21,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "component": {
+                        "id": 105022,
+                        "moduleId": 5,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "消费税明细",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 14,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 22,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 105026,
+                                        "moduleId": 5,
+                                        "parentId": 105022,
+                                        "refId": 0,
+                                        "label": "消费税明细",
+                                        "value": "S=6%",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "#{consumptionTaxDeta",
+                                        "type": "text",
+                                        "row": 16,
+                                        "column": 1,
+                                        "width": 40,
+                                        "sort": 26,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 105027,
+                                        "moduleId": 5,
+                                        "parentId": 105022,
+                                        "refId": 0,
+                                        "label": "总额(计税)",
+                                        "value": "总额(计税)",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "#{consumptionTaxTota",
+                                        "type": "text",
+                                        "row": 16,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 27,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 105028,
+                                        "moduleId": 5,
+                                        "parentId": 105022,
+                                        "refId": 0,
+                                        "label": "税额",
+                                        "value": "税额",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{consumptionTaxDuty",
+                                        "type": "text",
+                                        "row": 16,
+                                        "column": 3,
+                                        "width": 30,
+                                        "sort": 28,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "thead": {
+                        "tableRowSet": {
+                            "columnSet": [
+                                {
+                                    "id": 105023,
+                                    "moduleId": 5,
+                                    "parentId": 105022,
+                                    "refId": 0,
+                                    "label": "消费税明细",
+                                    "value": "消费税明细",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                    "placeholder": "消费税明细",
+                                    "type": "head",
+                                    "row": 15,
+                                    "column": 1,
+                                    "width": 40,
+                                    "sort": 23,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                },
+                                {
+                                    "id": 105024,
+                                    "moduleId": 5,
+                                    "parentId": 105022,
+                                    "refId": 0,
+                                    "label": "总额(计税)",
+                                    "value": "总额(计税)",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                    "placeholder": "总额(计税)",
+                                    "type": "head",
+                                    "row": 15,
+                                    "column": 2,
+                                    "width": 30,
+                                    "sort": 24,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                },
+                                {
+                                    "id": 105025,
+                                    "moduleId": 5,
+                                    "parentId": 105022,
+                                    "refId": 0,
+                                    "label": "税额",
+                                    "value": "税额",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                    "placeholder": "税额",
+                                    "type": "head",
+                                    "row": 15,
+                                    "column": 3,
+                                    "width": 30,
+                                    "sort": 25,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "component": {
+                        "id": 105029,
+                        "moduleId": 5,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "储值卡余额",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 17,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 29,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 105031,
+                                        "moduleId": 5,
+                                        "parentId": 105029,
+                                        "refId": 0,
+                                        "label": "消费前",
+                                        "value": "消费前:300",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "消费前:#{valueCardBefor",
+                                        "type": "text",
+                                        "row": 19,
+                                        "column": 1,
+                                        "width": 50,
+                                        "sort": 31,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 105032,
+                                        "moduleId": 5,
+                                        "parentId": 105029,
+                                        "refId": 0,
+                                        "label": "消费后",
+                                        "value": "消费后:100",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "消费后:#{valueCardAfter",
+                                        "type": "text",
+                                        "row": 19,
+                                        "column": 2,
+                                        "width": 50,
+                                        "sort": 32,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "tableTitle": {
+                        "id": 105030,
+                        "moduleId": 5,
+                        "parentId": 105029,
+                        "refId": 0,
+                        "label": "储值卡余额",
+                        "value": "储值卡余额",
+                        "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"left\"}",
+                        "placeholder": "储值卡余额",
+                        "type": "title",
+                        "row": 18,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 30,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    }
+                },
+                {
+                    "id": 105033,
+                    "moduleId": 5,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "签字区",
+                    "value": "签字区",
+                    "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"left\"}",
+                    "placeholder": "签字区",
+                    "type": "text",
+                    "row": 20,
+                    "column": 1,
+                    "width": 100,
+                    "sort": 33,
+                    "createTime": "2019-01-07T06:23:51.000+0000",
+                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                }
+            ],
+            "moduleName": "支付信息",
+            "moduleDescribe": "配置付款方式、支付状态等",
+            "sort": 5,
+            "moduleId": 5
+        },
+        {
+            "components": [
+                {
+                    "component": {
+                        "id": 106001,
+                        "moduleId": 6,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "作废商品",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 1,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 1,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 106008,
+                                        "moduleId": 6,
+                                        "parentId": 106001,
+                                        "refId": 0,
+                                        "label": "商品",
+                                        "value": "1.回锅肉",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "#{goodDiscard}",
+                                        "type": "text",
+                                        "row": 5,
+                                        "column": 1,
+                                        "width": 40,
+                                        "sort": 8,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 106009,
+                                        "moduleId": 6,
+                                        "parentId": 106001,
+                                        "refId": 0,
+                                        "label": "单价",
+                                        "value": "16.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{priceDiscard}",
+                                        "type": "text",
+                                        "row": 5,
+                                        "column": 2,
+                                        "width": 20,
+                                        "sort": 9,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 106010,
+                                        "moduleId": 6,
+                                        "parentId": 106001,
+                                        "refId": 0,
+                                        "label": "数量",
+                                        "value": "1/份",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{numberDiscard}",
+                                        "type": "text",
+                                        "row": 5,
+                                        "column": 3,
+                                        "width": 20,
+                                        "sort": 10,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 106011,
+                                        "moduleId": 6,
+                                        "parentId": 106001,
+                                        "refId": 0,
+                                        "label": "价格",
+                                        "value": "16.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{amountDiscard}",
+                                        "type": "text",
+                                        "row": 5,
+                                        "column": 4,
+                                        "width": 20,
+                                        "sort": 11,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 106012,
+                                        "moduleId": 6,
+                                        "parentId": 106001,
+                                        "refId": 0,
+                                        "label": "备注",
+                                        "value": "【备注:多放肉】",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{memoDiscard}",
+                                        "type": "text",
+                                        "row": 6,
+                                        "column": 1,
+                                        "width": 100,
+                                        "sort": 12,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 106013,
+                                        "moduleId": 6,
+                                        "parentId": 106001,
+                                        "refId": 0,
+                                        "label": "作废理由",
+                                        "value": "作废理由:不想要了",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{reasonDiscard}",
+                                        "type": "text",
+                                        "row": 7,
+                                        "column": 1,
+                                        "width": 100,
+                                        "sort": 13,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "thead": {
+                        "tableRowSet": {
+                            "columnSet": [
+                                {
+                                    "id": 106004,
+                                    "moduleId": 6,
+                                    "parentId": 106001,
+                                    "refId": 0,
+                                    "label": "商品",
+                                    "value": "商品",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                    "placeholder": "商品",
+                                    "type": "head",
+                                    "row": 4,
+                                    "column": 1,
+                                    "width": 40,
+                                    "sort": 4,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                },
+                                {
+                                    "id": 106005,
+                                    "moduleId": 6,
+                                    "parentId": 106001,
+                                    "refId": 0,
+                                    "label": "单价",
+                                    "value": "单价",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                    "placeholder": "单价",
+                                    "type": "head",
+                                    "row": 4,
+                                    "column": 2,
+                                    "width": 20,
+                                    "sort": 5,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                },
+                                {
+                                    "id": 106006,
+                                    "moduleId": 6,
+                                    "parentId": 106001,
+                                    "refId": 0,
+                                    "label": "数量",
+                                    "value": "数量",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                    "placeholder": "数量",
+                                    "type": "head",
+                                    "row": 4,
+                                    "column": 3,
+                                    "width": 20,
+                                    "sort": 6,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                },
+                                {
+                                    "id": 106007,
+                                    "moduleId": 6,
+                                    "parentId": 106001,
+                                    "refId": 0,
+                                    "label": "价格",
+                                    "value": "价格",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                    "placeholder": "价格",
+                                    "type": "head",
+                                    "row": 4,
+                                    "column": 4,
+                                    "width": 20,
+                                    "sort": 7,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                }
+                            ]
+                        }
+                    },
+                    "category": {
+                        "id": 106003,
+                        "moduleId": 6,
+                        "parentId": 106001,
+                        "refId": 0,
+                        "label": "中类名称",
+                        "value": "中类(价格)",
+                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                        "placeholder": "#{goodMiddleCategory",
+                        "type": "category",
+                        "row": 3,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 3,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tableTitle": {
+                        "id": 106002,
+                        "moduleId": 6,
+                        "parentId": 106001,
+                        "refId": 0,
+                        "label": "作废商品",
+                        "value": "作废商品",
+                        "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"right\"}",
+                        "placeholder": "作废商品",
+                        "type": "title",
+                        "row": 2,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 2,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    }
+                },
+                {
+                    "component": {
+                        "id": 106014,
+                        "moduleId": 6,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "反结账原订单信息",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 8,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 14,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 106016,
+                                        "moduleId": 6,
+                                        "parentId": 106014,
+                                        "refId": 0,
+                                        "label": "原单商品原价合计",
+                                        "value": "原单商品原价合计",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "原单商品原价合计",
+                                        "type": "text",
+                                        "row": 10,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 16,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 106017,
+                                        "moduleId": 6,
+                                        "parentId": 106014,
+                                        "refId": 0,
+                                        "label": "原单商品原价合计金额",
+                                        "value": "216.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{oldOrderGoodTotalA",
+                                        "type": "text",
+                                        "row": 10,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 17,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 106018,
+                                        "moduleId": 6,
+                                        "parentId": 106014,
+                                        "refId": 0,
+                                        "label": "原单优惠合计",
+                                        "value": "原单优惠合计",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "原单优惠合计",
+                                        "type": "text",
+                                        "row": 11,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 18,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 106019,
+                                        "moduleId": 6,
+                                        "parentId": 106014,
+                                        "refId": 0,
+                                        "label": "原单优惠合计金额",
+                                        "value": "-8.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{oldOrderPrivilegeT",
+                                        "type": "text",
+                                        "row": 11,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 19,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 106020,
+                                        "moduleId": 6,
+                                        "parentId": 106014,
+                                        "refId": 0,
+                                        "label": "原单附加费合计",
+                                        "value": "原单附加费合计",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "原单附加费合计",
+                                        "type": "text",
+                                        "row": 12,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 20,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 106021,
+                                        "moduleId": 6,
+                                        "parentId": 106014,
+                                        "refId": 0,
+                                        "label": "原单附加费合计金额",
+                                        "value": "200.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{oldOrderSurchargeT",
+                                        "type": "text",
+                                        "row": 12,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 21,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 106022,
+                                        "moduleId": 6,
+                                        "parentId": 106014,
+                                        "refId": 0,
+                                        "label": "原单四舍五入",
+                                        "value": "原单四舍五入",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "原单四舍五入",
+                                        "type": "text",
+                                        "row": 13,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 22,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 106023,
+                                        "moduleId": 6,
+                                        "parentId": 106014,
+                                        "refId": 0,
+                                        "label": "原单四舍五入金额",
+                                        "value": "-0.50",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{oldOrderRoundAmoun",
+                                        "type": "text",
+                                        "row": 13,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 23,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 106024,
+                                        "moduleId": 6,
+                                        "parentId": 106014,
+                                        "refId": 0,
+                                        "label": "原单应付金额",
+                                        "value": "原单应付金额",
+                                        "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"left\"}",
+                                        "placeholder": "原单应付金额",
+                                        "type": "text",
+                                        "row": 14,
+                                        "column": 1,
+                                        "width": 70,
+                                        "sort": 24,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 106025,
+                                        "moduleId": 6,
+                                        "parentId": 106014,
+                                        "refId": 0,
+                                        "label": "原单应付金额",
+                                        "value": "216.00",
+                                        "valueStyle": "{\"fontSize\": 4,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{oldOrderGoodTotalA",
+                                        "type": "text",
+                                        "row": 14,
+                                        "column": 2,
+                                        "width": 30,
+                                        "sort": 25,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "tableTitle": {
+                        "id": 106015,
+                        "moduleId": 6,
+                        "parentId": 106014,
+                        "refId": 0,
+                        "label": "反结账原订单信息",
+                        "value": "反结账原订单信息",
+                        "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"left\"}",
+                        "placeholder": "反结账原订单信息",
+                        "type": "title",
+                        "row": 9,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 15,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    }
+                },
+                {
+                    "component": {
+                        "id": 106026,
+                        "moduleId": 6,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "反结账退货商品",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 15,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 26,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 106033,
+                                        "moduleId": 6,
+                                        "parentId": 106026,
+                                        "refId": 0,
+                                        "label": "商品",
+                                        "value": "1.回锅肉",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "#{goodDiscard}",
+                                        "type": "text",
+                                        "row": 19,
+                                        "column": 1,
+                                        "width": 40,
+                                        "sort": 33,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 106034,
+                                        "moduleId": 6,
+                                        "parentId": 106026,
+                                        "refId": 0,
+                                        "label": "单价",
+                                        "value": "16.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{priceDiscard}",
+                                        "type": "text",
+                                        "row": 19,
+                                        "column": 2,
+                                        "width": 20,
+                                        "sort": 34,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 106035,
+                                        "moduleId": 6,
+                                        "parentId": 106026,
+                                        "refId": 0,
+                                        "label": "数量",
+                                        "value": "1/份",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{numberDiscard}",
+                                        "type": "text",
+                                        "row": 19,
+                                        "column": 3,
+                                        "width": 20,
+                                        "sort": 35,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    },
+                                    {
+                                        "id": 106036,
+                                        "moduleId": 6,
+                                        "parentId": 106026,
+                                        "refId": 0,
+                                        "label": "价格",
+                                        "value": "16.00",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{amountDiscard}",
+                                        "type": "text",
+                                        "row": 19,
+                                        "column": 4,
+                                        "width": 20,
+                                        "sort": 36,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 106037,
+                                        "moduleId": 6,
+                                        "parentId": 106026,
+                                        "refId": 0,
+                                        "label": "备注",
+                                        "value": "【备注:多放肉】",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{memoDiscard}",
+                                        "type": "text",
+                                        "row": 20,
+                                        "column": 1,
+                                        "width": 100,
+                                        "sort": 37,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 106038,
+                                        "moduleId": 6,
+                                        "parentId": 106026,
+                                        "refId": 0,
+                                        "label": "作废理由",
+                                        "value": "作废理由:不想要了",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                        "placeholder": "#{reasonDiscard}",
+                                        "type": "text",
+                                        "row": 21,
+                                        "column": 1,
+                                        "width": 100,
+                                        "sort": 38,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "thead": {
+                        "tableRowSet": {
+                            "columnSet": [
+                                {
+                                    "id": 106029,
+                                    "moduleId": 6,
+                                    "parentId": 106026,
+                                    "refId": 0,
+                                    "label": "商品",
+                                    "value": "商品",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                    "placeholder": "商品",
+                                    "type": "head",
+                                    "row": 18,
+                                    "column": 1,
+                                    "width": 40,
+                                    "sort": 29,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                },
+                                {
+                                    "id": 106030,
+                                    "moduleId": 6,
+                                    "parentId": 106026,
+                                    "refId": 0,
+                                    "label": "单价",
+                                    "value": "单价",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                    "placeholder": "单价",
+                                    "type": "head",
+                                    "row": 18,
+                                    "column": 2,
+                                    "width": 20,
+                                    "sort": 30,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                },
+                                {
+                                    "id": 106031,
+                                    "moduleId": 6,
+                                    "parentId": 106026,
+                                    "refId": 0,
+                                    "label": "数量",
+                                    "value": "数量",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                    "placeholder": "数量",
+                                    "type": "head",
+                                    "row": 18,
+                                    "column": 3,
+                                    "width": 20,
+                                    "sort": 31,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                },
+                                {
+                                    "id": 106032,
+                                    "moduleId": 6,
+                                    "parentId": 106026,
+                                    "refId": 0,
+                                    "label": "价格",
+                                    "value": "价格",
+                                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                                    "placeholder": "价格",
+                                    "type": "head",
+                                    "row": 18,
+                                    "column": 4,
+                                    "width": 20,
+                                    "sort": 32,
+                                    "createTime": "2019-01-07T06:23:51.000+0000",
+                                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                                }
+                            ]
+                        }
+                    },
+                    "category": {
+                        "id": 106028,
+                        "moduleId": 6,
+                        "parentId": 106026,
+                        "refId": 0,
+                        "label": "中类名称",
+                        "value": "中类(价格)",
+                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                        "placeholder": "#{reverseaccountGood",
+                        "type": "category",
+                        "row": 17,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 28,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tableTitle": {
+                        "id": 106027,
+                        "moduleId": 6,
+                        "parentId": 106026,
+                        "refId": 0,
+                        "label": "反结账退货商品",
+                        "value": "反结账退货商品",
+                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                        "placeholder": "反结账退货商品",
+                        "type": "title",
+                        "row": 16,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 27,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    }
+                },
+                {
+                    "component": {
+                        "id": 106039,
+                        "moduleId": 6,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "反结账理由",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 22,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 39,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 106041,
+                                        "moduleId": 6,
+                                        "parentId": 106039,
+                                        "refId": 0,
+                                        "label": "反结账理由",
+                                        "value": "收款错误需要进行反结账",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                                        "placeholder": "#{reverseAccountReas",
+                                        "type": "text",
+                                        "row": 24,
+                                        "column": 1,
+                                        "width": 100,
+                                        "sort": 41,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "tableTitle": {
+                        "id": 106040,
+                        "moduleId": 6,
+                        "parentId": 106039,
+                        "refId": 0,
+                        "label": "反结账理由",
+                        "value": "反结账理由",
+                        "valueStyle": "{\"fontSize\": 2,\"textAlign\":\"left\"}",
+                        "placeholder": "反结账理由",
+                        "type": "title",
+                        "row": 23,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 40,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    }
+                }
+            ],
+            "moduleName": "退货信息",
+            "moduleDescribe": "展示作废商品、反结账退货商品等",
+            "sort": 6,
+            "moduleId": 6
+        },
+        {
+            "components": [
+                {
+                    "id": 107001,
+                    "moduleId": 7,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "自定义二维码",
+                    "value": "文案内容",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                    "placeholder": "文案内容",
+                    "type": "text",
+                    "row": 1,
+                    "column": 1,
+                    "width": 100,
+                    "sort": 1,
+                    "createTime": "2019-01-07T06:23:51.000+0000",
+                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                }
+            ],
+            "moduleName": "二维码",
+            "moduleDescribe": "配置二维码",
+            "sort": 7,
+            "moduleId": 7
+        },
+        {
+            "components": [
+                {
+                    "id": 108001,
+                    "moduleId": 8,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "服务员",
+                    "value": "服务员:李四",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                    "placeholder": "服务员:#{waiter}",
+                    "type": "text",
+                    "row": 1,
+                    "column": 1,
+                    "width": 50,
+                    "sort": 1,
+                    "createTime": "2019-01-07T06:23:51.000+0000",
+                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                },
+                {
+                    "id": 108002,
+                    "moduleId": 8,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "操作员",
+                    "value": "操作员:王五",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                    "placeholder": "操作员:#{cashier}",
+                    "type": "text",
+                    "row": 1,
+                    "column": 2,
+                    "width": 50,
+                    "sort": 2,
+                    "createTime": "2019-01-07T06:23:51.000+0000",
+                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                },
+                {
+                    "id": 108003,
+                    "moduleId": 8,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "开单",
+                    "value": "开单:YYYY-MM-DD HH:MM:SS",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                    "placeholder": "开单:#{openBillingTime",
+                    "type": "text",
+                    "row": 2,
+                    "column": 1,
+                    "width": 50,
+                    "sort": 3,
+                    "createTime": "2019-01-07T06:23:51.000+0000",
+                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                },
+                {
+                    "id": 108004,
+                    "moduleId": 8,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "打印",
+                    "value": "打印:YYYY-MM-DD HH:MM:SS",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"right\"}",
+                    "placeholder": "打印:#{printTime}",
+                    "type": "text",
+                    "row": 2,
+                    "column": 2,
+                    "width": 50,
+                    "sort": 4,
+                    "createTime": "2019-01-07T06:23:51.000+0000",
+                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                },
+                {
+                    "id": 108005,
+                    "moduleId": 8,
+                    "parentId": 0,
+                    "refId": 0,
+                    "label": "操作时间",
+                    "value": "操作:YYYY-MM-DD HH:MM:SS",
+                    "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"left\"}",
+                    "placeholder": "操作:#{operationTime}",
+                    "type": "text",
+                    "row": 3,
+                    "column": 1,
+                    "width": 50,
+                    "sort": 5,
+                    "createTime": "2019-01-07T06:23:51.000+0000",
+                    "updateTime": "2019-01-07T06:23:51.000+0000"
+                },
+                {
+                    "component": {
+                        "id": 108006,
+                        "moduleId": 8,
+                        "parentId": 0,
+                        "refId": 0,
+                        "label": "商户信息",
+                        "value": "",
+                        "valueStyle": "",
+                        "placeholder": "",
+                        "type": "grid",
+                        "row": 4,
+                        "column": 1,
+                        "width": 100,
+                        "sort": 6,
+                        "createTime": "2019-01-07T06:23:51.000+0000",
+                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                    },
+                    "tbody": {
+                        "tableRowSet": [
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 108007,
+                                        "moduleId": 8,
+                                        "parentId": 108006,
+                                        "refId": 0,
+                                        "label": "商户地址",
+                                        "value": "XX市XX地址",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                                        "placeholder": "#{shopAddress}",
+                                        "type": "text",
+                                        "row": 5,
+                                        "column": 1,
+                                        "width": 100,
+                                        "sort": 7,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 108008,
+                                        "moduleId": 8,
+                                        "parentId": 108006,
+                                        "refId": 0,
+                                        "label": "商户电话号码",
+                                        "value": "15XXXXXXXXX",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                                        "placeholder": "#{shopPhone}",
+                                        "type": "text",
+                                        "row": 6,
+                                        "column": 1,
+                                        "width": 100,
+                                        "sort": 8,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            },
+                            {
+                                "columnSet": [
+                                    {
+                                        "id": 108009,
+                                        "moduleId": 8,
+                                        "parentId": 108006,
+                                        "refId": 0,
+                                        "label": "商户自定义内容",
+                                        "value": "欢迎下次光临",
+                                        "valueStyle": "{\"fontSize\": 1,\"textAlign\":\"center\"}",
+                                        "placeholder": "欢迎下次光临",
+                                        "type": "text",
+                                        "row": 7,
+                                        "column": 1,
+                                        "width": 100,
+                                        "sort": 9,
+                                        "createTime": "2019-01-07T06:23:51.000+0000",
+                                        "updateTime": "2019-01-07T06:23:51.000+0000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "moduleName": "底栏",
+            "moduleDescribe": "配置服务员、时间、商户信息等",
+            "sort": 8,
+            "moduleId": 8
+        }
+    ]
+
+}
