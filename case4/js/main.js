@@ -1,4 +1,8 @@
 var myApp = angular.module('myApp', []);
+var url = "http://192.168.11.141:8080/zxcity_restful/ws/rest";
+var shopId = getUrlQueryString("shopId") || 288;
+var templateId = getUrlQueryString("templateId") || 1;
+var templateType = getUrlQueryString("templateType") || 1;
 /**
  * This controller is used to manage the global
  * @param $scope
@@ -7,8 +11,22 @@ var myApp = angular.module('myApp', []);
 myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
     // 加载系统模板组件
     var param = {
-        url: "data/system-component-custom.json",
+        url: url,
+        method: "POST",
+        data: {
+            cmd: "printerTicket/getSystemComponents",
+            data: {
+                "templateId": templateId,
+                "documentType": templateType
+            },
+            version: 1
+        },
         sCallback: function (res) {
+            var data = res.data;
+            if (9 === data.code) {
+                alert(data.msg);
+                return;
+            }
             /*
               阶段一：准备模板model层数据源
                 1.根据打印模板类型（documentType），请求系统模板组件（system-component）作为数据源。
@@ -17,7 +35,7 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
                 4.从源中抽取父组件id，封装公共对象（componentEnableStaus）绑定左右两侧父组件，用于启用/禁用状态联动，默认初始为禁用状态。
                 5.记录模板类型$scope.documentType
             */
-            var modules = res.data.modules,
+            var modules = data.data.modules,
                 panelModules = [],
                 templateModules = [],
                 componentEnableStaus = {};
@@ -39,9 +57,6 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
                     }
                     // 右侧预览组件
                     if (!component.hasOwnProperty("component")) {
-                        if (component.type === 'hidden') {
-                            continue;
-                        }
                         if (rows.length > 0) {
                             var rowNum = component.row;
                             var recentRowColumn = rows[rows.length - 1].components[0];
@@ -92,12 +107,26 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
             $scope.documentType = 1;
         }
     };
-    baseRequest($http, param);
+    baseRequestForm($http, param);
 
     // 加载自定义模板组件
     param = {
-        url: "data/preview-component-custom.json",
+        url: url,
+        method: "POST",
+        data: {
+            cmd: "printerTicket/getPreviewComponents",
+            data: {
+                "templateId": templateId,
+                "documentType": templateType
+            },
+            version: 1
+        },
         sCallback: function (res) {
+            var data = res.data;
+            if (9 === data.code) {
+                alert(data.msg);
+                return;
+            }
             /*
                 阶段三：加载自定义模板数据源
                   1.通过模板id（templateId）请求自定义模板组件。
@@ -105,12 +134,11 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
                   3.根据自定义模板数据源，更新系统预览组件（templateModules）的CSS样式
                   4.到此，自定义模板数据源 的使命到此结束。以后提到的模板、模块、组件的概念，都是指系统组件，所有model层的操作，都是围绕系统组件数据源展开。
              */
-            var previewModules = res.data;
-            rerenderComponentEnableStatus(previewModules);
-            rerenderComponentValueStyle(previewModules);
+            rerenderComponentEnableStatus(data.data);
+            rerenderComponentValueStyle(data.data);
         }
     };
-    baseRequest($http, param);
+    baseRequestForm($http, param);
 
     /**
      * 更新公共对象父组件的启用/禁用状态
@@ -289,7 +317,7 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
         postData.modules = templateModules;
 
         var param = {
-            url: "http://192.168.11.141:8080/zxcity_restful/ws/rest",
+            url: url,
             method: "POST",
             data: {
                 cmd: "printerTicket/save",
@@ -297,10 +325,35 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
                 version: 1
             },
             sCallback: function (res) {
-                console.log("success: ", res);
+                alert(res.data.msg);
+                console.log("postData: ", postData);
+                console.log("success: ", res.data.data);
             }
         };
-        // baseRequestForm($http, param);
+        baseRequestForm($http, param);
+    };
+
+    /**
+     * 删除当前模板
+     */
+    $scope.removeTemplate = function () {
+        var param = {
+            url: url,
+            method: "POST",
+            data: {
+                cmd: "printerTicket/remove",
+                data: {
+                    "shopId": shopId,
+                    "templateId": templateId
+                },
+                version: 1
+            },
+            sCallback: function (res) {
+                alert(res.data.msg);
+                window.location.reload();
+            }
+        };
+        baseRequestForm($http, param);
     }
 }]);
 
