@@ -138,13 +138,7 @@
                             "sort": 1,
                             "createTime": "2019-01-07T06:23:50.000+0000",
                             "updateTime": "2019-01-07T06:23:50.000+0000"
-                        }
-                    ],
-                    "sort": 1,
-                    "type": "text"
-                },
-                {
-                    "components": [
+                        },
                         {
                             "id": 6,
                             "documentTemplateId": 1,
@@ -165,7 +159,7 @@
                             "updateTime": "2019-01-07T06:23:50.000+0000"
                         }
                     ],
-                    "sort": 2,
+                    "sort": 1,
                     "type": "text"
                 },
                 {
@@ -188,13 +182,7 @@
                             "sort": 3,
                             "createTime": "2019-01-07T06:23:50.000+0000",
                             "updateTime": "2019-01-07T06:23:50.000+0000"
-                        }
-                    ],
-                    "sort": 3,
-                    "type": "text"
-                },
-                {
-                    "components": [
+                        },
                         {
                             "id": 8,
                             "documentTemplateId": 1,
@@ -215,7 +203,7 @@
                             "updateTime": "2019-01-07T06:23:50.000+0000"
                         }
                     ],
-                    "sort": 4,
+                    "sort": 3,
                     "type": "text"
                 },
                 {
@@ -3300,13 +3288,7 @@
                             "sort": 1,
                             "createTime": "2019-01-07T06:23:51.000+0000",
                             "updateTime": "2019-01-07T06:23:51.000+0000"
-                        }
-                    ],
-                    "sort": 1,
-                    "type": "text"
-                },
-                {
-                    "components": [
+                        },
                         {
                             "id": 144,
                             "documentTemplateId": 1,
@@ -3327,7 +3309,7 @@
                             "updateTime": "2019-01-07T06:23:51.000+0000"
                         }
                     ],
-                    "sort": 2,
+                    "sort": 1,
                     "type": "text"
                 },
                 {
@@ -3350,13 +3332,7 @@
                             "sort": 3,
                             "createTime": "2019-01-07T06:23:51.000+0000",
                             "updateTime": "2019-01-07T06:23:51.000+0000"
-                        }
-                    ],
-                    "sort": 3,
-                    "type": "text"
-                },
-                {
-                    "components": [
+                        },
                         {
                             "id": 146,
                             "documentTemplateId": 1,
@@ -3377,7 +3353,7 @@
                             "updateTime": "2019-01-07T06:23:51.000+0000"
                         }
                     ],
-                    "sort": 4,
+                    "sort": 3,
                     "type": "text"
                 },
                 {

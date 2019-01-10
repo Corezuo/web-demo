@@ -283,14 +283,14 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
 
         // Todo: Mock modules
         var param = {
-            url: "data/update-custom.json",
+            url: "data/save-custom.json",
             sCallback: function (res) {
                 console.log("res: ", res);
                 param = {
                     url: "http://192.168.11.141:8080/zxcity_restful/ws/rest",
                     method: "POST",
                     data: {
-                        cmd: "printerTicket/update",
+                        cmd: "printerTicket/save",
                         data: res.data,
                         version: 1
                     },
