@@ -281,7 +281,7 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
         postData.url = templatePreviewPictureUrl;
         postData.modules = templateModules;
 
-        // Todo: Mock modules数据
+        // Todo: Mock modules
         var param = {
             url: "data/update-custom.json",
             sCallback: function (res) {
