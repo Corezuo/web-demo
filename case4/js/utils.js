@@ -88,3 +88,14 @@ function lineToHump(value) {
 function humpToLine(value) {
     return value.replace(/([A-Z])/g,"-$1").toLowerCase();
 }
+
+/**
+ * 根据参数名获取地址栏URL里的参数
+ * @param name 参数名
+ * @return {string}
+ */
+function getUrlQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    return r !== null ? unescape(r[2]) : null;
+}

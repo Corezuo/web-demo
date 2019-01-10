@@ -55,6 +55,13 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
                     var components = [];
                     components.push(component);
                     row.components = components;
+                    if (component.hasOwnProperty("component")) {
+                        row.sort = component.component.sort;
+                        row.type = component.component.type;
+                    } else {
+                        row.sort = component.sort;
+                        row.type = component.type;
+                    }
                     rows.push(row);
                 }
                 var panelModule = {};
@@ -281,27 +288,19 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
         postData.url = templatePreviewPictureUrl;
         postData.modules = templateModules;
 
-        // Todo: Mock modules
         var param = {
-            url: "data/save-custom.json",
+            url: "http://192.168.11.141:8080/zxcity_restful/ws/rest",
+            method: "POST",
+            data: {
+                cmd: "printerTicket/save",
+                data: postData,
+                version: 1
+            },
             sCallback: function (res) {
-                console.log("res: ", res);
-                param = {
-                    url: "http://192.168.11.141:8080/zxcity_restful/ws/rest",
-                    method: "POST",
-                    data: {
-                        cmd: "printerTicket/save",
-                        data: res.data,
-                        version: 1
-                    },
-                    sCallback: function (res) {
-                        console.log("success: ", res);
-                    }
-                };
-                baseRequestForm($http, param);
+                console.log("success: ", res);
             }
         };
-        baseRequest($http, param);
+        // baseRequestForm($http, param);
     }
 }]);
 
