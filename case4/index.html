@@ -24,7 +24,8 @@
                         <label>模板名称<span style="color: red;font-size: 20px;">*</span></label>
                         <input ng-init="moduleName=null;" ng-model="moduleName" type="text" maxlength="10" class="form-control" placeholder="请输入模板名称">
                     </div>
-                    <button type="button" class="btn btn-danger" ng-click="buildCustomTemplate()">保存</button>
+                    <button type="button" class="btn btn-primary" ng-click="buildCustomTemplate()">保存</button>
+                    <button type="button" class="btn btn-danger" ng-click="removeTemplate()">删除</button>
                 </form>
             </div>
         </div>
@@ -60,7 +61,7 @@
                                 <div ng-repeat="templateComponent in templateRow.components"
                                      style="{{templateComponent | filterStyle}}"
                                      ng-class="{'template-component': templateComponent.component == null, 'template-component-individuation': templateComponent.component != null}"
-                                     ng-show="templateComponent.component == null ? componentEnableStaus[templateComponent.id] : componentEnableStaus[templateComponent.component.id]"
+                                     ng-show="templateComponent.component == null ? componentEnableStaus[templateComponent.id] && templateComponent.type !== 'hidden' : componentEnableStaus[templateComponent.component.id]"
                                      ng-click="templateComponent.component == null ? doTemplateComponentActive(templateComponent) : null">
 
                                     <!--text-->
@@ -95,7 +96,11 @@
                                                 </div>
                                             </div>
                                             <div class="template-component-tr" ng-repeat="tableTbodyRow in templateComponent.tbody.tableRowSet">
-                                                <div class="template-component-td template-component" ng-click="doTemplateComponentActive(tableTbodyRowColumn)" style="{{tableTbodyRowColumn | filterStyle}}" ng-repeat="tableTbodyRowColumn in tableTbodyRow.columnSet">
+                                                <div class="template-component-td template-component"
+                                                     ng-show="tableTbodyRowColumn.refId === 0 ? true : componentEnableStaus[tableTbodyRowColumn.refId]"
+                                                     ng-click="doTemplateComponentActive(tableTbodyRowColumn)"
+                                                     style="{{tableTbodyRowColumn | filterStyle}}" ng-repeat="tableTbodyRowColumn in tableTbodyRow.columnSet">
+
                                                     {{tableTbodyRowColumn.value}}
                                                 </div>
                                             </div>
