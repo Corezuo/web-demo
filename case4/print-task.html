@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>打印任务</title>
+    <link rel="stylesheet" href="../assets/bootstrap.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="col-lg-12">
+            <div class="row">
+                <h1>打印任务</h1>
+                <button class="btn btn-primary">加载模板</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="application/javascript" src="../assets/template-web.js"></script>
+    <script type="application/javascript" src="../assets/jquery-3.3.1.js"></script>
+    <script type="application/javascript">
+        // 1.加载用户设置的模板，渲染成模板HTML页面，使用占位符填充。
+        // 示例：
+        var placeHolder = "#{shopName}";
+        var newPlaceHolder = "{{shopName}}";
+
+        // 2.加载订单信息，提取打印的数据对象。
+
+        // 3.使用template.js加载HTML模板，使用打印数据 替换 占位符，渲染生成新的HTML页面。
+
+        // 4.发送打印任务。
+    </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 var myApp = angular.module('myApp', []);
-var url = "http://192.168.11.141:8080/zxcity_restful/ws/rest";
+var url = "http://192.168.11.141:8081/zxcity_restful/ws/rest";
 var shopId = getUrlQueryString("shopId") || 288;
 var templateId = getUrlQueryString("templateId") || 1;
 var templateType = getUrlQueryString("templateType") || 1;
