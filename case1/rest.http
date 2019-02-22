@@ -1,0 +1,4 @@
+POST http://139.129.xxx.xxx:9200/zxcity_jvm_monitor/file/_search
+###
+DELETE http://139.129.xxx.xxx:9200/zxcity_jvm_monitor
+###
