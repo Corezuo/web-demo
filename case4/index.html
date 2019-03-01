@@ -39,7 +39,7 @@
                         <div class="panel-module-body">
                             <div ng-repeat="panelComponent in panelModule.components"
                                  ng-class="{'panel-component': true, 'switch-on': componentEnableStaus[panelComponent.id]}"
-                                 ng-click="switchComponentStatus(panelComponent.id, componentEnableStaus[panelComponent.id])">
+                                 ng-click="switchComponentStatus(panelComponent.id, componentEnableStaus[panelComponent.id], panelComponent.enable)">
                                 <table>
                                     <tbody>
                                         <tr>

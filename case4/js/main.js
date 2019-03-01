@@ -1,5 +1,5 @@
 var myApp = angular.module('myApp', []);
-var url = "http://192.168.11.141:8081/zxcity_restful/ws/rest";
+var url = "http://192.168.14.141:8081/zxcity_restful/ws/rest";
 var shopId = getUrlQueryString("shopId") || 288;
 var templateId = getUrlQueryString("templateId") || 1;
 var templateType = getUrlQueryString("templateType") || 1;
@@ -154,10 +154,14 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
                 for (var n = 0; n < row.components.length; n++) {
                     var component = row.components[n];
                     if (component.component) {
-                        /*注意：使用系统组件id*/
-                        componentEnableStaus[component.component.systemComponentId] = true;
+                        if (component.component.enable === 1) {
+                            /*注意：使用系统组件id*/
+                            componentEnableStaus[component.component.systemComponentId] = true;
+                        }
                     } else {
-                        componentEnableStaus[component.systemComponentId] = true;
+                        if (component.enable === 1) {
+                            componentEnableStaus[component.systemComponentId] = true;
+                        }
                     }
                 }
             }
@@ -393,11 +397,14 @@ myApp.controller('panelCtrl', ['$scope', function ($scope) {
      * 切换启用/禁用状态
      * @param parentId   父组件id
      * @param showStatus true-启用，false-禁用
+     * @param enable 启用状态：0 未启用 1 启用
      */
-    $scope.switchComponentStatus = function (parentId, showStatus) {
-        var componentEnableStaus = $scope.componentEnableStaus;
-        componentEnableStaus[parentId] = !showStatus;
-        $scope.componentEnableStaus = componentEnableStaus;
+    $scope.switchComponentStatus = function (parentId, showStatus, enable) {
+        if (enable === 1) {
+            var componentEnableStaus = $scope.componentEnableStaus;
+            componentEnableStaus[parentId] = !showStatus;
+            $scope.componentEnableStaus = componentEnableStaus;
+        }
     };
 
 }]);
