@@ -1,4 +1,22 @@
-POST http://139.129.xxx.xxx:9200/zxcity_jvm_monitor/file/_search
-###
-DELETE http://139.129.xxx.xxx:9200/zxcity_jvm_monitor
+### 列出所有指数
+GET http://192.168.14.141:9200/_cat/indices?v
+### 删除索引
+DELETE http://192.168.14.141:9200/zxcity_elk_jvm_monitor.2019-03-14
+### 查询数据
+POST http://192.168.14.141:9200/zxcity_elk_jvm_monitor.2019-03-14/file/_search
+
+{
+    "query" : {
+        "bool": {
+            "must": [
+                {
+                     "match": { "message.finalName" : "game-service" }
+                }
+            ]
+        }
+    },
+    "from": 0,
+    "size": 20
+}
+
 ###
