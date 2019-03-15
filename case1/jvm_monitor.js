@@ -194,7 +194,7 @@ function pageCallback (data, total) {
             trigger: 'axis'
         },
         legend: {
-            data:['运行总量', 'http运行量', 'dubbo运行量', 'es运行量']
+            data:['运行总量', 'http运行量', 'dubbo运行量', 'ES运行量']
         },
         grid: {
             left: '3%',
