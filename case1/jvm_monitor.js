@@ -4,6 +4,7 @@ $(function () {
         sdeName = decodeURI(getQueryString("sdeName"));
     if (finalName != null && finalName.trim() !== "" && sdeName != null && sdeName.trim() !== "") {
         $('title').html(sdeName + finalName + "服务");
+        $("#finalName").text(sdeName + finalName);
         queryData(finalName, 10, pageCallback);
         setInterval(function () {
             /** 每10秒刷新 */
@@ -38,7 +39,8 @@ function pageCallback (data, total) {
         fullEdenSpaceCollecteds = [],
         fullSurvivorSpaceCollecteds = [],
         fullOldGenCollecteds = [],
-        timeData = [];
+        timeData = [],
+        processors = 0;
 
     for (var i = 0; i < data.length; i++) {
         var item = data[i];
@@ -58,11 +60,15 @@ function pageCallback (data, total) {
         fullSurvivorSpaceCollecteds.unshift(parseInt(item.fullSurvivorSpaceCollected));
         fullOldGenCollecteds.unshift(parseInt(item.fullOldGenCollected));
         timeData.unshift(item.collectorTime.split(".")[0].split("T")[1]);
+        if (processors === 0) {
+            processors = item.processors;
+        }
     }
+
     /** 绘制DOM */
     cpuChart.setOption({
         title: {
-            text: '新生代GC监控图',
+            text: 'CPU监控图',
             show: false
         },
         tooltip : {
@@ -246,7 +252,7 @@ function pageCallback (data, total) {
     });
     gcEdenLine.setOption({
         title: {
-            text: '新生代GC监控图',
+            text: 'MinorGC监控图',
             show: false
         },
         tooltip : {
@@ -312,7 +318,7 @@ function pageCallback (data, total) {
     });
     gcOldLine.setOption({
         title: {
-            text: '老年代GC监控图',
+            text: 'FullGC监控图',
             show: false
         },
         tooltip : {
@@ -383,6 +389,7 @@ function pageCallback (data, total) {
         + " Tenured：" + data[0].oldMaxBytes + "MB"
         + " Meta Space：" + data[0].permMaxBytes + "MB";
     $("#initValue").text(value);
+    $("#processors").text("（" + processors + " Core）");
 };
 
 /**
@@ -392,7 +399,7 @@ function pageCallback (data, total) {
  * @param callback    回调函数
  */
 function queryData(finalName, limit, callback) {
-    var esIndex = "zxcity_jvm_monitor." + getDataTime(),
+    var esIndex = "zxcity_elk_jvm_monitor." + getDataTime(),
         startDate = $('#startDate').val(),
         endDate = $('#endDate').val(),
         params = {},
