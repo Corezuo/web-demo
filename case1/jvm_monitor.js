@@ -57,9 +57,17 @@ function pageCallback (data, total) {
         dubboThreads.unshift(parseInt(item.dubboRunCount));
         esThreads.unshift(parseInt(item.esCount));
         singleCoreCpuLoad.unshift(parseFloat(item.singleCoreCpuLoad));
-        minorGcCollectorHeaps.unshift(parseInt(item.minorGcBeforeHeap) - parseInt(item.minorGcAfterHeap));
+        if (parseInt(item.minorGcBeforeHeap) - parseInt(item.minorGcAfterHeap) > 0) {
+            minorGcCollectorHeaps.unshift(parseInt(item.minorGcBeforeHeap) - parseInt(item.minorGcAfterHeap));
+        } else {
+            minorGcCollectorHeaps.unshift(0);
+        }
         minorGcAfterHeaps.unshift(parseInt(item.minorGcAfterHeap));
-        fullGcCollectorHeaps.unshift(parseInt(item.fullGcBeforeHeap) - parseInt(item.fullGcAfterHeap));
+        if (parseInt(item.fullGcBeforeHeap) - parseInt(item.fullGcAfterHeap) > 0) {
+            fullGcCollectorHeaps.unshift(parseInt(item.fullGcBeforeHeap) - parseInt(item.fullGcAfterHeap));
+        } else {
+            fullGcCollectorHeaps.unshift(0);
+        }
         fullGcAfterHeaps.unshift(parseInt(item.fullGcAfterHeap));
         timeData.unshift(item.collectorTime.split(".")[0].split("T")[1]);
         if (processors === 0) {
