@@ -33,12 +33,10 @@ function pageCallback (data, total) {
         dubboThreads = [],
         esThreads = [],
         singleCoreCpuLoad = [],
-        edenSpaceCollecteds = [],
-        survivorSpaceCollecteds = [],
-        oldGenCollecteds = [],
-        fullEdenSpaceCollecteds = [],
-        fullSurvivorSpaceCollecteds = [],
-        fullOldGenCollecteds = [],
+        minorGcCollectorHeaps = [],
+        minorGcAfterHeaps = [],
+        fullGcCollectorHeaps = [],
+        fullGcAfterHeaps = [],
         timeData = [],
         processors = 0;
 
@@ -53,18 +51,15 @@ function pageCallback (data, total) {
         dubboThreads.unshift(parseInt(item.dubboRunCount));
         esThreads.unshift(parseInt(item.esCount));
         singleCoreCpuLoad.unshift(parseFloat(item.singleCoreCpuLoad));
-        edenSpaceCollecteds.unshift(parseInt(item.edenSpaceCollected));
-        survivorSpaceCollecteds.unshift(parseInt(item.survivorSpaceCollected));
-        oldGenCollecteds.unshift(parseInt(item.oldGenCollected));
-        fullEdenSpaceCollecteds.unshift(parseInt(item.fullEdenSpaceCollected));
-        fullSurvivorSpaceCollecteds.unshift(parseInt(item.fullSurvivorSpaceCollected));
-        fullOldGenCollecteds.unshift(parseInt(item.fullOldGenCollected));
+        minorGcCollectorHeaps.unshift(parseInt(item.minorGcBeforeHeap) - parseInt(item.minorGcAfterHeap));
+        minorGcAfterHeaps.unshift(parseInt(item.minorGcAfterHeap));
+        fullGcCollectorHeaps.unshift(parseInt(item.fullGcBeforeHeap) - parseInt(item.fullGcAfterHeap));
+        fullGcAfterHeaps.unshift(parseInt(item.fullGcAfterHeap));
         timeData.unshift(item.collectorTime.split(".")[0].split("T")[1]);
         if (processors === 0) {
             processors = item.processors;
         }
     }
-
     /** 绘制DOM */
     cpuChart.setOption({
         title: {
@@ -252,25 +247,17 @@ function pageCallback (data, total) {
     });
     gcEdenLine.setOption({
         title: {
-            text: 'MinorGC监控图',
+            text: 'Minor监控图',
             show: false
         },
         tooltip : {
             trigger: 'axis',
-            axisPointer: {
-                type: 'cross',
-                label: {
-                    backgroundColor: '#6a7985'
-                }
+            axisPointer : {
+                type : 'shadow'
             }
         },
         legend: {
-            data: ["Eden", "Survivor", "Tenured"]
-        },
-        toolbox: {
-            feature: {
-                saveAsImage: {}
-            }
+            data: ['使用量', '回收量']
         },
         grid: {
             left: '3%',
@@ -278,41 +265,27 @@ function pageCallback (data, total) {
             bottom: '3%',
             containLabel: true
         },
-        xAxis : [
+        xAxis:  {
+            type: 'category',
+            name: "时间",
+            data: timeData
+        },
+        yAxis: {
+            type: 'value',
+            name: "堆内存（MB）"
+        },
+        series: [
             {
-                type : 'category',
-                name: "时间",
-                boundaryGap : false,
-                data : timeData
-            }
-        ],
-        yAxis : [
-            {
-                type : 'value',
-                name: "回收量（MB）"
-            }
-        ],
-        series : [
-            {
-                name:'Eden',
-                type:'line',
+                name: '使用量',
+                type: 'bar',
                 stack: '总量',
-                areaStyle: {},
-                data: edenSpaceCollecteds
+                data: minorGcAfterHeaps
             },
             {
-                name:'Survivor',
-                type:'line',
+                name: '回收量',
+                type: 'bar',
                 stack: '总量',
-                areaStyle: {},
-                data: survivorSpaceCollecteds
-            },
-            {
-                name:'Tenured',
-                type:'line',
-                stack: '总量',
-                areaStyle: {},
-                data: oldGenCollecteds
+                data: minorGcCollectorHeaps
             }
         ]
     });
@@ -323,20 +296,12 @@ function pageCallback (data, total) {
         },
         tooltip : {
             trigger: 'axis',
-            axisPointer: {
-                type: 'cross',
-                label: {
-                    backgroundColor: '#6a7985'
-                }
+            axisPointer : {
+                type : 'shadow'
             }
         },
         legend: {
-            data: ["Eden", "Survivor", "Tenured"]
-        },
-        toolbox: {
-            feature: {
-                saveAsImage: {}
-            }
+            data: ['回收量', 'GC后']
         },
         grid: {
             left: '3%',
@@ -344,41 +309,39 @@ function pageCallback (data, total) {
             bottom: '3%',
             containLabel: true
         },
-        xAxis : [
+        xAxis:  {
+            type: 'category',
+            name: "时间",
+            data: timeData
+        },
+        yAxis: {
+            type: 'value',
+            name: "堆内存（MB）"
+        },
+        series: [
             {
-                type : 'category',
-                name: "时间",
-                boundaryGap : false,
-                data : timeData
-            }
-        ],
-        yAxis : [
-            {
-                type : 'value',
-                name: "回收量（MB）"
-            }
-        ],
-        series : [
-            {
-                name:'Eden',
-                type:'line',
+                name: '回收量',
+                type: 'bar',
                 stack: '总量',
-                areaStyle: {},
-                data: fullEdenSpaceCollecteds
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'insideBottom'
+                    }
+                },
+                data: fullGcCollectorHeaps
             },
             {
-                name:'Survivor',
-                type:'line',
+                name: 'GC后',
+                type: 'bar',
                 stack: '总量',
-                areaStyle: {},
-                data: fullSurvivorSpaceCollecteds
-            },
-            {
-                name:'Tenured',
-                type:'line',
-                stack: '总量',
-                areaStyle: {},
-                data: fullOldGenCollecteds
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideBottom'
+                    }
+                },
+                data: fullGcAfterHeaps
             }
         ]
     });
@@ -399,7 +362,7 @@ function pageCallback (data, total) {
  * @param callback    回调函数
  */
 function queryData(finalName, limit, callback) {
-    var esIndex = "zxcity_elk_jvm_monitor." + getDataTime(),
+    var esIndex = "/zxcity_elk_jvm_monitor." + getDate(),
         startDate = $('#startDate').val(),
         endDate = $('#endDate').val(),
         params = {},
@@ -437,8 +400,11 @@ function queryData(finalName, limit, callback) {
     console.log(params);
     console.log("==============请求参数================");
 
+    /// TODO: 正式环境打开
+    var hostName = window.location.hostname;
+
     $.ajax({
-        url: "http://192.168.14.141:9200/" + esIndex + "/file/_search",
+        url: "http://" + hostName + esIndex + "/file/_search",
         type: "POST",
         dateType: "json",
         data: JSON.stringify(params),
@@ -462,21 +428,16 @@ function queryData(finalName, limit, callback) {
 }
 
 /**
- * 获取当前时间，格式：yyyy-MM-dd
+ * 获取当前日期，格式：yyyy-MM
  */
-function getDataTime() {
+function getDate () {
     var date = new Date();
     var month = parseInt(date.getMonth()) + 1;
-    var day = parseInt(date.getDate());
     if(month < 10) {
         month = "0" + month;
     }
-    if(day < 10) {
-        day = "0" + day;
-    }
-    return date.getFullYear() + "-" + month + "-" + day;
+    return date.getFullYear() + "-" + month;
 }
-
 /**
  * 根据参数名获取地址栏URL里的参数
  */
