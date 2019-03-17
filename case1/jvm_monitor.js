@@ -15,6 +15,12 @@ $(function () {
     }
 });
 
+var esIndex = "/zxcity_elk_jvm_monitor." + getDate();
+// 正式环境
+// var url = "https://" + window.location.hostname + esIndex + "/file/_search";
+// 测试
+var url = "http://139.129.167.xxx:9200" + esIndex + "/file/_search";
+
 /** DOM节点 */
 var cpuChart = echarts.init(document.getElementById("cpuLine")),
     heapChart = echarts.init(document.getElementById("heapLine")),
@@ -301,7 +307,7 @@ function pageCallback (data, total) {
             }
         },
         legend: {
-            data: ['回收量', 'GC后']
+            data: ["使用量", "回收量"]
         },
         grid: {
             left: '3%',
@@ -320,28 +326,16 @@ function pageCallback (data, total) {
         },
         series: [
             {
+                name: '使用量',
+                type: 'bar',
+                stack: '总量',
+                data: fullGcAfterHeaps
+            },
+            {
                 name: '回收量',
                 type: 'bar',
                 stack: '总量',
-                label: {
-                    normal: {
-                        show: false,
-                        position: 'insideBottom'
-                    }
-                },
                 data: fullGcCollectorHeaps
-            },
-            {
-                name: 'GC后',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    normal: {
-                        show: true,
-                        position: 'insideBottom'
-                    }
-                },
-                data: fullGcAfterHeaps
             }
         ]
     });
@@ -362,8 +356,7 @@ function pageCallback (data, total) {
  * @param callback    回调函数
  */
 function queryData(finalName, limit, callback) {
-    var esIndex = "/zxcity_elk_jvm_monitor." + getDate(),
-        startDate = $('#startDate').val(),
+    var startDate = $('#startDate').val(),
         endDate = $('#endDate').val(),
         params = {},
         match = {},
@@ -400,11 +393,8 @@ function queryData(finalName, limit, callback) {
     console.log(params);
     console.log("==============请求参数================");
 
-    /// TODO: 正式环境打开
-    var hostName = window.location.hostname;
-
     $.ajax({
-        url: "http://" + hostName + esIndex + "/file/_search",
+        url: url,
         type: "POST",
         dateType: "json",
         data: JSON.stringify(params),
