@@ -406,6 +406,10 @@ function queryData(finalName, limit, callback) {
         match = {},
         must = [];
 
+    // ES模糊匹配
+    finalName = finalName.indexOf("-") > 1 ? finalName.split("-")[0] : finalName;
+    console.log("finalName：", finalName);
+
     if (finalName != null && finalName.trim() !== "") {
         match = {"message.finalName": finalName.trim()};
         must.push({match: match});
