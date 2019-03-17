@@ -37,7 +37,7 @@
                 initConnect();
             };
             $scope.addListener  = function () {
-                stompClient.subscribe("/user/topic/message", function (frame) {
+                stompClient.subscribe("/topic/message", function (frame) {
                     console.log("服务器消息：", frame);
                 });
             };
@@ -58,8 +58,8 @@
              *  1.心跳机制：若使用STOMP 1.1 版本，默认开启了心跳检测机制，可通过stompClient对象的heartbeat field进行配置（默认值都是10000 ms）
              *  2.SpringBoot的STOMP配置，默认不接受客户端信息，也不发送心跳到客户端。
              */
-            // 本地：ws://127.0.0.1:8082/payBoot/live
-            stompClient = Stomp.client("wss://wxappprod.izxcs.com/zxcity_restful/ws/payBoot/live2");
+            // 本地：ws://192.168.14.141:8082/payBoot/live
+            stompClient = Stomp.client("ws://192.168.14.141:8082/payBoot/live");
             stompClient.connect(
                 {
                     name: "dazuo"
@@ -80,7 +80,7 @@
                     ++count;
                     console.log("第" + count + "次重连");
                     initConnect();
-                }, 3);
+                }, 3000);
             }
         }
     </script>
