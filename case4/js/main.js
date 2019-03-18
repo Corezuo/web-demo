@@ -14,7 +14,7 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
         url: url,
         method: "POST",
         data: {
-            cmd: "printerTicket/getSystemComponents",
+            cmd: "foodBoot/printerTicket/getSystemComponents",
             data: {
                 "templateId": templateId,
                 "documentType": templateType
@@ -109,12 +109,12 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
     };
     baseRequestForm($http, param);
 
-    // 加载自定义模板组件
+    // 加载自定义模板组件（延迟100ms）
     param = {
         url: url,
         method: "POST",
         data: {
-            cmd: "printerTicket/getPreviewComponents",
+            cmd: "foodBoot/printerTicket/getPreviewComponents",
             data: {
                 "templateId": templateId,
                 "documentType": templateType
@@ -138,7 +138,9 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
             rerenderComponentValueStyle(data.data);
         }
     };
-    baseRequestForm($http, param);
+    setTimeout(function () {
+        baseRequestForm($http, param);
+    }, 200);
 
     /**
      * 更新公共对象父组件的启用/禁用状态
@@ -313,7 +315,7 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
         // Todo: 生成预览图
         var templatePreviewPictureUrl = "https://www.img.com";
 
-        postData.shopId = 288;
+        postData.shopId = shopId;
         postData.operatorId = 81455;
         postData.name = $scope.moduleName;
         postData.documentType = $scope.documentType;
@@ -324,7 +326,7 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
             url: url,
             method: "POST",
             data: {
-                cmd: "printerTicket/save",
+                cmd: "foodBoot/printerTicket/save",
                 data: postData,
                 version: 1
             },
@@ -345,10 +347,34 @@ myApp.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
             url: url,
             method: "POST",
             data: {
-                cmd: "printerTicket/remove",
+                cmd: "foodBoot/printerTicket/remove",
                 data: {
                     "shopId": shopId,
                     "templateId": templateId
+                },
+                version: 1
+            },
+            sCallback: function (res) {
+                alert(res.data.msg);
+                window.location.reload();
+            }
+        };
+        baseRequestForm($http, param);
+    };
+
+    /**
+     * 应用门店
+     */
+    $scope.enableTemplate = function () {
+        var param = {
+            url: url,
+            method: "POST",
+            data: {
+                cmd: "foodBoot/printerTicket/enable",
+                data: {
+                    "shopId": shopId,
+                    "templateId": templateId,
+                    "documentType": templateType
                 },
                 version: 1
             },
