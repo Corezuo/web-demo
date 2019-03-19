@@ -1,5 +1,6 @@
 var myApp = angular.module('myApp', []);
-var url = "http://192.168.14.141:8081/zxcity_restful/ws/rest";
+// 使用代理请求
+var url = "http://localhost/zxcity_restful/ws/rest";
 var shopId = getUrlQueryString("shopId") || 288;
 var templateId = getUrlQueryString("templateId") || 1;
 var templateType = getUrlQueryString("templateType") || 1;

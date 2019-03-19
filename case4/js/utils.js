@@ -33,6 +33,7 @@ function baseRequestForm ($http, param) {
         url: param.url,
         method: 'POST',
         headers: {
+            "apikey": "test",
             "Content-Type": 'application/x-www-form-urlencoded;charset=UTF-8'
         },
         data: param.data,
