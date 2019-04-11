@@ -5,9 +5,35 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="#" />
     <title>Document</title>
+    <style type="text/css">
+        .hidden {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+    </style>
 </head>
 <body ng-controller="myCtrl">
     <h1>Angular service 练习</h1>
+
+    <h2 ng-class="{'hidden': flag == false, 'show': flag == true}">内容盒子</h2>
+
+    <button ng-click="doShow()">展示盒子</button>
+    <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.js"></script>
+    <script type="application/javascript">
+        var myApp = angular.module('myApp', []);
+        myApp.controller('myCtrl', ['$scope', '$http', '$sce', function ($scope, $http, $sce) {
+            // onshow，刷新
+            // 返回上一个页面，不要返回上一个锚点
+            $scope.flag = false;
+
+            $scope.doShow = function () {
+                $scope.flag = !$scope.flag;
+            }
+        }]);
+    </script>
 </body>
 </html>
