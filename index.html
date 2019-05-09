@@ -16,14 +16,17 @@
         $(function () {
             $(document).on("click", "#submit", function (e) {
                 $.ajax({
-                    url: "http://192.168.11.141:8080/zxcity_restful/ws/rest",
+                    url: "/zxcity_restful/ws/rest",
                     method: "post",
                     dataType: "json",
+                    beforeSend: function(request) {
+                        request.setRequestHeader("apikey","test");
+                    },
                     data: {
-                        "cmd": "shop/findTradingGiftList",
+                        "cmd": "fansNew/generateActivityTable",
                         "version": 1,
                         "data": JSON.stringify({
-                            shopId: 1
+                            "activityId": 2
                         })
                     },
                     success: function (data) {
