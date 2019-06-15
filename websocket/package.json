@@ -1,0 +1,15 @@
+{
+  "name": "websocket-test",
+  "version": "1.0.0",
+  "description": "websocket demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dazuo",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "mqtt": "^3.0.0"
+  }
+}

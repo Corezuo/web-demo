@@ -21,8 +21,8 @@
             </div>
         </div>
     </div>
-    <script type="application/javascript" src="../assets/stomp.js"></script>
-    <script type="application/javascript" src="../assets/angular.js"></script>
+    <script type="application/javascript" src="./assets/stomp.js"></script>
+    <script type="application/javascript" src="./assets/angular.js"></script>
     <script type="application/javascript">
         var myApp = angular.module('myApp', []);
 
@@ -58,8 +58,7 @@
              *  1.心跳机制：若使用STOMP 1.1 版本，默认开启了心跳检测机制，可通过stompClient对象的heartbeat field进行配置（默认值都是10000 ms）
              *  2.SpringBoot的STOMP配置，默认不接受客户端信息，也不发送心跳到客户端。
              */
-            // 本地：ws://192.168.14.141:8082/payBoot/live
-            stompClient = Stomp.client("ws://192.168.14.141:8082/payBoot/live");
+            stompClient = Stomp.client("ws://127.0.0.1:8080/payBoot/live");
             stompClient.connect(
                 {
                     name: "dazuo"

@@ -11,7 +11,7 @@
     <button id="send" type="button">发送消息</button>
     <button id="close" type="button">关闭连接</button>
 
-    <script type="application/javascript" src="../assets/jquery-3.3.1.js"></script>
+    <script type="application/javascript" src="./node_modules/jquery/dist/jquery.js"></script>
     <script type="application/javascript">
         var ws = null;
 
@@ -34,7 +34,7 @@
         /** 建立连接 */
         function initConnect () {
             // 本地：ws://127.0.0.1:8082/payBoot/live
-            ws = new WebSocket("ws://127.0.0.1:8082/payBoot/live");
+            ws = new WebSocket("ws://127.0.0.1:8080/payBoot/live");
 
             ws.onopen = function(evt) {
                 count = 0;
