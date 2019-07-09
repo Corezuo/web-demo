@@ -45,7 +45,7 @@
 
         // 建立连接订阅事件
         $(document).on('click', '#open', function () {
-            client = mqtt.connect('wss://mqtt.xxx.com/mqtt', options);
+            client = mqtt.connect('wss://mqtt.xxx.com:8084/mqtt', options);
 
             // 监听连接成功事件
             client.on('connect', function (e) {
