@@ -18,6 +18,11 @@
     <button id="reconnect" type="button">重新连接</button>
     <button id="close" type="button">关闭连接</button>
 
+    <div>
+        <h3>消息面板</h3>
+        <textarea rows="8" cols="60" id="message"></textarea>
+    </div>
+
     <script type="application/javascript" src="./node_modules/jquery/dist/jquery.js"></script>
     <script type="application/javascript" src="./node_modules/mqtt/dist/mqtt.js"></script>
     <script type="application/javascript">
@@ -33,14 +38,14 @@
 
         // 连接选项
         var options = {
-            clientId: 'chrome-browser',
+            clientId: 'chrome-browser-' +  Date.parse(new Date()),
             reconnectPeriod: 1000,
             connectTimeout: 3000
         };
 
         // 建立连接订阅事件
         $(document).on('click', '#open', function () {
-            client = mqtt.connect('wss://mqtt.xxx.com:8084/mqtt', options);
+            client = mqtt.connect('wss://mqtt.xxx.com/mqtt', options);
 
             // 监听连接成功事件
             client.on('connect', function (e) {
@@ -65,6 +70,7 @@
             // 监听接收消息事件
             client.on('message', function (topic, message) {
                 console.log('收到来自', topic, '的消息', message.toString())
+                $('#message').text(new Date() + message);
             });
 
             // 客户端连接错误事件
