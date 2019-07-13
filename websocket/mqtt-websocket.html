@@ -108,7 +108,7 @@
 
         // 取消订阅
         $(document).on('click', '#unsubscribe', function () {
-            client.unsubscribe(topic, {}, function (error) {
+            client.unsubscribe(topic, function (error) {
                 console.log(error || '取消订阅成功');
             });
         });
