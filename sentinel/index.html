@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../assets/bootstrap.min.css" />
+    <title>sentinel</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html,
+        body{
+            height: 100%;
+        }
+        .dashboard {
+            height: 100%;
+            display: flex;
+        }
+        .dashboard > .dashboard-left {
+            background-color: #4b4c56;
+            height: 100%;
+            width: 25%;
+            overflow-y: auto;
+        }
+        /*.dashboard > .dashboard-left::-webkit-scrollbar{*/
+        /*    display:none*/
+        /*}*/
+        .dashboard > .dashboard-left > .dashboard-title {
+            width: 25%;
+            position: fixed;
+            background-color: #2F4056;
+            padding: 10px 10px;
+        }
+        .dashboard > .dashboard-left > .dashboard-title > p {
+            margin: 0;
+        }
+        .dashboard > .dashboard-left > .dashboard-title > .dashboard-title-text {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .dashboard > .dashboard-left > .dashboard-select-env {
+            margin-top: 50px;
+            width: 25%;
+            position: fixed;
+            height: 50px;
+            background-color: #ecf3fd;
+            padding: 15px;
+        }
+        .dashboard > .dashboard-left > .dashboard-service-list {
+            background-color: #4b4c56;
+            margin-top: 110px;
+            width: 100%;
+        }
+        .dashboard > .dashboard-left > .dashboard-service-list > .service-item {
+            width: 94%;
+            margin: 3%;
+            display: flex;
+            border-radius: 5px;
+            background-color: #2C2F35;
+            color: white;
+        }
+        .dashboard > .dashboard-left > .dashboard-service-list > .service-item:hover {
+            cursor: pointer;
+        }
+        .dashboard > .dashboard-right {
+            height: 100%;
+            width: 75%;
+        }
+        .dashboard > .dashboard-right > .dashboard-top {
+            width: 100%;
+            height: 45%;
+            background-color: #212025;
+            display: flex;
+        }
+        .dashboard > .dashboard-right > .dashboard-top > .metric-pannel {
+            width: 30%;
+            height: 100%;
+        }
+        .dashboard > .dashboard-right > .dashboard-top > .metric-pannel > .metric-pannel-passqps {
+            width: 100%;
+            height: 50%;
+        }
+        .dashboard > .dashboard-right > .dashboard-top > .metric-pannel > .metric-pannel-passqps > .metric-pannel-passqps-title {
+            padding: 15px;
+            color: white;
+        }
+        .dashboard > .dashboard-right > .dashboard-top > .metric-pannel > .metric-pannel-passqps > .metric-pannel-passqps-statistic {
+            padding: 10px;
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+            color: #89b175;
+        }
+        .dashboard > .dashboard-right > .dashboard-top > .metric-pannel > .metric-pannel-passqps > .metric-pannel-passqps-statistic > p > .unit {
+            font-size: 20px;
+        }
+        .dashboard > .dashboard-right > .dashboard-top > .metric-real-monitor {
+            width: 70%;
+            height: 100%;
+            background-color: #ecfff7;
+        }
+        #serviceMetricChart {
+            width: auto;
+            height: 98%;
+            margin-top: 1%;
+        }
+        .dashboard > .dashboard-right > .dashboard-bottom {
+            width: 100%;
+            height: 55%;
+        }
+        .dashboard > .dashboard-right > .dashboard-bottom > .sentinel-resource-title {
+            padding: 10px;
+            font-weight: bold;
+            height: 10%;
+        }
+        .dashboard > .dashboard-right > .dashboard-bottom > .sentinel-resource-title > p {
+            margin: 0;
+        }
+        .dashboard > .dashboard-right > .dashboard-bottom > .sentinel-resource-list {
+            padding: 0 10px;
+            height: 90%;
+            overflow-y: auto;
+        }
+        .img-circle {
+            -webkit-border-radius: 10%;
+            -moz-border-radius: 10%;
+            border-radius: 10%;
+            margin: 10px 15px;
+        }
+    </style>
+</head>
+<body ng-controller="myCtrl">
+<div class="dashboard">
+    <div class="dashboard-left">
+        <div class="dashboard-title">
+            <p class="dashboard-title-text">Sentinel Dashbaord</p>
+        </div>
+        <div class="dashboard-select-env">
+            <label>环境：</label>
+            <select>
+                <option>37test</option>
+                <option>prepare</option>
+                <option>prod</option>
+            </select>
+        </div>
+        <div class="dashboard-service-list">
+            <div class="service-item">
+                <img src="./images/springMVC.png" width="50" height="50" class="img-circle">
+                <div class="service-right">
+                    <p>名称：restful</p>
+                    <p>类型：SpringMVC</p>
+                    <p>地址: 192.158.24.12:2321</p>
+                    <p>上线时间：2019-07-18</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="./images/springMVC.png" width="50" height="50" class="img-circle">
+                <div class="service-right">
+                    <p>名称：restful</p>
+                    <p>类型：SpringMVC</p>
+                    <p>地址: 192.158.24.12:2321</p>
+                    <p>上线时间：2019-07-18</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="./images/springMVC.png" width="50" height="50" class="img-circle">
+                <div class="service-right">
+                    <p>名称：restful</p>
+                    <p>类型：SpringMVC</p>
+                    <p>地址: 192.158.24.12:2321</p>
+                    <p>上线时间：2019-07-18</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="./images/springMVC.png" width="50" height="50" class="img-circle">
+                <div class="service-right">
+                    <p>名称：restful</p>
+                    <p>类型：SpringMVC</p>
+                    <p>地址: 192.158.24.12:2321</p>
+                    <p>上线时间：2019-07-18</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="./images/springMVC.png" width="50" height="50" class="img-circle">
+                <div class="service-right">
+                    <p>名称：restful</p>
+                    <p>类型：SpringMVC</p>
+                    <p>地址: 192.158.24.12:2321</p>
+                    <p>上线时间：2019-07-18</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-right">
+        <div class="dashboard-top">
+            <div class="metric-pannel">
+                <div class="metric-pannel-passqps">
+                    <p class="metric-pannel-passqps-title">服务通过 QPS</p>
+                    <div class="metric-pannel-passqps-statistic">
+                        <p>
+                            23423423
+                            <span class="unit">次</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="metric-pannel-passqps">
+                    <p class="metric-pannel-passqps-title">
+                        服务拒绝 QPS
+                    </p>
+                    <div class="metric-pannel-passqps-statistic">
+                        <p>
+                            234234
+                            <span class="unit">次</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="metric-real-monitor">
+                <div id="serviceMetricChart"></div>
+            </div>
+        </div>
+        <div class="dashboard-bottom">
+            <div class="sentinel-resource-title">
+                <p>{{restful}} 资源列表(规则)</p>
+            </div>
+            <div class="sentinel-resource-list">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>资源名</th>
+                        <th class="text-center">通过 QPS</th>
+                        <th class="text-center">阻塞 QPS</th>
+                        <th class="text-center">异常 QPS</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-info">监控</button>
+                            <button class="btn btn-sm btn-primary">流控</button>
+                            <button class="btn btn-sm btn-warning">降级</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-info">监控</button>
+                            <button class="btn btn-sm btn-primary">流控</button>
+                            <button class="btn btn-sm btn-warning">降级</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-info">监控</button>
+                            <button class="btn btn-sm btn-primary">流控</button>
+                            <button class="btn btn-sm btn-warning">降级</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-info">监控</button>
+                            <button class="btn btn-sm btn-primary">流控</button>
+                            <button class="btn btn-sm btn-warning">降级</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-info">监控</button>
+                            <button class="btn btn-sm btn-primary">流控</button>
+                            <button class="btn btn-sm btn-warning">降级</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-info">监控</button>
+                            <button class="btn btn-sm btn-primary">流控</button>
+                            <button class="btn btn-sm btn-warning">降级</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-info">监控</button>
+                            <button class="btn btn-sm btn-primary">流控</button>
+                            <button class="btn btn-sm btn-warning">降级</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-info">监控</button>
+                            <button class="btn btn-sm btn-primary">流控</button>
+                            <button class="btn btn-sm btn-warning">降级</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-info">监控</button>
+                            <button class="btn btn-sm btn-primary">流控</button>
+                            <button class="btn btn-sm btn-warning">降级</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-info">监控</button>
+                            <button class="btn btn-sm btn-primary">流控</button>
+                            <button class="btn btn-sm btn-warning">降级</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination" style="margin: 0;">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="application/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="application/javascript" src="https://cdn.bootcss.com/echarts/3.8.5/echarts.min.js"></script>
+<script type="application/javascript" src="https://cdn.bootcss.com/angular.js/1.7.2/angular.min.js"></script>
+<script type="application/javascript">
+    var myApp = angular.module('myApp', []);
+    myApp.controller('myCtrl', ['$scope', '$http', '$sce', function ($scope, $http, $sce) {
+        // onshow，刷新
+        // 返回上一个页面，不要返回上一个锚点
+        $scope.flag = false;
+
+        $scope.doShow = function () {
+            $scope.flag = !$scope.flag;
+        }
+    }]);
+
+    $(function () {
+        var queryParam = {
+            env: "37test",
+            finalName: "restful",
+            resource: "com.maxzuo.controller.ShopRest.flow()",
+            startTime: (new Date(formatDate(new Date()) + " 00:00:00")).getTime(),
+            endTime: (new Date(formatDate(new Date()) + " 23:59:59")).getTime(),
+            page: 1,
+            size: 100
+        };
+        $.ajax({
+            url: "/zxcity_restful/ws/rest",
+            type: "POST",
+            dateType: "json",
+            header: {
+                'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            },
+            data: {
+                cmd: "sentinel/queryRealTimeMetric",
+                data: JSON.stringify(queryParam),
+                version: 1
+            },
+            success: function (res) {
+                console.log("===========请求的数据==============");
+                console.log(res);
+                console.log("===========请求的数据==============");
+                var blockQpsArray = [],
+                    passQpsArray=[];
+
+                res.data.map(function (item) {
+                    blockQpsArray.push([item.time, item.blockQps]);
+                    passQpsArray.push([item.time, item.passQps]);
+                });
+                drawLine(blockQpsArray, passQpsArray);
+            },
+            error: function (res) {
+                console.log("error: ", res);
+            }
+        });
+    });
+
+    function drawLine(blockQpsArray, passQpsArray) {
+        var lineBox = echarts.init(document.getElementById('serviceMetricChart'));
+        var option = {
+            title: {
+                text: "Metric实时监控",
+                x: 'center'
+            },
+            legend: {
+                data:['通过 QPS','拒绝 QPS'],
+                x: 'left'
+            },
+            xAxis: {
+                type:'time',
+                splitLine: {
+                    show: false
+                }
+            },
+            yAxis: {
+                name : 'QPS',
+                splitLine: {
+                    lineStyle: {
+                        type: 'dashed'
+                    }
+                }
+            },
+            series: [
+                {
+                    data: passQpsArray,
+                    type: 'line',
+                    name: '通过 QPS'
+                },
+                {
+                    data: blockQpsArray,
+                    type:'line',
+                    name: '拒绝 QPS'
+                }
+            ],
+            grid: {
+                top: 50,
+                left: 50,
+                right: 50
+            },
+            tooltip:{
+                trigger:'axis'
+            }
+        };
+        lineBox.setOption(option);
+    }
+
+    /**
+     * 日期格式化，格式：2019-04-13
+     */
+    function formatDate(d) {
+        var month = parseInt(d.getMonth()) + 1;
+        var day = parseInt(d.getDate());
+        if(month < 10) {
+            month = "0" + month;
+        }
+        if(day < 10) {
+            day = "0" + day;
+        }
+        return d.getFullYear() + "-" + month + "-" + day;
+    }
+
+    /**
+     * 获取当前日期，格式：yyyy-MM
+     */
+    function getDate () {
+        var date = new Date();
+        var month = parseInt(date.getMonth()) + 1;
+        if(month < 10) {
+            month = "0" + month;
+        }
+        return date.getFullYear() + "-" + month;
+    }
+</script>
+</body>
+</html>
