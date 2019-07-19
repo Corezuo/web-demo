@@ -1,11 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../assets/bootstrap.min.css" />
+    <link rel="shortcut icon" href="#" />
     <title>sentinel</title>
     <style type="text/css">
         * {
@@ -113,13 +114,20 @@
             width: 100%;
             height: 55%;
         }
-        .dashboard > .dashboard-right > .dashboard-bottom > .sentinel-resource-title {
+        .dashboard > .dashboard-right > .dashboard-bottom > .sentinel-resource-nav {
+            height: 10%;
+            display: flex;
+        }
+        .dashboard > .dashboard-right > .dashboard-bottom > .sentinel-resource-nav  > .sentinel-resource-title {
             padding: 10px;
             font-weight: bold;
-            height: 10%;
+            width: 20%;
         }
-        .dashboard > .dashboard-right > .dashboard-bottom > .sentinel-resource-title > p {
-            margin: 0;
+        .dashboard > .dashboard-right > .dashboard-bottom > .sentinel-resource-nav  > .sentinel-resource-search {
+            padding: 10px;
+        }
+        .dashboard > .dashboard-right > .dashboard-bottom > .sentinel-resource-nav  > .sentinel-resource-search > input {
+            width: 300px;
         }
         .dashboard > .dashboard-right > .dashboard-bottom > .sentinel-resource-list {
             padding: 0 10px;
@@ -131,6 +139,8 @@
             -moz-border-radius: 10%;
             border-radius: 10%;
             margin: 10px 15px;
+            height: 50px;
+            width: 50px;
         }
     </style>
 </head>
@@ -142,56 +152,21 @@
         </div>
         <div class="dashboard-select-env">
             <label>环境：</label>
-            <select>
-                <option>37test</option>
-                <option>prepare</option>
-                <option>prod</option>
+            <select ng-model="env" ng-change="doSelectEnv()">
+                <option value="37test" selected>37test</option>
+                <option value="prepare">prepare</option>
+                <option value="prod">prod</option>
             </select>
         </div>
         <div class="dashboard-service-list">
-            <div class="service-item">
-                <img src="./images/springMVC.png" width="50" height="50" class="img-circle">
+            <div class="service-item" ng-repeat="(k, v) in onlineService" ng-click="doSwitchFinalName(v)">
+                <img ng-if="v.component === 'SpringBoot'" src="./images/springBoot_Logo.png" class="img-circle">
+                <img ng-if="v.component === 'SpringMVC'" src="./images/springMVC.png" class="img-circle">
                 <div class="service-right">
-                    <p>名称：restful</p>
-                    <p>类型：SpringMVC</p>
-                    <p>地址: 192.158.24.12:2321</p>
-                    <p>上线时间：2019-07-18</p>
-                </div>
-            </div>
-            <div class="service-item">
-                <img src="./images/springMVC.png" width="50" height="50" class="img-circle">
-                <div class="service-right">
-                    <p>名称：restful</p>
-                    <p>类型：SpringMVC</p>
-                    <p>地址: 192.158.24.12:2321</p>
-                    <p>上线时间：2019-07-18</p>
-                </div>
-            </div>
-            <div class="service-item">
-                <img src="./images/springMVC.png" width="50" height="50" class="img-circle">
-                <div class="service-right">
-                    <p>名称：restful</p>
-                    <p>类型：SpringMVC</p>
-                    <p>地址: 192.158.24.12:2321</p>
-                    <p>上线时间：2019-07-18</p>
-                </div>
-            </div>
-            <div class="service-item">
-                <img src="./images/springMVC.png" width="50" height="50" class="img-circle">
-                <div class="service-right">
-                    <p>名称：restful</p>
-                    <p>类型：SpringMVC</p>
-                    <p>地址: 192.158.24.12:2321</p>
-                    <p>上线时间：2019-07-18</p>
-                </div>
-            </div>
-            <div class="service-item">
-                <img src="./images/springMVC.png" width="50" height="50" class="img-circle">
-                <div class="service-right">
-                    <p>名称：restful</p>
-                    <p>类型：SpringMVC</p>
-                    <p>地址: 192.158.24.12:2321</p>
-                    <p>上线时间：2019-07-18</p>
+                    <p>名称：{{v.finalName}}</p>
+                    <p>类型：{{v.component}}</p>
+                    <p>地址: {{v.address}}</p>
+                    <p>上线时间：{{v.onlineTime}}</p>
                 </div>
             </div>
         </div>
@@ -203,7 +178,7 @@
                     <p class="metric-pannel-passqps-title">服务通过 QPS</p>
                     <div class="metric-pannel-passqps-statistic">
                         <p>
-                            23423423
+                            {{totalPassQps}}
                             <span class="unit">次</span>
                         </p>
                     </div>
@@ -214,7 +189,7 @@
                     </p>
                     <div class="metric-pannel-passqps-statistic">
                         <p>
-                            234234
+                            {{totalBlockQps}}
                             <span class="unit">次</span>
                         </p>
                     </div>
@@ -225,8 +200,14 @@
             </div>
         </div>
         <div class="dashboard-bottom">
-            <div class="sentinel-resource-title">
-                <p>{{restful}} 资源列表(规则)</p>
+            <div class="sentinel-resource-nav">
+                <div class="sentinel-resource-title">
+                    {{focusService.finalName}} 资源列表(规则)
+                </div>
+                <div class="sentinel-resource-search">
+                    <input ng-model="keywords" value="{{keywords}}" type="text" placeholder="检索资源名" />
+                    <button style="margin-left: 10px;" type="button" class="btn btn-sm btn-primary" ng-click="searchResource()">搜索</button>
+                </div>
             </div>
             <div class="sentinel-resource-list">
                 <table class="table table-bordered">
@@ -240,132 +221,29 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
-                        <td class="text-center">1</td>
-                        <td class="text-center">2</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">
-                            <button class="btn btn-sm btn-info">监控</button>
-                            <button class="btn btn-sm btn-primary">流控</button>
-                            <button class="btn btn-sm btn-warning">降级</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
-                        <td class="text-center">1</td>
-                        <td class="text-center">2</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">
-                            <button class="btn btn-sm btn-info">监控</button>
-                            <button class="btn btn-sm btn-primary">流控</button>
-                            <button class="btn btn-sm btn-warning">降级</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
-                        <td class="text-center">1</td>
-                        <td class="text-center">2</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">
-                            <button class="btn btn-sm btn-info">监控</button>
-                            <button class="btn btn-sm btn-primary">流控</button>
-                            <button class="btn btn-sm btn-warning">降级</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
-                        <td class="text-center">1</td>
-                        <td class="text-center">2</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">
-                            <button class="btn btn-sm btn-info">监控</button>
-                            <button class="btn btn-sm btn-primary">流控</button>
-                            <button class="btn btn-sm btn-warning">降级</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
-                        <td class="text-center">1</td>
-                        <td class="text-center">2</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">
-                            <button class="btn btn-sm btn-info">监控</button>
-                            <button class="btn btn-sm btn-primary">流控</button>
-                            <button class="btn btn-sm btn-warning">降级</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
-                        <td class="text-center">1</td>
-                        <td class="text-center">2</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">
-                            <button class="btn btn-sm btn-info">监控</button>
-                            <button class="btn btn-sm btn-primary">流控</button>
-                            <button class="btn btn-sm btn-warning">降级</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
-                        <td class="text-center">1</td>
-                        <td class="text-center">2</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">
-                            <button class="btn btn-sm btn-info">监控</button>
-                            <button class="btn btn-sm btn-primary">流控</button>
-                            <button class="btn btn-sm btn-warning">降级</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
-                        <td class="text-center">1</td>
-                        <td class="text-center">2</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">
-                            <button class="btn btn-sm btn-info">监控</button>
-                            <button class="btn btn-sm btn-primary">流控</button>
-                            <button class="btn btn-sm btn-warning">降级</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
-                        <td class="text-center">1</td>
-                        <td class="text-center">2</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">
-                            <button class="btn btn-sm btn-info">监控</button>
-                            <button class="btn btn-sm btn-primary">流控</button>
-                            <button class="btn btn-sm btn-warning">降级</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">com.maxzuo.controller.ShopRest.flow()</th>
-                        <td class="text-center">1</td>
-                        <td class="text-center">2</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">
-                            <button class="btn btn-sm btn-info">监控</button>
-                            <button class="btn btn-sm btn-primary">流控</button>
-                            <button class="btn btn-sm btn-warning">降级</button>
-                        </td>
-                    </tr>
+                        <tr ng-repeat="(k, v) in serviceResources">
+                            <th scope="row">{{v.resource}}</th>
+                            <td class="text-center">{{v.passQps}}</td>
+                            <td class="text-center">{{v.blockQps}}</td>
+                            <td class="text-center">{{v.exceptionQps}}</td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-info" ng-click="doMonitor(v.resource)">监控</button>
+                                <button class="btn btn-sm btn-primary" ng-click="doEditFlow(v.resource)">流控</button>
+                                <button class="btn btn-sm btn-warning" ng-click="doEditDegrade(v.resource)">降级</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <nav aria-label="Page navigation">
                     <ul class="pagination" style="margin: 0;">
                         <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
+                            <a href="#" aria-label="Previous" ng-click="doPrevious()">
+                                <span aria-hidden="true" >&laquo;</span>
                             </a>
                         </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
+                        <li ng-repeat="(k, v) in sPage"><a href="#" ng-click="doSwitchPage(v)">{{v}}</a></li>
                         <li>
-                            <a href="#" aria-label="Next">
+                            <a href="#" aria-label="Next" ng-click="doNextPage()">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
@@ -378,64 +256,430 @@
 <script type="application/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script type="application/javascript" src="https://cdn.bootcss.com/echarts/3.8.5/echarts.min.js"></script>
 <script type="application/javascript" src="https://cdn.bootcss.com/angular.js/1.7.2/angular.min.js"></script>
+<script type="application/javascript" src="./assets/layer.js"></script>
 <script type="application/javascript">
     var myApp = angular.module('myApp', []);
+    var $_http;
+    var $_scope;
     myApp.controller('myCtrl', ['$scope', '$http', '$sce', function ($scope, $http, $sce) {
-        // onshow，刷新
-        // 返回上一个页面，不要返回上一个锚点
-        $scope.flag = false;
+        $_http = $http;
+        $_scope = $scope;
 
-        $scope.doShow = function () {
-            $scope.flag = !$scope.flag;
-        }
+        $scope.env = "37test";
+        $scope.onlineService = [];
+        $scope.totalBlockQps = 0;
+        $scope.totalPassQps = 0;
+        $scope.serviceResources = [];
+        $scope.page = 1;
+        $scope.size = 10;
+        $scope.flowRulePop = false;
+        $scope.degradeRulePop = false;
+        $scope.metricChartPop = false;
+
+        // 加载上线的服务
+        loadOnlineService($scope.env);
+
+        // 切换环境
+        $scope.doSelectEnv = function () {
+            loadOnlineService($scope.env);
+        };
+        // 切换应用
+        $scope.doSwitchFinalName = function (v) {
+            $scope.focusService = v;
+            // 加载整体监控
+            realTimeMonitor($scope.env, v.finalName);
+            // 加载资源
+            loadResources($scope.env, v.finalName, 1, $scope.size);
+        };
+
+        // 实时监控
+        setInterval(function () {
+            if ($scope.focusService != null) {
+                realTimeMonitor($scope.env, $scope.focusService.finalName);
+            }
+        }, 1000);
+
+        // 单个资源监控
+        $scope.doMonitor = function (res) {
+            doMonitor(res);
+        };
+        // 流控
+        $scope.doEditFlow = function (res) {
+            doEditFlow(res);
+        };
+        // 降级
+        $scope.doEditDegrade = function (res) {
+            doEditDegrade(res);
+        };
+        // 搜索资源
+        $scope.searchResource = function () {
+            if ($scope.focusService != null && $scope.keywords != null) {
+                loadResources($scope.env, $scope.focusService.finalName, 1, $scope.size);
+            }
+        };
+        // 上一页
+        $scope.doPrevious = function () {
+            if ($scope.page > 1) {
+                loadResources($scope.env, $scope.focusService.finalName, $scope.page - 1, $scope.size);
+            }
+        };
+        // 切换分页
+        $scope.doSwitchPage = function (page) {
+            loadResources($scope.env, $scope.focusService.finalName, page, $scope.size);
+        };
+        // 下一页
+        $scope.doNextPage = function () {
+            if ($scope.page < $_scope.sPage.length) {
+                loadResources($scope.env, $scope.focusService.finalName, $scope.page + 1, $scope.size);
+            }
+        };
     }]);
 
-    $(function () {
+    /**
+     * 编辑流控规则
+     * @param resource 资源名
+     */
+    function doEditFlow (resource) {
         var queryParam = {
-            env: "37test",
-            finalName: "restful",
-            resource: "com.maxzuo.controller.ShopRest.flow()",
-            startTime: (new Date(formatDate(new Date()) + " 00:00:00")).getTime(),
-            endTime: (new Date(formatDate(new Date()) + " 23:59:59")).getTime(),
-            page: 1,
-            size: 100
-        };
-        $.ajax({
-            url: "/zxcity_restful/ws/rest",
-            type: "POST",
-            dateType: "json",
-            header: {
-                'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-            },
+            cmd: "sentinel/resource_rules/queryFlowRule",
             data: {
-                cmd: "sentinel/queryRealTimeMetric",
-                data: JSON.stringify(queryParam),
-                version: 1
+                env: $_scope.env,
+                finalName: $_scope.focusService.finalName,
+                resource: resource
             },
-            success: function (res) {
-                console.log("===========请求的数据==============");
-                console.log(res);
-                console.log("===========请求的数据==============");
-                var blockQpsArray = [],
-                    passQpsArray=[];
+            version: 1
+        };
 
-                res.data.map(function (item) {
-                    blockQpsArray.push([item.time, item.blockQps]);
-                    passQpsArray.push([item.time, item.passQps]);
+        baseRequestForm(queryParam, function (res) {
+            console.log("==============查询流控规则================");
+            console.log(res);
+            console.log("==============查询流控规则================");
+
+            var flowRule = {
+                resource: resource,
+                limitApp: "default",
+                grade: 1,
+                count: 0
+            };
+            if (res.data != null || res.data === '') {
+                flowRule.limitApp = res.data.limitApp;
+                flowRule.count = res.data.count;
+                flowRule.grade = res.data.grade;
+            }
+
+            $_scope.flowRulePop = true;
+            $_scope.flowRule = flowRule;
+
+            var index = layer.open({
+                type: 1,
+                area: ['600px', '350px'],
+                fix: true,
+                maxmin: false,
+                title: "编辑流控规则",
+                shadeClose: true,
+                content: $("#flowRule")
+            });
+
+            // 新增单个规则
+            $_scope.doAddFlowRule = function () {
+                console.log(queryParam.data);
+                var ruleParam = {
+                    env: $_scope.env,
+                    finalName: $_scope.focusService.finalName,
+                    resource: resource,
+                    count: $_scope.flowRule.count,
+                    grade: $_scope.flowRule.grade,
+                    limitApp: $_scope.flowRule.limitApp,
+                    strategy: 0,
+                    controlBehavior: 0
+                };
+                queryParam.cmd = "sentinel/resource_rules/addFlowRule";
+                queryParam.data = ruleParam;
+
+                baseRequestForm(queryParam, function (res) {
+                    console.log("================新增流控规则==================");
+                    console.log(res);
+                    console.log("================新增流控规则==================");
+                    if (res.code === 1) {
+                        layer.alert('修改成功！', {icon: 1});
+                    } else {
+                        layer.msg('修改失败！', {icon: 5});
+                    }
+                    $_scope.flowRulePop = false;
+                    layer.close(index);
                 });
-                drawLine(blockQpsArray, passQpsArray);
+            };
+            // 取消
+            $_scope.doFlowCancel = function () {
+                $_scope.flowRulePop = false;
+                layer.close(index);
+            };
+            // 全部生效
+            $_scope.doAddAllFlowRule = function () {
+                var ruleParam = {
+                    env: $_scope.env,
+                    finalName: $_scope.focusService.finalName,
+                    resource: resource,
+                    count: $_scope.flowRule.count,
+                    grade: $_scope.flowRule.grade,
+                    limitApp: $_scope.flowRule.limitApp,
+                    strategy: 0,
+                    controlBehavior: 0
+                };
+                queryParam.cmd = "sentinel/resource_rules/addAllFlowRule";
+                queryParam.data = ruleParam;
+
+                baseRequestForm(queryParam, function (res) {
+                    console.log("================流控全部生效==================");
+                    console.log(res);
+                    console.log("================流控全部生效==================");
+                    if (res.code === 1) {
+                        layer.alert('修改成功！', {icon: 1});
+                    } else {
+                        layer.msg('修改失败！', {icon: 5});
+                    }
+                    $_scope.flowRulePop = false;
+                    layer.close(index);
+                });
+            };
+        });
+    }
+
+    /**
+     * 编辑降级规则
+     * @param resource 资源名
+     */
+    function doEditDegrade(resource) {
+        var queryParam = {
+            cmd: "sentinel/resource_rules/queryDegradeRule",
+            data: {
+                env: $_scope.env,
+                finalName: $_scope.focusService.finalName,
+                resource: resource
             },
-            error: function (res) {
-                console.log("error: ", res);
+            version: 1
+        };
+        baseRequestForm(queryParam, function (res) {
+            console.log("==============查询降级规则================");
+            console.log(res);
+            console.log("==============查询降级规则================");
+
+            var degradeRule = {
+                resource: resource,
+                limitApp: "default",
+                grade: 0,
+                count: 0,
+                timeWindow: 0
+            };
+            if (res.data != null || res.data === '') {
+                degradeRule.limitApp = res.data.limitApp;
+                degradeRule.count = res.data.count;
+                degradeRule.grade = res.data.grade;
+                degradeRule.timeWindow = res.data.timeWindow;
+            }
+
+            $_scope.degradeRulePop = true;
+            $_scope.degradeRule = degradeRule;
+
+            var index = layer.open({
+                type: 1,
+                area: ['600px', '360px'],
+                fix: true,
+                maxmin: false,
+                title: "编辑降级规则",
+                shadeClose: true,
+                content: $("#degradeRule")
+            });
+
+            // 添加
+            $_scope.doAddDegradeRule = function () {
+                var ruleParam = {
+                    env: $_scope.env,
+                    finalName: $_scope.focusService.finalName,
+                    resource: resource,
+                    limitApp: $_scope.degradeRule.limitApp,
+                    count: $_scope.degradeRule.count,
+                    grade: $_scope.degradeRule.grade,
+                    timeWindow: $_scope.degradeRule.timeWindow,
+                    strategy: 0
+                };
+                queryParam.cmd = "sentinel/resource_rules/addDegradeRule";
+                queryParam.data = ruleParam;
+                baseRequestForm(queryParam, function (res) {
+                    console.log("================新增降级规则==================");
+                    console.log(res);
+                    console.log("================新增降级规则==================");
+                    if (res.code === 1) {
+                        layer.alert('修改成功！', {icon: 1});
+                    } else {
+                        layer.msg('修改失败！', {icon: 5});
+                    }
+                    $_scope.degradeRulePop = false;
+                    layer.close(index);
+                });
+            };
+            // 取消
+            $_scope.doDegradeCancel = function () {
+                $_scope.degradeRulePop = false;
+                layer.close(index);
+            };
+            // 全部生效
+            $_scope.doAddAllDegradeRule = function () {
+                var ruleParam = {
+                    env: $_scope.env,
+                    finalName: $_scope.focusService.finalName,
+                    resource: resource,
+                    limitApp: $_scope.degradeRule.limitApp,
+                    count: $_scope.degradeRule.count,
+                    grade: $_scope.degradeRule.grade,
+                    timeWindow: $_scope.degradeRule.timeWindow,
+                    strategy: 0
+                };
+                queryParam.cmd = "sentinel/resource_rules/addAllDegradeRule";
+                queryParam.data = ruleParam;
+                baseRequestForm(queryParam, function (res) {
+                    console.log("================降级全部生效==================");
+                    console.log(res);
+                    console.log("================降级全部生效==================");
+                    if (res.code === 1) {
+                        layer.alert('修改成功！', {icon: 1});
+                    } else {
+                        layer.msg('修改失败！', {icon: 5});
+                    }
+                    $_scope.degradeRulePop = false;
+                    layer.close(index);
+                });
+            };
+        });
+    }
+
+    /**
+     * 资源QPS监控
+     * @param resource 资源名
+     */
+    function doMonitor(resource) {
+        var timer = null;
+        layer.open({
+            type: 1,
+            area: ['800px', '600px'],
+            fix: true,
+            maxmin: false,
+            title: resource,
+            shadeClose: true,
+            content: $("#metricChart"),
+            success: function () {
+                layer.load(2, {time: 200});
+                $_scope.metricChartPop = true;
+
+                timer = setInterval(function () {
+                    var queryParam = {
+                        cmd: "sentinel/queryRealTimeMetric",
+                        data: {
+                            env: $_scope.env,
+                            finalName: $_scope.focusService.finalName,
+                            resource: resource,
+                            startTime: (new Date(formatDate(new Date()) + " 00:00:00")).getTime(),
+                            endTime: (new Date(formatDate(new Date()) + " 23:59:59")).getTime(),
+                            page: 1,
+                            size: 100
+                        },
+                        version: 1
+                    };
+
+                    baseRequestForm(queryParam, function (res) {
+                        console.log("===========doMonitor 请求的数据==============");
+                        console.log(res);
+                        console.log("===========doMonitor 请求的数据==============");
+                        var blockQpsArray = [],
+                            passQpsArray=[],
+                            rtArray = [];
+
+                        res.data.map(function (item) {
+                            blockQpsArray.push([item.time, item.blockQps]);
+                            passQpsArray.push([item.time, item.passQps]);
+                            rtArray.push([item.time, item.rt]);
+                        });
+                        drawResourceLine(blockQpsArray, passQpsArray, rtArray);
+                    });
+                }, 1000);
+            },
+            end: function () {
+                if (timer != null) {
+                    $_scope.metricChartPop = false;
+                    clearInterval(timer);
+                }
             }
         });
-    });
+    }
 
-    function drawLine(blockQpsArray, passQpsArray) {
+    /**
+     * 加载线上服务
+     * @param env 环境
+     */
+    function loadOnlineService (env) {
+        var queryParam = {
+            cmd: "sentinel/queryOnlineService",
+            data: {
+                env: env
+            },
+            version: 1
+        };
+        baseRequestForm(queryParam, function (res) {
+            console.log("=============请求的数据==============");
+            console.log(res);
+            console.log("=============请求的数据==============");
+            if (res.data != null) {
+                $_scope.onlineService = res.data;
+                if (res.data.length > 0) {
+                    $_scope.focusService = res.data[0];
+                    // 加载整体监控
+                    realTimeMonitor(env, res.data[0].finalName);
+                    // 加载资源
+                    loadResources(env, res.data[0].finalName, 1, $_scope.size);
+                }
+            }
+        });
+    }
+
+    /**
+     * 实时监控整体QPS
+     * @param env 环境
+     * @param finalName 服务
+     */
+    function realTimeMonitor (env, finalName) {
+        var queryParam = {
+            cmd: "sentinel/queryServiceRealTimeMetric",
+            data: {
+                env: env,
+                finalName: finalName
+            },
+            version: 1
+        };
+        baseRequestForm(queryParam, function (res) {
+            console.log("=============请求的数据==============");
+            console.log(res);
+            console.log("=============请求的数据==============");
+            $_scope.totalPassQps = res.data.totalPassQps;
+            $_scope.totalBlockQps = res.data.totalBlockQps;
+            var blockQpsArray = [],
+                passQpsArray=[];
+
+            res.data.metricVOList.map(function (item) {
+                blockQpsArray.push([item.time, item.blockQps]);
+                passQpsArray.push([item.time, item.passQps]);
+            });
+            drawLine(finalName, blockQpsArray, passQpsArray);
+        });
+    }
+
+    /**
+     * 绘制整体监控图
+     */
+    function drawLine(serviceName, blockQpsArray, passQpsArray) {
         var lineBox = echarts.init(document.getElementById('serviceMetricChart'));
         var option = {
             title: {
-                text: "Metric实时监控",
+                text: serviceName + "实时监控",
                 x: 'center'
             },
             legend: {
@@ -481,6 +725,57 @@
     }
 
     /**
+     * 加载服务资源列表
+     * @param env       环境
+     * @param finalName 服务
+     * @param page      页码
+     * @param size      页条数
+     */
+    function loadResources (env, finalName, page, size) {
+        console.log("loadResources page = ", page);
+        var queryParam = {
+            cmd: "sentinel/querySentinelHotResourceList",
+            data: {
+                env: env,
+                finalName: finalName,
+                topField: "passQps",
+                keywords: $_scope.keywords == null ? '' : $_scope.keywords,
+                startDate: (new Date(formatDate(new Date()) + " 00:00:00")).getTime(),
+                endDate: (new Date(formatDate(new Date()) + " 23:59:59")).getTime(),
+                page: page,
+                size: size
+            },
+            version: 1
+        };
+        baseRequestForm(queryParam, function (res) {
+            console.log("=============loadResources 请求的数据==============");
+            console.log(res);
+            console.log("=============loadResources 请求的数据==============");
+            $_scope.serviceResources = res.data;
+
+            var _sPage = Math.ceil(parseInt(res.total, 10) / $_scope.size);
+            var sPage = [];
+            for(var i = 0;i < _sPage;i++){
+                sPage.push(i+1);
+            }
+            $_scope.page = page;
+            $_scope.sPage = sPage;
+        });
+    }
+
+    /**
+     * 获取当前日期，格式：yyyy-MM
+     */
+    function getDate () {
+        var date = new Date();
+        var month = parseInt(date.getMonth()) + 1;
+        if(month < 10) {
+            month = "0" + month;
+        }
+        return date.getFullYear() + "-" + month;
+    }
+
+    /**
      * 日期格式化，格式：2019-04-13
      */
     function formatDate(d) {
@@ -496,16 +791,274 @@
     }
 
     /**
-     * 获取当前日期，格式：yyyy-MM
+     * AngularJS统一请求（Content-Type：application/x-www-form-urlencoded）
+     * @param data      请求参数
+     * @param sCallback 成功回调
      */
-    function getDate () {
-        var date = new Date();
-        var month = parseInt(date.getMonth()) + 1;
-        if(month < 10) {
-            month = "0" + month;
-        }
-        return date.getFullYear() + "-" + month;
+    function baseRequestForm (data, sCallback) {
+        $_http({
+            url: '/zxcity_restful/ws/rest',
+            method: 'POST',
+            headers: {
+                "apikey": "test",
+                "Content-Type": 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            data: data,
+            transformRequest: function (obj) {
+                var str = [];
+                for (var k in obj) {
+                    if (k === "data") {
+                        obj[k] = JSON.stringify(obj[k]);
+                    }
+                    str.push(encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]))
+                }
+                return str.join("&");
+            }
+        }).then(
+            function (res) {
+                if (res.status === 200 && res.data != null) {
+                    sCallback && sCallback(res.data);
+                } else {
+                    console.log("请求异常：", res);
+                }
+            },
+            function (res) {
+                console.log("请求异常：", res);
+            }
+        );
+    }
+
+    /**
+     * 绘制资源-QPS折线图
+     * @param blockQpsArray 阻塞的Qps
+     * @param passQpsArray  通过的Qps
+     * @param rtArray       平局响应时间
+     */
+    function drawResourceLine(blockQpsArray, passQpsArray, rtArray){
+        var line = echarts.init(document.getElementById('resourcelineBox'));
+        var option={
+            legend: {
+                data:['通过 QPS','拒绝 QPS', '响应时间']
+            },
+            axisPointer: {
+                link: {xAxisIndex: 'all'}
+            },
+            xAxis:[
+                {
+                    type:'time',
+                    splitLine: {
+                        show: false
+                    }
+                },
+                {
+                    show: false,
+                    type:'time',
+                    gridIndex: 1,
+                    splitLine: {
+                        show: false
+                    },
+                    position: 'top'
+                }
+            ],
+            yAxis:[
+                {
+                    name : 'QPS',
+                    splitLine: {
+                        lineStyle: {
+                            type: 'dashed'
+                        }
+                    }
+                },
+                {
+                    name: '响应时间（ms）',
+                    gridIndex: 1,
+                    splitLine: {
+                        lineStyle: {
+                            type: 'dashed'
+                        }
+                    },
+                    inverse: true
+                }
+            ],
+            series: [
+                {
+                    data: passQpsArray,
+                    type: 'line',
+                    name: '通过 QPS'
+                },
+                {
+                    data: blockQpsArray,
+                    type:'line',
+                    name: '拒绝 QPS'
+                },
+                {
+                    data: rtArray,
+                    type: 'line',
+                    name: '响应时间',
+                    xAxisIndex: 1,
+                    yAxisIndex: 1
+                }
+            ],
+            dataZoom: [
+                {
+                    show: true,
+                    realtime: true,
+                    startValue: formatDate(new Date()),
+                    // end: 70,
+                    xAxisIndex: [0, 1]
+                },
+                {
+                    type: 'inside',
+                    realtime: true,
+                    startValue: formatDate(new Date()),
+                    // end: 70,
+                    xAxisIndex: [0, 1]
+                }
+            ],
+            tooltip:{
+                trigger:'axis'
+            },
+            grid: [{
+                left: 50,
+                right: 50,
+                height: '35%'
+            }, {
+                left: 50,
+                right: 50,
+                top: '55%',
+                height: '32%'
+            }]
+        };
+        line.setOption(option)
     }
 </script>
 </body>
 </html>
+
+<div ng-show="flowRulePop" id="flowRule">
+    <div class="container-fluid" style="padding-top: 20px;">
+        <div class="row">
+            <div class="col-lg-12">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">资源名：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" value="{{flowRule.resource}}" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">来源应用：</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" value="{{flowRule.limitApp}}" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">阀值类型：</label>
+                        <div class="col-sm-8">
+                            <div class="radio">
+                                <label>
+                                    <input ng-model="flowRule.grade" type="radio" name="grade" id="grade1" value="1" ng-checked="flowRule.grade === 1">
+                                    QPS
+                                </label>
+                                <label>
+                                    <input ng-model="flowRule.grade" type="radio" name="grade" id="grade2" value="0" ng-checked="flowRule.grade === 0">
+                                    线程数
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">单机阀值：</label>
+                        <div class="col-sm-4">
+                            <input ng-model="flowRule.count" type="number" class="form-control" value="{{flowRule.count}}" placeholder="单机阀值" max="99" min="0"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="doAddFlowRule()">新增</button>
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="doFlowCancel()">取消</button>
+                            <button type="button" class="btn btn-sm btn-danger" ng-click="doAddAllFlowRule()" title="当前服务所有的资源，使用同一规则！">全部生效</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-show="degradeRulePop" id="degradeRule">
+    <div class="container-fluid" style="padding-top: 20px;">
+        <div class="row">
+            <div class="col-lg-12">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">资源名：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" value="{{degradeRule.resource}}" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">降级策略：</label>
+                        <div class="col-sm-8">
+                            <div class="radio">
+                                <label>
+                                    <input ng-model="degradeRule.grade" type="radio" name="grade" value="0" ng-checked="degradeRule.grade === 0">
+                                    RT
+                                </label>
+                                <label>
+                                    <input ng-model="degradeRule.grade" type="radio" name="grade" value="1" ng-checked="degradeRule.grade === 1">
+                                    异常比例
+                                </label>
+                                <label>
+                                    <input ng-model="degradeRule.grade" type="radio" name="grade" value="2" ng-checked="degradeRule.grade === 2"/>
+                                    异常数
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="degradeRule.grade === 0 || degradeRule.grade === '0'">
+                        <label class="col-sm-2 control-label">RT：</label>
+                        <div class="col-sm-4">
+                            <input ng-model="degradeRule.count" type="number" class="form-control" value="{{degradeRule.count}}" placeholder="毫秒" />
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="degradeRule.grade === 1 || degradeRule.grade === '1'">
+                        <label class="col-sm-2 control-label">异常比例：</label>
+                        <div class="col-sm-4">
+                            <input ng-model="degradeRule.count" type="number" class="form-control" value="{{degradeRule.count}}" placeholder="0.0~1.0" />
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="degradeRule.grade === 2 || degradeRule.grade === '2'">
+                        <label class="col-sm-2 control-label">异常数：</label>
+                        <div class="col-sm-4">
+                            <input ng-model="degradeRule.count" type="number" class="form-control" value="{{degradeRule.count}}" placeholder="异常数" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">时间窗口：</label>
+                        <div class="col-sm-4">
+                            <input ng-model="degradeRule.timeWindow" type="number" class="form-control" value="{{degradeRule.timeWindow}}" placeholder="降级时间间隔，单位秒" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="doAddDegradeRule()">新增</button>
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="doDegradeCancel()">取消</button>
+                            <button type="button" class="btn btn-sm btn-danger" ng-click="doAddAllDegradeRule()" title="当前服务所有的资源，使用同一规则！">全部生效</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--监控弹窗-->
+<div ng-show="metricChartPop" id="metricChart">
+    <div id="resourceline" aria-label="allWrapper">
+        <div id="resourcelineBox" style="width:auto;height:550px;"></div>
+    </div>
+</div>
