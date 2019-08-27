@@ -7,16 +7,16 @@ const schema = buildSchema(`
     type Query {
         queryUser(id: Int): User
     }
- 
+
     type User {
         name: String
         age: Int
     }
-    
+
     type Mutation {
         createUser(input: UserInput): User
     }
-    
+
     input UserInput {
         name: String
         age: Int
