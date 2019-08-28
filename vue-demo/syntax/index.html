@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue语法练习</title>
+    <style type="text/css">
+        .one {
+            color: red;
+        }
+        .two {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h3>{{ message }}</h3>
+        <!-- 过滤器 -->
+        <h3>filter：{{ message | capitalize | capitalize2}}</h3>
+        <!-- 原生html -->
+        <p v-html="rawHtml"></p>
+        <!-- if 指令 -->
+        <p v-if="seen">现在你看到我了</p>
+        <p v-else>Oh no 😢</p>
+        <!-- 列表渲染 -->
+        <ol>
+            <li v-for="(todo, index) in todos">
+                key-{{index}} value-{{ todo.text }}
+            </li>
+        </ol>
+        <div v-for="(value, name, index) in userInfo">
+            {{ index }}. {{ name }}: {{ value }}
+        </div>
+        <!-- 事件 -->
+        <button v-on:click="doActive">点击我</button>
+        <button @click="doActive">点击我（缩写）</button>
+        <!-- 动态参数，当 eventName 的值为 "focus" 时，v-on:[eventName] 将等价于 v-on:focus -->
+        <!-- TODO: eventName 大小写？？？？？ -->
+        <p>
+            <a v-on:[eventname]="doFocus" href="#">聚焦</a>
+        </p>
+        <!-- 表单双向绑定 -->
+        <div>
+            双向绑定：<input v-model="message" />
+        </div>
+        <div>
+            等价于：<input v-bind:value="message"  v-on:input="message = $event.target.value" />
+        </div>
+        <p>你输入的是：{{message}}</p>
+        <!-- 表达式 -->
+        <p>number {{ number + 1 == 2 ? 3 : 4 }}</p>
+
+        <!-- v-bind指令 -->
+        <button v-bind:disabled="seen">Button</button>
+        <a v-bind:href="url">百度一下</a>
+        <span v-bind:title="message">
+            鼠标悬停几秒钟查看此处动态绑定的提示信息！
+        </span>
+
+        <!-- 计算属性 -->
+        <p>计算属性： {{reversedMessage}}</p>
+        <!-- 方法 -->
+        <p>方法返回值：{{ reversedMessage() }}</p>
+        <!-- 侦听属性 -->
+        <p>监听属性：{{ firstname }}</p>
+        <!-- class绑定 -->
+        <div v-bind:class="{one: isActive}">class绑定</div>
+        <!-- style绑定 -->
+        <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">style绑定</div>
+
+        <!-- 使用组件 -->
+        <button-counter></button-counter>
+        <!-- 组件传参，大小写不敏感的，所以浏览器会把所有大写字符解释为小写字符。这意味着当你使用 DOM 中的模板时，
+            camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名-->
+        <!-- 静态赋值 -->
+        <p>--- 静态赋值 --- </p>
+        <blog-post post-title="My journey with Vue"></blog-post>
+        <blog-post post-title="Blogging with Vue"></blog-post>
+        <blog-post post-title="Why Vue is so fun"></blog-post>
+
+        <!-- 父组件传值 -->
+        <p>--- 父组件传值 --- </p>
+        <blog-post
+            v-for="item in orderList"
+            v-bind:key="item.id"
+            v-bind:post-title="item.title"
+            v-bind:time="item.time"
+        ></blog-post>
+
+        <p>--- 父组件传值（重构），TODO: key 不能重复，内部属性 --- </p>
+        <blog-post-user
+            v-for="user in userList"
+            v-bind:key="user.id"
+            v-bind:user="user"
+        ></blog-post-user>
+
+        <!-- 局部组件 -->
+        <title-dazuo 
+            v-on:enlarge-text="onEnlargeText"
+        ></title-dazuo>
+
+        <p>--- 组件上使用model --- </p>
+        <custom-input v-model="searchText"></custom-input>
+        <!-- 等价于： -->
+        <!-- <custom-input
+            v-bind:value="searchText"
+            v-on:input="searchText = $event"
+        ></custom-input> -->
+        <p>你输入的是：{{ searchText }}</p>
+
+        <!-- //////////////////////////////////////////////////////// -->
+        <hr/>
+
+        <p>
+            路由：
+            <!-- 使用 router-link 组件来导航. -->
+            <!-- 通过传入 `to` 属性指定链接. -->
+            <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+            <router-link to="/foo">Go to Foo</router-link>
+            <router-link to="/bar">Go to Bar</router-link>
+            <button v-on:click="doGoBack">goBack</button>
+        </p>
+        <!-- 路由出口 -->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+
+        <hr/>
+        <!-- //////////////////////////////////////////////////////// -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/marked@0.3.6"></script>
+    <script src="https://unpkg.com/lodash@4.16.0"></script>
+    <script>
+        // Vue版本号
+        console.log("vue version: ", Number(Vue.version.split('.')[0]));
+
+        // 全局注册组件
+        Vue.component('button-counter', {
+            data: function () {
+                return {
+                    count: 1
+                }
+            },
+            template: '<h2>button-counter {{ count }}</h2>'
+        });
+
+        Vue.component('blog-post', {
+            // props用于接收来自父组件的数据
+            props: {
+                // 指定值的类型：String、 Number、Boolean、Array、Object、Function、Promise or any other constructor
+                postTitle: String,
+                // 参数验证
+                time: {
+                    type: String,
+                    default: 'a',
+                    required: false,
+                    validator: function (value) {
+                        console.log(value);
+                        return true;
+                    }
+                }
+            },
+            template: '<h3>postTitle: {{ postTitle }} time: {{time}}</h3>'
+        });
+
+        Vue.component('blog-post-user', {
+            props: {
+                user: Object,
+            },
+            // 子组件可以通过调用内建的 $emit 方法 并传入事件名称来触发一个事件
+            template: `
+                    <div>
+                        <h3>{{ user.name }}</h3>
+                    </div>
+                    `
+        });
+
+        // 全局过滤器
+        Vue.filter('capitalize', function (value) {
+            return "filter-" + value;            
+        });
+
+        /// 使用插件
+        // Vue.use(Router);
+
+        // 创建 router 实例
+        const router = new VueRouter({
+            routes: [
+                {
+                    path: '/foo',
+                    component: {
+                        template: '<div>foo</div>'
+                    }
+                },
+                {
+                    path: '/bar',
+                    component: {
+                        template: '<div>bar</div>'
+                    }
+                }
+            ]
+        })
+
+        var app = new Vue({
+            // 挂载的目标
+            el: '#app',
+            /// 一个字符串模板作为 Vue 实例的标识使用。模板将会 替换 挂载的元素。挂载元素的内容都将被忽略，除非模板的内容有分发插槽。
+            // template: '<h1>target</h1>',
+            /// 渲染函数
+            // render: function (createElement) {
+            //     createElement();
+            // },
+            // 生命周期函数，在实例创建完成后被立即调用。
+            created: function (){
+                console.log("vue created ...")
+            },
+            router: router,
+            data: {
+                message: 'Hello Vue!',
+                seen: false,
+                rawHtml: '<h1>hello rawHtml</h1>',
+                number: 1,
+                url: "https://www.baidu.com",
+                eventname: "focus",
+                firstname: "1",
+                isActive: true,
+                activeColor: "red",
+                fontSize: 30,
+                searchText: "searchText2342342",
+                todos: [
+                    {
+                        text: '学习 JavaScript' 
+                    },
+                    { 
+                        text: '学习 Vue' 
+                    }
+                ],
+                userInfo: {
+                    title: 'How to do lists in Vue',
+                    author: 'Jane Doe',
+                    publishedAt: '2016-04-10'
+                },
+                orderList: [
+                    {
+                        id: 1, 
+                        title: 'My journey',
+                        time: "2019-08-28"
+                    },
+                    {
+                        id: 2, 
+                        title: 'Blogging',
+                        time: "2019-08-29"
+                    }
+                ],
+                userList: [
+                    {
+                        id: 3, 
+                        name: 'My journey',
+                        age: 20
+                    },
+                    {
+                        id: 4, 
+                        name: 'Blogging',
+                        time: 23
+                    }
+                ]
+            },
+            methods: {
+                doActive: function (){
+                    this.url = "https://www.imooc.com";
+                    // this.message = "hello dazuo";
+                    this.firstname = "dazuo,";
+                },
+                doFocus: function () {
+                    console.log("我得了焦点");
+                },
+                reversedMessage: function () {
+                    return "hello reversedMessage";
+                },
+                onEnlargeText: function () {
+                    console.log("hello onEnlargeText");
+                },
+                doGoBack: function () {
+                    window.history.length > 1
+                    ? this.$router.go(-1)
+                    : this.$router.push('/');
+                }
+            },
+            computed: {
+                reversedMessage: function () {
+                    return "reversedMessage.toString";
+                }
+            },
+            watch: {
+                // 监听firstname 属性变化，触发
+                firstname: function (newVal, oldVal) {
+                    console.log("newVal: ", newVal, " oldVal: ", oldVal);
+                    this.message = newVal + "dazuo";
+                }
+            },
+            // 定义局部组件
+            components: {
+                "title-dazuo": {
+                    template: `
+                        <div>
+                            <h3>局部组件，hello dazuo</h3>
+                            <button v-on:click="$emit('enlarge-text')">子组件事件</button>
+                        </div>
+                    `
+                },
+                "custom-input": {
+                    props: ['value'],
+                    // template: '<h2>{{value}}</h2>'
+                    // TODO: 不支持共存？？
+                    template: `
+                        <input
+                            v-bind:value="value"
+                            v-on:input="$emit('input', $event.target.value)"
+                        >
+                    `
+                }
+            },
+            // 局部过滤器
+            filters: {
+                "capitalize2": function (value) {
+                    return "filter2-" + value;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
