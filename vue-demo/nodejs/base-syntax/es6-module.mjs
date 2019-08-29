@@ -1,3 +1,4 @@
+// es6 模块
 import fs from './fs';
 
 console.log(fs.nickname);

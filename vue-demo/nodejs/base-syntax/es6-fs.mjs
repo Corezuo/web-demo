@@ -1,4 +1,4 @@
-// fs 模块
+// es6 fs 模块
 var nickname = "dazuo";
 
 function getName () {
