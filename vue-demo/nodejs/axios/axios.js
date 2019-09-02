@@ -3,26 +3,31 @@
  */
 var axios = require("axios");
 
-const baseUrl = "http://127.0.0.1:3000";
+const baseUrl = "http://127.0.0.1:8080";
 
 // GET 
-axios.get(baseUrl + "/get")
-    .then(function (res) {
-        // console.log("succ: ", res);
-        console.log("status: ", res.status);
-        console.log("data: ", res.data);
-    })
-    .catch(function (err) {
-        console.log("error");
-    })
-    .then(function () {
-        // always executed
-    });
+function requestGet () {
+    axios.get(baseUrl + "/get")
+        .then(function (res) {
+            console.log("status: ", res.status);
+            console.log("data: ", res.data);
+        })
+        .catch(function (err) {
+            console.log("error");
+        })
+        .then(function () {
+            // always executed
+        });
+}
 
-// POST
-axios.post(baseUrl + "/post", {
-        firstName: 'Fred',
-        lastName: 'Flintstone'
+/**
+ * POST 默认情况下，axios将JavaScript对象序列化为JSON
+ * 格式：application/json; charset=utf-8
+ */
+function requestJson () {
+    axios.post(baseUrl + "/json", {
+        id: 1,
+        name: 'dazuo'
     })
     .then(function (res) {
         console.log("status: ", res.status);
@@ -30,5 +35,23 @@ axios.post(baseUrl + "/post", {
     })
     .catch(function (error) {
         console.log("error");
-        // console.log(error);
     });
+}
+
+/**
+ * POST 格式：application / x-www-form-urlencoded
+ */
+function requestForm () {
+    const params = new URLSearchParams();
+    params.append('name', 'dazuo');
+
+    axios.post(baseUrl + "/hello", params)
+        .then(function (res) {
+            console.log("status: ", res.status);
+            console.log("data: ", res.data);
+        })
+        .catch(function (err) {
+            console.log("error");
+        });
+}
+requestForm();

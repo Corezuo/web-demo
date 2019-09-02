@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-router</title>
+</head>
+<body>
+    <h2>hello vue-router</h2>
+
+    <div id="app">
+        <h3>{{ message }}</h3>
+        <p>
+            路由：
+            <!-- 使用 router-link 组件来导航. -->
+            <!-- 通过传入 `to` 属性指定链接. -->
+            <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+            <router-link to="/foo">Go to Foo</router-link>
+            <router-link to="/bar/32/dazuo">Go to Bar</router-link>
+            <router-link to="/prod/10">商品列表</router-link>
+            <router-link :to="{ name: 'user', params: { userId: 123 }}">用户信息</router-link>
+            <button v-on:click="doGoBack">goBack</button>
+        </p>
+        <!-- 路由出口 -->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view />
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+         // 创建 router 实例
+        const router = new VueRouter({
+            routes: [
+                {
+                    path: '/',
+                    component: {
+                        template: '<h2>index page</h2>'
+                    }
+                },
+                {
+                    path: '/foo',
+                    component: {
+                        template: '<div>foo</div>'
+                    }
+                },
+                {
+                    // 动态路由
+                    path: '/bar/:id/:name',
+                    component: {
+                        template: '<div>bar id = {{ $route.params.id }} , name = {{ $route.params.name }}</div>'
+                    }
+                },
+                {
+                    // 会匹配所有路径
+                    path: '*',
+                    component: {
+                        template: '<div>404</div>'
+                    }
+                },
+                {
+                    // 嵌套路由
+                    path: "/prod/:id",
+                    component: {
+                        template: `<div>
+                                    <h3> 二级路由 {{ $route.params.id }}</h3>
+                                    <router-link to="/prod/10/goods">商品详情</router-link>
+                                    <router-link to="/prod/10/coupon">优惠券详情</router-link>
+                                    <router-view></router-view>
+                                </div>`,
+                    },
+                    children: [
+                        {
+                            // 当 /prod/:id/goods 匹配成功。注意，以 / 开头的嵌套路径会被当作根路径。
+                            path: "goods",
+                            component: {
+                                template: '<div>goods Info</div>'
+                            }
+                        },
+                        {
+                            path: "coupon",
+                            component: {
+                                template: '<div>coupon Info</div>'
+                            }
+                        }
+                    ]
+                },
+                {
+                    // 命名路由：要链接到一个命名路由，可以给 router-link 的 to 属性传一个对象
+                    path: "/user/:userId",
+                    name: "user",
+                    component: {
+                        template: '<div> user page {{ $route.params.userId }}</div>'
+                    }
+                }
+            ]
+        })
+        var app = new Vue({
+            // 挂载的目标
+            el: '#app',
+            router: router,
+            data: {
+                message: "hello router"
+            },
+            methods: {
+                doGoBack: function () {
+                    window.history.length > 1
+                    ? this.$router.go(-1)
+                    : this.$router.push('/');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

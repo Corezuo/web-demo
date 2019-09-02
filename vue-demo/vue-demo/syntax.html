@@ -111,29 +111,9 @@
             v-on:input="searchText = $event"
         ></custom-input> -->
         <p>你输入的是：{{ searchText }}</p>
-
-        <!-- //////////////////////////////////////////////////////// -->
-        <hr/>
-
-        <p>
-            路由：
-            <!-- 使用 router-link 组件来导航. -->
-            <!-- 通过传入 `to` 属性指定链接. -->
-            <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
-            <router-link to="/foo">Go to Foo</router-link>
-            <router-link to="/bar">Go to Bar</router-link>
-            <button v-on:click="doGoBack">goBack</button>
-        </p>
-        <!-- 路由出口 -->
-        <!-- 路由匹配到的组件将渲染在这里 -->
-        <router-view></router-view>
-
-        <hr/>
-        <!-- //////////////////////////////////////////////////////// -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="https://unpkg.com/marked@0.3.6"></script>
     <script src="https://unpkg.com/lodash@4.16.0"></script>
     <script>
@@ -186,27 +166,6 @@
             return "filter-" + value;            
         });
 
-        /// 使用插件
-        // Vue.use(Router);
-
-        // 创建 router 实例
-        const router = new VueRouter({
-            routes: [
-                {
-                    path: '/foo',
-                    component: {
-                        template: '<div>foo</div>'
-                    }
-                },
-                {
-                    path: '/bar',
-                    component: {
-                        template: '<div>bar</div>'
-                    }
-                }
-            ]
-        })
-
         var app = new Vue({
             // 挂载的目标
             el: '#app',
@@ -220,7 +179,6 @@
             created: function (){
                 console.log("vue created ...")
             },
-            router: router,
             data: {
                 message: 'Hello Vue!',
                 seen: false,
@@ -285,11 +243,6 @@
                 },
                 onEnlargeText: function () {
                     console.log("hello onEnlargeText");
-                },
-                doGoBack: function () {
-                    window.history.length > 1
-                    ? this.$router.go(-1)
-                    : this.$router.push('/');
                 }
             },
             computed: {
