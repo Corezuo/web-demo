@@ -1,16 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <h1>hello vue</h1>
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import dashboard from "./views/dashboard";
+  
+  export default {
+    name: 'app',
+    components: {
+      dashboard
+    }
+  }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+  .container {
+    width: 200px;
+    border: 1px solid red;
+  }
 </style>
