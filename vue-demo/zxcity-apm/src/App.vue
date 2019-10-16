@@ -5,13 +5,8 @@
 </template>
 
 <script>
-  import dashboard from "./views/dashboard";
-  
   export default {
-    name: 'app',
-    components: {
-      dashboard
-    }
+    name: 'app'
   }
 </script>
 
