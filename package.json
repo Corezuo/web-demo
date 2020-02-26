@@ -1,0 +1,29 @@
+{
+  "name": "web-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZuoFuhong/web-demo.git"
+  },
+  "author": "dazuo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZuoFuhong/web-demo/issues"
+  },
+  "homepage": "https://github.com/ZuoFuhong/web-demo#readme",
+  "devDependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphiql": "^0.17.5",
+    "graphql": "^14.6.0"
+  }
+}
