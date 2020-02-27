@@ -1,5 +1,3 @@
-// commonjs module
-
 // 对外输出
 module.exports.name = "dazuo";
 module.exports.getName = function () {
