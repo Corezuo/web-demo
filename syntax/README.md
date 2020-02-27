@@ -259,54 +259,194 @@ var f = (i) => {i++;return i;}		// 如果结构比较复杂，用{}包起来
     6）禁止this指向全局对象
     7）增加了保留字（比如protected、static和interface）
 
-**export命令**
-1.导出变量、函数、类。 可以使用 as 重命名。
-2.export关键字可以处于模块的任何位置，但是处于块级作用域内，就会报错。
-3.export语句输出的接口，与其对应的值是动态绑定关系，即通过该接口，可以取到模块内部实时的值。
+**2.export命令**
+
+模块功能主要由两个命令构成：`export`和`import`。`export`命令用于规定模块的对外接口，`import`命令用于输入其他模块提供的功能。
+
+一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。如果你希望外部能够读取模块内部的某个变量，就必须使用`export`关键字输出该变量。
+下面是一个 JS 文件，里面使用`export`命令输出变量。
 
 ```javascript
-var name = "hello";
-var age = 22;
-export name;			        // 报错
-export var num = 123;      	    // 导出一个变量
-export function multiply () {
-    console.log("导出函数");	 // 导出函数
+// profile.js
+export var firstName = 'Michael';
+export var lastName = 'Jackson';
+export var year = 1958;
+```
+上面代码是`profile.js`文件，保存了用户信息。ES6 将其视为一个模块，里面用`export`命令对外部输出了三个变量。
+
+`export`的写法，除了像上面这样，还有另外一种。
+
+```javascript
+// profile.js
+var firstName = 'Michael';
+var lastName = 'Jackson';
+var year = 1958;
+
+export { firstName, lastName, year };
+```
+
+`export`命令除了输出变量，还可以输出函数或类（class）。
+
+```javascript
+export function multiply(x, y) {
+  return x * y;
+};
+```
+上面代码对外输出一个函数`multiply`。
+
+通常情况下，`export`输出的变量就是本来的名字，但是可以使用`as`关键字重命名。
+
+```javascript
+var nickname = "dazuo"
+function getName() { ... }
+export {
+  nickname as name,
+  getName
+};
+```
+
+**3.import命令**
+
+使用`export`命令定义了模块的对外接口以后，其他 JS 文件就可以通过`import`命令加载这个模块。
+
+```javascript
+// main.js
+import { firstName, lastName, year } from './profile.js';
+
+function setName(element) {
+  element.textContent = firstName + ' ' + lastName;
+}
+```
+上面代码的`import`命令，用于加载`profile.js`文件，并从中输入变量。`import`命令接受一对大括号，里面指定要从其他模块导入的变量名。
+大括号里面的变量名，必须与被导入模块（`profile.js`）对外接口的名称相同。
+
+如果想为输入的变量重新取一个名字，`import`命令要使用`as`关键字，将输入的变量重命名。
+
+```javascript
+import { lastName as surname } from './profile.js';
+```
+
+`import`命令输入的变量都是只读的，因为它的本质是输入接口。也就是说，不允许在加载模块的脚本里面，改写接口。
+
+```javascript
+import {a} from './xxx.js'
+
+a = {}; // Syntax Error : 'a' is read-only;
+```
+
+上面代码中，脚本加载了变量`a`，对其重新赋值就会报错，因为`a`是一个只读的接口。但是，如果`a`是一个对象，改写`a`的属性是允许的。
+
+```javascript
+import {a} from './xxx.js'
+
+a.foo = 'hello'; // 合法操作
+```
+
+上面代码中，`a`的属性可以成功改写，并且其他模块也可以读到改写后的值。`不过，这种写法很难查错，建议凡是输入的变量，都当作完全只读，不要轻易改变它的属性`。
+
+`import`后面的`from`指定模块文件的位置，可以是相对路径，也可以是绝对路径，`.js`后缀可以省略。如果只是模块名，不带有路径，那么必须有配置文件，
+告诉 JavaScript 引擎该模块的位置。
+
+```javascript
+import {myMethod} from 'util';
+```
+上面代码中，`util`是模块文件名，由于不带有路径，必须通过配置，告诉引擎怎么取到这个模块。
+
+如果多次重复执行同一句`import`语句，那么只会执行一次，而不会执行多次。
+
+```javascript
+import 'lodash';
+import 'lodash';
+```
+上面代码加载了两次`lodash`，但是只会执行一次。
+
+```javascript
+import { foo } from 'my_module';
+import { bar } from 'my_module';
+
+// 等同于
+import { foo, bar } from 'my_module';
+```
+
+上面代码中，虽然`foo`和`bar`在两个语句中加载，但是它们对应的是同一个`my_module`实例。也就是说，`import语句`是 Singleton 模式。
+
+**4.export default命令**
+
+从前面的例子可以看出，使用`import`命令的时候，用户需要知道所要加载的变量名或函数名，否则无法加载。但是，用户肯定希望快速上手，未必愿意阅读文档，
+去了解模块有哪些属性和方法。
+
+为了给用户提供方便，让他们不用阅读文档就能加载模块，就要用到`export default`命令，为模块指定默认输出。
+
+```javascript
+// export-default.js
+export default function () {
+  console.log('foo');
+}
+```
+
+上面代码是一个模块文件`export-default.js`，它的默认输出是一个函数。
+
+其他模块加载该模块时，`import`命令可以为该匿名函数指定任意名字。
+
+```javascript
+// import-default.js
+import customName from './export-default';
+customName(); // 'foo'
+```
+
+上面代码的`import`命令，可以用任意名称指向`export-default.js`输出的方法，这时就不需要知道原模块输出的函数名。需要注意的是，这时`import`命令后面，不使用大括号。
+
+`export default`命令用在非匿名函数前，也是可以的。
+
+```javascript
+// export-default.js
+export default function foo() {
+  console.log('foo');
 }
 
-export { name, age };	 	    // 导出一组变量
-export { 
-    name as str 			    // 重命名
-};	
+// 或者写成
+function foo() {
+  console.log('foo');
+}
+
+export default foo;
 ```
+上面代码中，`foo`函数的函数名`foo`，在模块外部是无效的。加载的时候，视同匿名函数加载。
 
-**import命令**
-1.导入变量、函数、类。大括号里面的变量名，必须与被导入模块对外接口的名称相同。一样的可以使用 as 重命名。
-2.from指定模块文件的位置，可以是相对路径，也可以是绝对路径，（ .js ）后缀可以省略。如果是模块名，不带路径，那么必须有配置文件，指定位置。
-3.import关键字可以处于模块的任何位置，但是处于块级作用域内，就会报错。
-4.比如同级constants 目录中有一个index.js文件，加载时可以这样：
-```javascript
-import const from "./constants"
+`export default`命令用于指定模块的默认输出。显然，一个模块只能有一个默认输出，因此`export default`命令只能使用一次。所以，`import`命令后面才不用加大括号，
+因为只可能唯一对应`export default`命令。
 
-// 示例：
-import { num,str } from './demo1';	  	   // 同级目录的demo1.js文件
-import { lastName as surname } from './profile';   // 重命名
-import * as obj from "./demo";		   	   // 整体加载
-```
+本质上，`export default`就是输出一个叫做`default`的变量或方法，然后系统允许你为它取任意名字。
 
-**export default命令**
-1.输出变量、函数、类。默认输出。
-2.为模块指定默认输出，导入时就不需要知道所加载的模块的变量名。
-3.本质上，就是输出一个叫做default的变量或方法，然后允许自定义名字。
-4.在一个模块中，export、import可以有多个，export default只能有一个。 
+正是因为`export default`命令其实只是输出一个叫做`default`的变量，所以它后面不能跟变量声明语句。
 
 ```javascript
-// test1.js
-var name = "dazuo";
-var num = 123;
-export default { name,num };  // 导出一组
+// 正确
+export var a = 1;
 
-// test2.js
-import obj from "test1";      // 导入，obj是一个对象 {name: "dazuo", num: 123}
+// 正确
+var a = 1;
+export default a;
+
+// 错误
+export default var a = 1;
+```
+上面代码中，`export default a`的含义是将变量`a`的值赋给变量`default`。所以，最后一种写法会报错。
+
+同样地，因为`export default`命令的本质是将后面的值，赋给`default`变量，所以可以直接将一个值写在`export default`之后。
+
+```javascript
+// 正确
+export default 42;
+
+// 报错
+export 42;
+```
+
+如果想在一条`import`语句中，同时输入默认方法和其他接口，可以写成下面这样。
+
+```javascript
+import _, { each, forEach } from 'lodash';
 ```
 
 **Node支持es6**
