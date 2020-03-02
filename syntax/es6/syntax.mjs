@@ -49,3 +49,17 @@ for (const key in obj) {
         console.log("element: ", element);
     }
 }
+
+// 对象展开符
+let shortcuts = {
+    attr1: 3,
+    attr2: 4
+}
+let shortcuts2 = {...shortcuts}
+/// 上面的这种用法实际上相当于是：
+// shortcuts2 = {attr1: 3, attr2: 4}
+console.log("shortcuts2: ", shortcuts2);
+
+// 补充
+let {attr1} = shortcuts
+console.log("attr1: ", attr1);
