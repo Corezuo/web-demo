@@ -62,11 +62,11 @@
         </span>
 
         <!-- 计算属性 -->
-        <p>计算属性： {{reversedMessage}}</p>
+        <h2>计算属性： {{ computedMessage }}, now = {{ now }}</h2>
         <!-- 方法 -->
         <p>方法返回值：{{ reversedMessage() }}</p>
         <!-- 侦听属性 -->
-        <p>监听属性：{{ firstname }}</p>
+        <h2>监听属性：{{ firstname }}</h2>
         <!-- class绑定 -->
         <div v-bind:class="{one: isActive}">class绑定</div>
         <!-- style绑定 -->
@@ -114,8 +114,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/marked@0.3.6"></script>
-    <script src="https://unpkg.com/lodash@4.16.0"></script>
     <script>
         // Vue版本号
         console.log("vue version: ", Number(Vue.version.split('.')[0]));
@@ -146,7 +144,7 @@
                     }
                 }
             },
-            template: '<h3>postTitle: {{ postTitle }} time: {{time}}</h3>'
+            template: '<div><h3>postTitle: {{ postTitle }} time: {{time}}</h3></div>'
         });
 
         Vue.component('blog-post-user', {
@@ -166,7 +164,7 @@
             return "filter-" + value;            
         });
 
-        var app = new Vue({
+        var vm = new Vue({
             // 挂载的目标
             el: '#app',
             /// 一个字符串模板作为 Vue 实例的标识使用。模板将会 替换 挂载的元素。挂载元素的内容都将被忽略，除非模板的内容有分发插槽。
@@ -175,10 +173,10 @@
             // render: function (createElement) {
             //     createElement();
             // },
-            // 生命周期函数，在实例创建完成后被立即调用。
-            created: function (){
-                console.log("vue created ...")
-            },
+
+            // 当一个组件被定义，data 必须声明为返回一个初始数据对象的函数，因为组件可能被用来创建多个实例。
+            // 如果 data 仍然是一个纯粹的对象，则所有的实例将共享引用同一个数据对象！通过提供 data 函数，
+            // 每次创建一个新实例后，我们能够调用 data 函数，从而返回初始数据的一个全新副本数据对象。
             data: {
                 message: 'Hello Vue!',
                 seen: false,
@@ -229,11 +227,17 @@
                     }
                 ]
             },
+            // 生命周期函数，在实例创建完成后被立即调用。
+            created: function (){
+                // `this` 指向 vm 实例
+                console.log("vue created ... url =", this.url);
+                console.log("vue this: ", this);
+            },
             methods: {
                 doActive: function (){
                     this.url = "https://www.imooc.com";
                     // this.message = "hello dazuo";
-                    this.firstname = "dazuo,";
+                    this.firstname = "dazuo";
                 },
                 doFocus: function () {
                     console.log("我得了焦点");
@@ -245,9 +249,14 @@
                     console.log("hello onEnlargeText");
                 }
             },
+            // 计算属性
             computed: {
-                reversedMessage: function () {
-                    return "reversedMessage.toString";
+                // 模板内的表达式非常便利，但是设计它们的初衷是用于简单运算的。在模板中放入太多的逻辑会让模板过重且难以维护。
+                computedMessage: function () {
+                    return this.message.toUpperCase();
+                },
+                now: function () {
+                    return Date.now();
                 }
             },
             watch: {
@@ -286,6 +295,14 @@
                 }
             }
         });
+
+        // 除了数据属性，Vue 实例还暴露了一些有用的实例属性与方法。它们都有前缀 $，以便与用户定义的属性区分开来
+        console.log("vm data: ", vm.data);
+        // vm.$el === document.getElementById('example') // => true
+        // $watch 是一个实例方法
+        // vm.$watch('a', function (newValue, oldValue) {
+        // // 这个回调将在 `vm.a` 改变后调用
+        // })
     </script>
 </body>
 </html>

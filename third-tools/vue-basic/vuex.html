@@ -14,14 +14,20 @@
         <button @click="increment">点击+</button>
         <button @click="decrement">点击-</button>
         <button @click="dispatch">分发+</button>
+        <button @click="asyncDispatch">异步分发+</button>
+        <hr/>
+        <blog-post></blog-post>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/vuex"></script>    
-    <script>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/vuex/dist/vuex.js"></script>    
+    <script type="text/javascript">
+        // Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。
         const store = new Vuex.Store({
+            // 每个应用将仅仅包含一个 store 实例
             state: {
                 count: 0
             },
+            // Vuex 允许我们在 store 中定义“getter”（可以认为是 store 的计算属性）
             getters: {
                 doneTodos(state) {
                     // 且只有当它的依赖值发生了改变才会被重新计算
@@ -33,9 +39,12 @@
             mutations: {
                 increment (state, payload) {
                     state.count++
-                    console.log("payload: ", payload);
+                    console.log("mutations.increment payload:", payload);
                 },
-                decrement: state => state.count--
+                decrement: function (state, payload) {
+                    state.count--
+                    console.log("mutations.decrement payload:", payload)
+                }
             },
 
             // Action 类似于 mutation，不同在于：
@@ -46,20 +55,59 @@
             // 或者通过 context.state 和 context.getters 来获取 state 和 getters。
             actions: {
                 increment (context, payload) {
-                    console.log("payload: ", payload);
-                    context.commit('increment')
+                    console.log("actions.increment content: ", context);
+                    console.log("actions.increment payload: ", payload);
+                    context.commit('increment', payload)
+                },
+                // 组合 Action
+                // Action 通常是异步的，那么如何知道 action 什么时候结束呢？更重要的是，我们如何才能组合多个 action，以处理更加复杂的异步流程？
+                
+                // store.dispatch 可以处理被触发的 action 的处理函数返回的 Promise，并且 store.dispatch 仍旧返回 Promise
+                // 扩展：利用 async / await 组合 action
+                incrementAsync (context, payload) {
+                    return new Promise((resolve, reject) => {
+                        context.commit('increment', payload)
+                        resolve()
+                    });
                 }
             }
         })
 
+        Vue.component('blog-post', {
+            template: '<div><h3>{{ blogCount }}</h3></div>',
+            computed: {
+                blogCount () {
+                    /// 通过全局访问
+                    // return store.state.count
+
+                    // 通过this实例属性访问
+                    return this.$store.state.count
+                }
+            }
+        });
+
         new Vue({
             el: '#app',
+            // 把 store 对象提供给 “store” 选项，这可以把 store 的实例注入所有的子组件
+            store,
+            data: {
+                message: "hello vuex!"
+            },
+            created: function () {
+                console.log("message: ", this.message);
+            },
             computed: {
+                // 在 Vue 组件中获得 Vuex 状态，从 store 实例中读取状态
                 count () {
-                    return store.state.count
+                    /// 通过全局访问
+                    // return store.state.count
+
+                    // 通过this实例属性访问
+                    return this.$store.state.count
                 },
                 count2 () {
-                    return store.getters.doneTodos
+                    // Getter 会暴露为 store.getters 对象
+                    return this.$store.getters.doneTodos
                 }
             },
             methods: {
@@ -69,27 +117,37 @@
                     // 并且它会接受 state 作为第一个参数：
 
                     store.commit('increment', {
-                        amount: 10
+                        attach: "methods.increment"
                     })
 
-                    // 方式二
+                    // 对象风格的提交方式
                     // store.commit({
                     //     type: 'increment',
-                    //     amount: 10
+                    //     attach: "123456"
                     // })
                 },
                 decrement () {
-                    store.commit('decrement')
+                    store.commit('decrement', {
+                        attach: "methods.decrement"
+                    })
                 },
                 dispatch () {
+                    // Action 通过 store.dispatch 方法触发
                     store.dispatch('increment', {
-                        amount: 10
+                        attach: "methods.dispatch"
+                    })
+                },
+                asyncDispatch () {
+                    // store.dispatch 可以处理被触发的 action 的处理函数返回的 Promise，并且 store.dispatch 仍旧返回 Promise
+                    var instP = store.dispatch('incrementAsync', {
+                        attach: "methods.asyncDispatch"
+                    })
+                    instP.then(function () {
+                        console.log("success! ");
                     })
                 }
             }
         })
-
-        // 参考购物车示例：https://github.com/vuejs/vuex/tree/dev/examples/shopping-cart
     </script>
 </body>
 </html>
