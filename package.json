@@ -27,7 +27,8 @@
     "express-graphql": "^0.9.0",
     "graphiql": "^0.17.5",
     "graphql": "^14.6.0",
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "mockjs": "^1.1.0"
   },
   "dependencies": {
     "vue": "^2.6.11",
