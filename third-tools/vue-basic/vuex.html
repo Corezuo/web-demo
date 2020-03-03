@@ -11,6 +11,7 @@
     <div id="app">
         <p>count {{count}}</p>
         <p>count2 {{count2}}</p>
+        <p>count3 {{ doneTodosCount }}</p>
         <button @click="increment">点击+</button>
         <button @click="decrement">点击-</button>
         <button @click="dispatch">分发+</button>
@@ -32,6 +33,10 @@
                 doneTodos(state) {
                     // 且只有当它的依赖值发生了改变才会被重新计算
                     return state.count;
+                },
+                // Getter 也可以接受其他 getter 作为第二个参数
+                doneTodosCount: (state, getters) => {
+                    return getters.doneTodos
                 }
             },
             // Mutation 必须是同步函数
@@ -108,7 +113,17 @@
                 count2 () {
                     // Getter 会暴露为 store.getters 对象
                     return this.$store.getters.doneTodos
-                }
+                },
+                // mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性
+                // 使用对象展开运算符将 getter 混入 computed 对象中
+                ...Vuex.mapGetters([
+                    'doneTodosCount'
+                ]),
+                // 如果你想将一个 getter 属性另取一个名字，使用对象形式：
+                // ...Vuex.mapGetters({
+                //     // 把 `this.count3` 映射为 `this.$store.getters.doneTodosCount`
+                //     count3: 'doneTodosCount'
+                // })
             },
             methods: {
                 increment () {
