@@ -1,35 +1,39 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Socket.IO chat</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-    </style>
-  </head>
-  <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      $(function () {
-        var socket = io();
-        $('form').submit(function(e){
-          e.preventDefault(); // prevents page reloading
-          socket.emit('chat message', $('#m').val());
-          $('#m').val('');
-          return false;
-        });
-      });
-    </script>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Socket.IO 客户端</h2>
+  <div>
+    <input id="message" autocomplete="off" />
+  </div>
+  <div>
+    <button id="conn">连接</button>
+    <button id="send">发送</button>
+    <button id="disconn">断开</button>
+  </div>
+  <script src="../../node_modules/socket.io-client/dist/socket.io.js"></script>
+  <script src="../../node_modules/jquery/dist/jquery.js"></script>
+  <script>
+    var socket = io('http://127.0.0.1:8888', {
+      autoConnect: false
+    });
+
+    $(document).on('click', '#conn', function () {
+      socket.open();
+    })
+
+    // 自定义消息事件（发送消息）
+    $(document).on('click', '#send', function () {
+      socket.emit('msg', $('#message').val());
+    })
+
+    $(document).on('click', '#disconn', function () {
+      socket.close()
+    })
+  </script>
+</body>
 </html>
