@@ -8,12 +8,21 @@
 <body>
   <h2>Socket.IO 客户端</h2>
   <div>
-    <input id="message" autocomplete="off" />
+    消息：<input id="message" autocomplete="off" />
   </div>
   <div>
     <button id="conn">连接</button>
     <button id="send">发送</button>
     <button id="disconn">断开</button>
+  </div>
+  <div style="margin-top: 20px;">
+    房间名称：<input id="roomName" autocomplete="off" value="room1" />
+    发往房间的消息：<input id="roomMsg" autocomplete="off" value="hello world!"/>
+  </div>
+  <div>
+    <button id="joinRoom">加入房间</button>
+    <button id="leaveRoom">离开房间</button>
+    <button id="sendMsgToRoom">发送消息</button>
   </div>
   <script src="../../node_modules/socket.io-client/dist/socket.io.js"></script>
   <script src="../../node_modules/jquery/dist/jquery.js"></script>
@@ -22,17 +31,46 @@
       autoConnect: false
     });
 
+    // 监听自定义事件（接收消息）
+    socket.on('userin', function (msg) {
+      console.log(msg)
+    })
+
     $(document).on('click', '#conn', function () {
       socket.open();
     })
 
     // 自定义消息事件（发送消息）
     $(document).on('click', '#send', function () {
+      // 判断连接
+      if (!socket.connected) {
+        console.log('还未连接到服务器！')
+        return
+      }
       socket.emit('msg', $('#message').val());
     })
 
     $(document).on('click', '#disconn', function () {
       socket.close()
+    })
+
+    // 加入房间
+    $(document).on('click', '#joinRoom', function () {
+      socket.emit('join-room', $('#roomName').val());
+    })
+
+    // 离开房间
+    $(document).on('click', '#leaveRoom', function () {
+      socket.emit('leave-room', $('#roomName').val());
+    })
+
+    $(document).on('click', '#sendMsgToRoom', function () {
+      const roomName = $('#roomName').val()
+      const roomMsg = $('#roomMsg').val()
+      socket.emit('send-msg-to-room', JSON.stringify({
+        msg: roomMsg,
+        roomName
+      }))
     })
   </script>
 </body>
