@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebRTC capture audio and video</title>
+  <style>
+    video {
+      width: 640px;
+      height: auto;
+      border: 1px solid black;
+    }
+    div {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h2>2.捕获媒体数据</h2>
+  <div>
+    <video id="myVideo" autoplay="autoplay" controls muted="true"/>
+  </div>
+  <div>
+    <button onclick="switchCamera(1)">前置摄像头</button>
+    <button onclick="switchCamera(2)">后置摄像头</button>
+  </div>
+  <script>
+    /*
+      WebRTC API 适配不同浏览器的方法
+      1.手动实现
+        var getUserMedia = navigator.mediaDevices.getUserMedia || navigator.webkitGetUsereMedia || navigator.mozGetUserMedia;
+      2.使用Google开源库adapter.js
+        https://webrtc.github.io/adapter/adapter.js
+
+      视频/音频约束
+      1.视频约束参数：
+        分辨率的宽高：width, height。比如：320 * 240（4/3） 640 * 480（4/3），1280 * 720（16/9）
+        比例：aspectRatio。（通常不需要设置，会根据 宽 / 高 计算得到 ）
+        帧率：frameRate。控制码流
+        facingMode：控制摄像头的翻转
+          user：前置摄像头
+          environment：后置摄像头
+          left：前置左侧摄像头
+          right：前置右侧摄像头
+        resizeMode：画面是否需要裁剪
+      2.音频约束参数
+        音量：volume，取值范围：0-1
+        采样率：sampleRate
+        采样大小：sampleSize
+        是否开启回音消除：echoCancellation，取值：true or false
+        是否自动增益：autoGainControl，是否在录制的基础上增加音量，取值：true or false
+        是否开启降噪：noiseSuppression
+        延迟大小：latency，200ms以内最好，500ms以内比较好
+        单声道还是双声道：channelCount，通常单声道够用
+        音频设备的切换：deviceID
+        设备组的切换：groupID，例如：音频的输入和输出是同一个物理设备
+    */
+  </script>
+  <!-- <script src="./assets/adapter.js"></script> -->
+  <script>
+    let constraints = {
+      video: {
+        width: 1280,
+        height: 720,
+        frameRate: {  // 参数可以设置范围，也可以固定值，其它参数同理
+          min: 15,
+          max: 30
+        },
+        facingMode: 'user'
+      },
+      audio: false
+    }
+
+    var myVideo;
+    window.onload = function() {
+      myVideo = document.getElementById('myVideo')
+      getMedia(constraints)
+    } 
+
+    function getMedia(constraints) {
+      navigator.mediaDevices.getUserMedia(constraints).then(gotUserMedia, didntGetUserMedia)
+    }
+
+    function gotUserMedia(stream) {
+      // 获取视频轨的约束参数
+      let tracks = stream.getVideoTracks()
+      let constraints = tracks[0].getSettings()
+      console.log(JSON.stringify(constraints, null, 2))
+
+      myVideo.srcObject = stream
+    }
+
+    function didntGetUserMedia() {
+      console.log('could not get video')
+    }
+
+    // 切换摄像头
+    function switchCamera (val) {
+      let facingMode = ''
+      switch(val) {
+        case 1:
+          facingMode = 'user';
+          break;
+        case 2:
+          facingMode = 'environment';
+          break;
+        default:
+          facingMode = 'user'
+      }
+      constraints.video.facingMode = facingMode
+      console.log(constraints)
+      getMedia(constraints)
+    }
+  </script>
+</body>
+</html>

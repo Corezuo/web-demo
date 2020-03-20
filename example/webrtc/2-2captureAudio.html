@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebRTC caputure audio</title>
+</head>
+<body>
+  <h2>2.2.只捕获音频</h2>
+  <div>
+    <audio id="myAudio" autoplay controls></audio>
+  </div>
+  <script>
+    var myAudio = null
+    window.onload = function() {
+      myAudio = document.getElementById('myAudio')
+      getMedia()
+    } 
+
+    function getMedia () {
+      navigator.mediaDevices.getUserMedia({
+        video: false,
+        audio: true
+      }).then(gotUserMedia, didntGetUserMedia)
+    }
+
+    function gotUserMedia(stream) {
+      console.log('myAudio: ', myAudio)
+      myAudio.srcObject = stream
+    }
+
+    function didntGetUserMedia() {
+      console.log('could not get video')
+    }
+  </script>
+</body>
+</html>
