@@ -15,13 +15,15 @@
     }
     .player {
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
+      align-items: center;
     }
     .local {
-      width: 48%;
+      width: 40%;
     }
     .remote {
-      width: 48%;
+      width: 40%;
     }
     .btn-group {
       margin-top: 20px;
@@ -29,22 +31,24 @@
   </style>
 </head>
 <body>
-  <h2>4.端对端连接（本机内1对1 音视频互通）</h2>
   <div class="player">
+    <h2>4.端对端连接</h2>
     <div class="local">
       <p>local</p>
-      <video autoplay controls id="localPlayer"></video>
+      <video autoplay controls muted id="localVideo"></video>
     </div>
     <div class="remote">
       <p>remote</p>
-      <video autoplay controls id="remotePlayer"></video>
+      <video autoplay controls muted id="remoteVideo"></video>
+    </div>
+    <div class="btn-group">
+      <button id="call">Call</button>
+      <button id="hangup">HangUp</button>
     </div>
   </div>
-  <div class="btn-group">
-    <button onclick="onStart()">Start</button>
-    <button onclick="onCall()">Call</button>
-    <button onclick="onHangUp()">HangUp</button>
-  </div>
+  <script src="https://cdn.bootcss.com/socket.io/2.3.0/socket.io.js"></script>
+  <script src="./assets/adapter.js"></script>
+  <script src="./js/peer-connection.js"></script>
   <script>
     /*
       基本流程：
@@ -52,87 +56,6 @@
       2.通过ICE对整个可连通的链路地址的收集，然后进行排序、检测、找出其中双方可以连接的最优链路。
       3.媒体数据传输，当一端传输到另一端之后，另一端就会收到一个事件，就可以将媒体流添加到 音视频 标签，进行音频的渲染，视频的播放。
     */
-  </script>
-  <script>
-    var myVideo = null
-    var remoteVideo = null
-    var localStream = null
-    var pc1 = null
-    var pc2 = null
-    window.onload = function () {
-      myVideo = document.getElementById('localPlayer')
-      remoteVideo = document.getElementById('remotePlayer')
-    }
-    
-    function onStart() {
-      console.log("dfasdfa")
-      getMedia()
-    }
-
-    function getMedia () {
-      navigator.mediaDevices.getUserMedia({
-        video: true,
-        audio: true
-      }).then(gotUserMedia, didntGetUserMedia)
-    }
-
-    function gotUserMedia(stream) {
-      localStream = stream
-      myVideo.srcObject = stream
-    }
-
-    function didntGetUserMedia() {
-      console.log('could not get video')
-    }
-
-    function onCall() {
-      pc1 = new RTCPeerConnection()
-      pc2 = new RTCPeerConnection()
-      // 事件
-      pc1.onicecandidate = (e) => {
-        pc2.addIceCandidate(e.candidate)  
-      }
-      pc2.onicecandidate = (e) => {
-        console.log(e)
-        pc1.addIceCandidate(e.candidate)  
-      }
-      pc2.ontrack = getRemotestream;
-
-      // 将本地流添加到pc1
-      localStream.getTracks().forEach((track) => {
-        pc1.addTrack(track, localStream);
-      })
-
-      pc1.createOffer({
-        offerToReceiveAudio: 1,
-        offerToReceiveVideo: 1
-      }).then(getOffer, didntGetUserMedia)
-    }
-
-    function getRemotestream(e) {
-      remoteVideo.srcObject = e.streams[0]
-    }
-
-    function getOffer(desc) {
-      pc1.setLocalDescription(desc);
-      // send desc to signal
-      // receive desc from signal
-      pc2.setRemoteDescription(desc);
-
-      pc2.createAnswer().then(getAnswer,didntGetUserMedia)
-    }
-    
-    function getAnswer(desc) {
-      pc2.setLocalDescription(desc)
-      pc1.setRemoteDescription(desc)
-    }
-
-    function onHangUp() {
-      pc1.close()
-      pc2.close()
-      pc1 = null
-      pc2 = null
-    }
   </script>
 </body>
 </html>
