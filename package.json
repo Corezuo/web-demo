@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@antv/g2": "^4.0.2",
+    "flv.js": "^1.5.0",
     "moment": "^2.24.0",
     "serve-index": "^1.9.1",
     "vue": "^2.6.11",

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>HTML5 Flash 视频（FLV）播放器</h2>
+  <video id="videoElement" muted autoplay controls></video>
+  <script src="../../node_modules/flv.js/dist/flv.min.js"></script>
+  <script>
+    /*
+      斗鱼视频源：
+      蓝光4M：https://play2.douyuscdn.com/live/9999rtaOc36POSoS_4000p.flv?wsAuth=cb7fe7dfeb0544436228db223d7c1c2e&token=web-h5-222359337-9999-eddd230db37c31043eb4f1d664f2267080471abea446cd5e&logo=0&expire=0&did=c374d443cc4d8ab9911d7d2100051501&ver=Douyu_220032005&pt=2&st=0&vhost=play2&origin=all&mix=0&isp=cmcc
+      超清：  https://play2.douyuscdn.com/live/9999rtaOc36POSoS_2000p.flv?wsAuth=35e3af170358d4909d5ca8c635d2c86f&token=web-h5-222359337-9999-eddd230db37c310402380243b113ea1d7c84df8534c6cfd2&logo=0&expire=0&did=c374d443cc4d8ab9911d7d2100051501&ver=Douyu_220032005&pt=2&st=0&vhost=play2&origin=all&mix=0&isp=cmcc
+      高清：  https://play2.douyuscdn.com/live/9999rtaOc36POSoS_1200p.flv?wsAuth=cfa29e925627409ca9805cfb2d894ba5&token=web-h5-0-9999-26339a83b5a3e114943fec0c6053d8df7f155e8ead3315d6&logo=0&expire=0&did=c374d443cc4d8ab9911d7d2100051501&ver=Douyu_220032005&pt=2&st=0&vhost=play2&origin=all&mix=0&isp=cmcc
+
+      B站视频源：
+      https://js.live-play.acgvideo.com/live-js/723435/live_21144080_bs_7276836_1500.flv?wsSecret=7f01569946cb97aa655d1911e26279e2&wsTime=1584795997&trid=690098b12ebe47b49ad9a82c5f41d61c&pt=web&oi=0&order=1&sig=no&platform=web&pSession=GbEfQ1Cd-tpCc-4H7P-zQyZ-WmpSnBrkkd2y
+    */
+    if (flvjs.isSupported()) {
+      var videoElement = document.getElementById('videoElement');
+      var flvPlayer = flvjs.createPlayer({
+          type: 'flv',
+          url: 'https://js.live-play.acgvideo.com/live-js/723435/live_21144080_bs_7276836_1500.flv?wsSecret=7f01569946cb97aa655d1911e26279e2&wsTime=1584795997&trid=690098b12ebe47b49ad9a82c5f41d61c&pt=web&oi=0&order=1&sig=no&platform=web&pSession=GbEfQ1Cd-tpCc-4H7P-zQyZ-WmpSnBrkkd2y'
+      });
+      flvPlayer.attachMediaElement(videoElement);
+      flvPlayer.load();
+      flvPlayer.play();
+    }
+  </script>
+</body>
+</html>
