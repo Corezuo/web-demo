@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex 布局</title>
+  <style type="text/css">
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+    .container {
+      margin: 20px auto;
+      width: 1000px;
+      height: 350px;
+      border: 1px solid black;
+      display: flex;
+    }
+    .item {
+      width: 100px;
+      height: 100px;
+      border: 1px solid blue;
+      flex-basis: 300px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 文档：https://developers.weixin.qq.com/ebook?action=get_post_info&docid=00080e799303986b0086e605f5680a -->
+  <div class="container">
+    <div class="item" style="order: 0;">hello world1</div>
+    <div class="item" style="order: 2;">hello world2</div>
+    <div class="item" style="order: 1;">hello world3</div>
+  </div>
+</body>
+</html>
