@@ -31,14 +31,18 @@ async function f3 () {
     // var val = await "hello f2";
     // return val;
 
-    await Promise.reject('出错了');
+    let result = await '11111'
+    console.log('result: ', result) // 输出: 11111
+    result = await Promise.resolve('22222');
+    console.log('result: ', result) // 输出：22222
+    await Promise.reject('错误');
     console.log("Done.");   // 不会执行
 }
 /// 屏蔽执行
-// f3().then(
-//     v => console.log(v),
-//     e => console.log(e)
-// )
+f3().then(
+    v => console.log(v),
+    e => console.log(e)
+)
 
 // 3.await放在try...catch结构
 async function f4 () {
