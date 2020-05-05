@@ -1,0 +1,100 @@
+{
+    "id": 7,
+    "title": "Apple iPhone 11 Pro (A2217) 64GB 暗夜绿色 移动联通电信4G手机 双卡双待",
+    "price": 8699,
+    "picture": "https://wechat-mall-image.oss-cn-hangzhou.aliyuncs.com/assets/2020/03/29/706c5b82-42c7-4e6d-8f59-1eb3d6a03fb8.jpg",
+    "bannerPicture": "[\"https://wechat-mall-image.oss-cn-hangzhou.aliyuncs.com/assets/2020/03/29/93af8814-c6b6-4eb2-8b89-a26435d75677.jpg\",\"https://wechat-mall-image.oss-cn-hangzhou.aliyuncs.com/assets/2020/03/29/3464f419-8041-4a33-ab96-0c2f1380e74d.jpg\",\"https://wechat-mall-image.oss-cn-hangzhou.aliyuncs.com/assets/2020/03/29/aa21bfde-24b5-4558-9b5a-06fd0325fb58.jpg\"]",
+    "detailPicture": "[\"https://wechat-mall-image.oss-cn-hangzhou.aliyuncs.com/assets/2020/03/29/9ddaa408-ce8c-4323-94f6-b426e094d086.png\",\"https://wechat-mall-image.oss-cn-hangzhou.aliyuncs.com/assets/2020/03/29/4a13b0b7-ccc3-4340-83b6-09971da635d9.png\"]",
+    "tags": "",
+    "description": "",
+    "skuList": [
+        {
+            "id": 5,
+            "picture": "https://wechat-mall-image.oss-cn-hangzhou.aliyuncs.com/assets/2020/03/30/ecac6375-15a8-45a4-bf0f-72168e35e576.jpg",
+            "title": "暗夜绿色·64G",
+            "price": 8699,
+            "code": "",
+            "stock": 3,
+            "specs": "[{\"keyId\":1,\"key\":\"颜色\",\"valueId\":3,\"value\":\"暗夜绿色\"},{\"keyId\":5,\"key\":\"版本\",\"valueId\":10,\"value\":\"64GB\"},{\"keyId\":9,\"key\":\"长度\",\"valueId\":26,\"value\":\"2米\"}]"
+        },
+        {
+            "id": 6,
+            "picture": "https://wechat-mall-image.oss-cn-hangzhou.aliyuncs.com/assets/2020/03/30/f07512b0-2e83-4dca-bd5b-0178a424f195.jpg",
+            "title": "金色·512G",
+            "price": 8699,
+            "code": "",
+            "stock": 94,
+            "specs": "[{\"keyId\":1,\"key\":\"颜色\",\"valueId\":4,\"value\":\"金色\"},{\"keyId\":5,\"key\":\"版本\",\"valueId\":12,\"value\":\"512GB\"},{\"keyId\":9,\"key\":\"长度\",\"valueId\":26,\"value\":\"2米\"}]"
+        },
+        {
+            "id": 7,
+            "picture": "https://wechat-mall-image.oss-cn-hangzhou.aliyuncs.com/assets/2020/03/30/3f16c65f-1e00-4017-8720-c672ed57f21a.jpg",
+            "title": "深空灰色·64G",
+            "price": 7699,
+            "code": "",
+            "stock": 96,
+            "specs": "[{\"keyId\":1,\"key\":\"颜色\",\"valueId\":8,\"value\":\"深空灰色\"},{\"keyId\":5,\"key\":\"版本\",\"valueId\":10,\"value\":\"64GB\"},{\"keyId\":9,\"key\":\"长度\",\"valueId\":26,\"value\":\"2米\"}]"
+        },
+        {
+            "id": 12,
+            "picture": "https://wechat-mall-image.oss-cn-hangzhou.aliyuncs.com/assets/2020/04/02/417cd05d-09a3-4bd7-8181-73281bd56645.jpg",
+            "title": "银色·64G",
+            "price": 8699,
+            "code": "",
+            "stock": 100,
+            "specs": "[{\"keyId\":1,\"key\":\"颜色\",\"valueId\":9,\"value\":\"银色\"},{\"keyId\":9,\"key\":\"长度\",\"valueId\":25,\"value\":\"1米\"},{\"keyId\":5,\"key\":\"版本\",\"valueId\":10,\"value\":\"64GB\"}]"
+        }
+    ],
+    "specList": [
+        {
+            "specId": 1,
+            "name": "颜色",
+            "attrList": [
+                {
+                    "attrId": 3,
+                    "value": "暗夜绿色"
+                },
+                {
+                    "attrId": 4,
+                    "value": "金色"
+                },
+                {
+                    "attrId": 8,
+                    "value": "深空灰色"
+                },
+                {
+                    "attrId": 9,
+                    "value": "银色"
+                }
+            ]
+        },
+        {
+            "specId": 9,
+            "name": "长度",
+            "attrList": [
+                {
+                    "attrId": 26,
+                    "value": "2米"
+                },
+                {
+                    "attrId": 25,
+                    "value": "1米"
+                }
+            ]
+        },
+        {
+            "specId": 5,
+            "name": "版本",
+            "attrList": [
+                {
+                    "attrId": 10,
+                    "value": "64GB"
+                },
+                {
+                    "attrId": 12,
+                    "value": "512GB"
+                }
+            ]
+        }
+    ]
+}

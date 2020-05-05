@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKU多规格属性组合库存判断</title>
+    <style>
+        button{
+            margin-right: 10px;
+            color: #666;
+        }
+        button.active{
+            background: #fff;
+            color: red;
+            border-color: red;
+        }
+        button:disabled{
+            color: #999;
+            background: #ddd;
+        }
+        img{
+            display: block;
+            width: 50px;
+            height: auto;
+        }
+        div.selected{
+            background: lightblue;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+        <p>{{title}}</p>
+        <div class="selected">
+
+        </div>
+        <div v-for="spec in specList">
+            <p>{{spec.name}}</p>
+            <button v-for="attr in spec.attrList" :class="attr.active? 'active': ''" :disabled="attr.disabled" @click="selectSpec(spec.specId, attr.attrId)">
+                {{attr.value}}
+            </button>
+            <hr>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.config.devtools = true
+        var app = new Vue({
+        el: '#app',
+        data: {
+            specList: [],
+            skuList: [],
+            simplifySKU: [],
+            title: ''
+        },
+        async mounted() {
+            let res = await this.getData()
+            for (const key in this.$data) {
+                this.$data[key] = res[key]
+            }
+            // 简化sku和spec
+            this.simplifySKU = this.skuList.filter(item => item.stock > 0).map(item => JSON.parse(item.specs)).map(arr => arr.map(item => item.valueId))
+            this.setDisabled()
+        },
+        methods: {
+            // 每次选择规格，都要设置其他不可选择的规格
+            selectSpec(specId, attrId){
+                // 平级选择+单个选择
+                this.specList.forEach((spec, index) => {
+                    if(spec.specId != specId) return
+                    spec.attrList.forEach(item => {
+                        // 取消选择
+                        if(item.active && item.attrId == attrId) {
+                            item.active = false
+                            return
+                        }
+                        item.active = item.attrId == attrId
+                    })
+                    this.$set(this.specList, index, spec)
+                })
+                this.setDisabled()
+            },
+            // 设置不可选内容
+            setDisabled(){
+                // 获取已选中
+                let selectedAttr = this.specList.map(item => item.attrList).flat().filter(item => item.active).map(item => item.attrId)
+                // 查询简化sku，取出匹配数组，即：选中数组为sku数组子集
+                let matchAttr = this.simplifySKU.filter(arr => selectedAttr.every(item => arr.includes(item)))
+                let attrArr = matchAttr.flat()
+                // 除匹配数组内容外，其他均为disabled
+                this.specList.forEach((spec, index) => {
+                    spec.attrList.forEach(attr => {
+                        attr.disabled = !attrArr.includes(attr.attrId)
+                    })
+                    this.$set(this.specList, index, spec)
+                })
+            },
+            getData() {
+                return fetch('./sku.json').then(res => res.json())
+            }
+        },
+    })
+    </script>
+</body>
+</html>
