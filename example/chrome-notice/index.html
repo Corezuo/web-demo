@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Notification API</title>
+</head>
+<body>
+    <h2>HTML5 Notification API Example</h2>
+    <button id="pushBtn">Push</button>
+    <p style="color:#9b9ea0; font-size: 14px;">Chrome管理网站的订阅：chrome://settings/content/notifications</p>
+    <script>
+        // 1.Check permission
+        if (Notification.permission === 'granted') {
+            console.log("User allowed notification")
+        } else if (Notification.permission === "denied") {
+            console.log("User denied notification")
+        } else {
+            console.log("can apply for permission")
+            // 2.Request for access
+            Notification.requestPermission().then(function (permission) {
+                if (permission === 'granted') {
+                    console.log('allow')
+                } else if(permission === 'denied') {
+                    console.log("Not allowed")
+                }
+            })
+        }
+        // 3.Push notification
+        document.getElementById('pushBtn').onclick = function () {
+            let fd = new Notification('来自 Mars Zuo 的近期推文', {
+                body: '你是不是好奇Twitter是如何在Chrome上发送通知的, 进来看看就知道啦！',
+                icon: 'https://pbs.twimg.com/profile_images/1330022243967987720/9xW63fpM_400x400.jpg',
+                requireInteraction: true
+            })
+            // wait 5s auto close
+            setTimeout(function() {
+                fd.close()
+            }, 5000)
+        }
+    </script>
+</body>
+</html>
