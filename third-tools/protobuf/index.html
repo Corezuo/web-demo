@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chrome环境使用 protobuf</title>
+</head>
+<body>
+    <h5>chrome环境使用 protobuf</h5>
+    <script src="../../node_modules/protobufjs/dist/protobuf.min.js"></script>
+    <script>
+        protobuf.load("person.proto", function (err, root) {
+            if (err) {
+                throw err;
+            }
+            let person = root.lookupType("person.User");
+            let payload = {
+                id: 2,
+                name: "chrome"
+            };
+            let errMsg = person.verify(payload);
+            if (errMsg) {
+                throw Error(errMsg);
+            }
+            let message = person.create(payload);
+            let buffer = person.encode(message).finish();
+            let decodeMsg = person.decode(buffer);
+            console.log(decodeMsg.toJSON());
+        })
+    </script>
+</body>
+</html>
