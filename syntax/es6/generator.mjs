@@ -10,11 +10,11 @@ function* helloWorldGenerator() {
 
 // Generator 函数的调用方法与普通函数一样，也是在函数名后面加上一对圆括号。不同的是，调用 Generator 函数后，该函数并不执行，
 // 返回的也不是函数运行结果，而是一个指向内部状态的指针对象，也就是上一章介绍的遍历器对象（Iterator Object）。
-var hw = helloWorldGenerator();
+let hw = helloWorldGenerator();
 
 // 下一步，必须调用遍历器对象的next方法，使得指针移向下一个状态。也就是说，每次调用next方法，内部指针就从函数头部或上一次停下
-// 来的地方开始执行，直到遇到下一个yield表达式（或return语句）为止。换言之，Generator 函数是分段执行的，yield表达式是暂停
-// 执行的标记，而next方法可以恢复执行。
+// 来的地方开始执行，直到遇到下一个yield表达式（或return语句）为止，返回的值就是当前yield表达式的值。
+// 换言之，Generator 函数是分段执行的，yield表达式是暂停执行的标记，而next方法可以恢复执行。
 console.log(hw.next()); // { value: 'hello', done: false }
 console.log(hw.next()); // { value: 'world', done: false }
 console.log(hw.next()); // { value: 'ending', done: true }
@@ -32,7 +32,7 @@ console.log(hw.next()); // { value: undefined, done: true }
 function* f() {
     console.log('执行了！')
 }
-var generator = f();
+let generator = f();
 setTimeout(function () {
     generator.next()
 }, 2000);
@@ -41,12 +41,12 @@ setTimeout(function () {
 // yield表达式本身没有返回值，或者说总是返回undefined。next方法可以带一个参数，该参数就会被当作上一个yield表达式的返回值。
 function* f2() {
     console.log("first one");
-    var a = yield "hello"
+    let a = yield "hello"
     console.log("second:", a); // second: undefined
-    var b = yield "world"
+    let b = yield "world"
     console.log("three:", b);  // three: true
 }
-var g = f2();
+let g = f2();
 console.log("f2: ", g.next());  // { value: 'hello', done: false }
 setTimeout(function () {
     console.log("f2: ", g.next()); // { value: 'world', done: false }
@@ -57,14 +57,14 @@ setTimeout(function () {
 
 // Generator.prototype.throw()
 // Generator 函数返回的遍历器对象，都有一个throw方法，可以在函数体外抛出错误，然后在 Generator 函数体内捕获。
-var g3 = function* () {
+let g3 = function* () {
     try {
         yield;
     } catch (e) {
         console.log('内部捕获', e);
     }
 };
-var i3 = g3();
+let i3 = g3();
 i3.next();
 try {
     i3.throw('a');
@@ -80,7 +80,7 @@ function* gen() {
     yield 2;
     yield 3;
 }
-var g4 = gen();
+let g4 = gen();
 console.log(g4.next());        // { value: 1, done: false }
 console.log(g4.return('foo')); // { value: "foo", done: true }
 console.log(g4.next());       // { value: undefined, done: true }

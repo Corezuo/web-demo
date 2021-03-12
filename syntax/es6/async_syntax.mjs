@@ -1,8 +1,9 @@
 // async 语法
 
-// 1.返回 Promise 对象 
+// 1.返回 Promise 对象
 // async函数返回一个 Promise 对象。
 // async函数内部return语句返回的值，会成为then方法回调函数的参数。
+// 实现原理：https://es6.ruanyifeng.com/#docs/async#async-%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86
 async function f() {
     return 'hello world';
 }
